@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.0, mkdocs-material-8.2.13" name="generator"/>
+<title>Spring Data JDBC Introduction - 2D-Garden</title>
+<link href="../../assets/stylesheets/main.e411adfe.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.cc9b2e1e.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#spring_data_jdbc_introduction">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="2D-Garden" class="md-header__button md-logo" data-md-component="logo" href="../.." title="2D-Garden">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            2D-Garden
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Spring Data JDBC Introduction
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="green" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="deep-orange" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      About
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tags/">
+      Tags
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Spring%20Boot/Spring%20Boot%20Introduction/">
+        Spring Boot
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../Spring%20Data%20Introduction/">
+        Spring Data
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="2D-Garden" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="2D-Garden">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    2D-Garden
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        About
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tags/">
+        Tags
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Spring Boot
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spring Boot" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Spring Boot
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Introduction/">
+        SpringBoot Introduction
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          Spring Boot Components
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spring Boot Components" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Spring Boot Components
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Starter/">
+        SpringBoot Starter Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20AutoConfigurator/">
+        SpringBoot AutoConfigurator Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Actuator/">
+        SpringBoot Actuator Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20CLI/">
+        SpringBoot CLI Introduction
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Swagger/">
+        SpringBoot With Swagger
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20OpenApi/">
+        Spring Boot With OpenApi
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20%40ConfigurationProperties/">
+        @ConfigurationProperties In SpringBoot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Database%20Configuration%20In%20SpringBoot/">
+        Database Configuration In SpringBoot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Exception%20Handler%20And%20Message%20Source/">
+        Spring Boot With Exception Handler And Message Source
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Mustache/">
+        Spring Boot With Mustache
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Spring Data
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spring Data" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Spring Data
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Data%20Introduction/">
+        Spring Data Introduction
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2">
+          Spring Data JDBC
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spring Data JDBC" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Spring Data JDBC
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Spring Data JDBC Introduction
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Spring Data JDBC Introduction
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what_is_the_jdbc">
+    What Is The JDBC?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example_project_with_spring_jdbc_core">
+    Example Project With Spring JDBC Core
+  </a>
+<nav aria-label="Example Project With Spring JDBC Core" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">
+    Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dao">
+    DAO
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service">
+    Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration">
+    Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JDBC%20And%20JPA%20In%20SpringBoot/">
+        JDBC And JPA In SpringBoot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../HikariCP/">
+        HikariCP Introduction
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          Spring Data JPA
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Spring Data JPA" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Spring Data JPA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Data%20JPA/">
+        Spring JPA
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2">
+          JPA Core
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="JPA Core" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+          JPA Core
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Persistence%20Unit/">
+        Persistence Unit Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../EntityManagerFactory/">
+        EntityManagerFactory Introduction
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2_3" id="__nav_4_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_3">
+          Persistence Context
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Persistence Context" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Persistence Context
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Persistence%20Context/">
+        Persistence Context Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Container%20Managed%20Persistence%20Context/">
+        Container Managed Persistence Context Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Application%20Managed%20Persistence%20Context/">
+        Application Managed Persistence Context Introduction
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../EntityManager/">
+        EntityManager Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Entity/">
+        Entity Introduction
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" id="__nav_4_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_3">
+          JPA In Spring Boot
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="JPA In Spring Boot" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_3">
+<span class="md-nav__icon md-icon"></span>
+          JPA In Spring Boot
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JDBC%20And%20JPA%20In%20SpringBoot/">
+        JDBC And JPA In SpringBoot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Object%20Relational%20Mapping/">
+        Object Relational Mapping Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Hibernate/">
+        Hibernate Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Open%20Session%20In%20View%20Of%20JPA/">
+        Open Session In View Of JPA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Transaction/">
+        Transaction Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JPA%20With%20Pagination/">
+        Pagination With JPA Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JPA%20With%20Multi%20Datasources/">
+        JPA With Multi Datasources
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JPA%20Native%20Query%20With%20Optional%20Params/">
+        JPA Native Query With Optional Params
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JPA%20Entity%20Lifecycle%20Events/">
+        JPA Entity Lifecycle Events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
+          Auditing
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Auditing" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+          Auditing
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Auditing%20With%20Hibernate%20Envers/">
+        Auditing With Hibernate Envers
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5">
+          Database Migration
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Database Migration" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+          Database Migration
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Database%20Migrations%20with%20Flyway/">
+        Database Migrations with Flyway
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Flyway%20Migrations/">
+        Flyway Migrations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Flyway%20Versioned%20Migrations/">
+        Flyway Versioned Migrations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Flyway%20Regular%20Versioned%20Migration%20Example/">
+        Flyway Regular Versioned Migration Example
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Flyway%20Repeatable%20Migrations/">
+        Flyway Repeatable Migrations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Flyway%20SQL-based%20Migrations/">
+        Flyway SQL-based Migrations
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what_is_the_jdbc">
+    What Is The JDBC?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example_project_with_spring_jdbc_core">
+    Example Project With Spring JDBC Core
+  </a>
+<nav aria-label="Example Project With Spring JDBC Core" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">
+    Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dao">
+    DAO
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service">
+    Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration">
+    Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../tags/#spring">
+          Spring
+        </a>
+<a class="md-tag" href="../../tags/#springdata">
+          SpringData
+        </a>
+</nav>
+<h1 id="spring_data_jdbc_introduction">Spring Data JDBC Introduction<a class="headerlink" href="#spring_data_jdbc_introduction" title="Permanent link">#</a></h1>
+<h2 id="what_is_the_jdbc">What Is The JDBC?<a class="headerlink" href="#what_is_the_jdbc" title="Permanent link">#</a></h2>
+<ul>
+<li><code>JDBC</code> stands for <code>Java Database Connectivity</code>. <strong>JDBC</strong> is a <strong>Java API</strong> to connect and execute the query with the database. It is a part of JavaSE (Java Standard Edition). <strong>JDBC API</strong> uses <strong>JDBC drivers</strong> to connect with the database.</li>
+<li>We can use <strong>JDBC API</strong> to access tabular data stored in any relational database. By the help of <strong>JDBC API</strong>, we can save, update, delete and fetch data from the database.</li>
+<li>The JDBC interface consists of two layers:<ul>
+<li>The JDBC API supports communication between the Java application and the JDBC manager.</li>
+<li>The JDBC driver supports communication between the JDBC manager and the database driver.</li>
+</ul>
+</li>
+<li>JDBC is the common API that your application code interacts with. Beneath that is the JDBC-compliant driver for the database you are using.</li>
+<li><a href="https://www.infoworld.com/article/3388036/what-is-jdbc-introduction-to-java-database-connectivity.html">More information</a></li>
+</ul>
+<p><img alt="jdbc-structure.jpg" src="../Images/jdbc-structure.jpg"/></p>
+<h2 id="example_project_with_spring_jdbc_core">Example Project With Spring JDBC Core<a class="headerlink" href="#example_project_with_spring_jdbc_core" title="Permanent link">#</a></h2>
+<ul>
+<li>we will make examples with JDBC core in <a href="../../Spring%20Boot/Spring%20Boot%20Introduction/"> SpringBoot</a> projects.</li>
+</ul>
+<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">#</a></h3>
+<ul>
+<li>So in this example we need to imports dependencies as <code>spring-jdbc</code> and <code>commons-dbcp</code> as below. In which <code>commons-dbcp</code> (dbcp - Database Connection Pool) from Apache will help us to manage database connections pool.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>  <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>spring-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>5.3.14<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>commons-dbcp<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>commons-dbcp<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>1.4<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>8.0.27<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h3 id="dao">DAO<a class="headerlink" href="#dao" title="Permanent link">#</a></h3>
+<ul>
+<li>In Database we will have some tables with <strong>One to Many</strong> relationships as the image below</li>
+</ul>
+<p><img alt="spring-boot-jdbc-core-database-tables.png" src="../Images/spring-boot-jdbc-core-database-tables.png"/></p>
+<ul>
+<li>Note: you need to go to Database and create these tables manually before running this Spring Boot application.</li>
+<li>Then we will crate a DAO (Data Access Object) java class which will contain queries for Create a customer with orders and items in database. The code in <code>CustomerDao</code> will look like as below</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.dao</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.OrderStatus</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.request.CustomerRequest</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.request.ItemRequest</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.request.OrderRequest</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.jdbc.core.JdbcTemplate</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.jdbc.core.namedparam.MapSqlParameterSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.jdbc.core.namedparam.SqlParameterSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Repository</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.UUID</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Repository</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerDao</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">NamedParameterJdbcOperations</span><span class="w"> </span><span class="n">namedParameterJdbcOperations</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">createCustomer</span><span class="p">(</span><span class="n">CustomerRequest</span><span class="w"> </span><span class="n">customerRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlCustomerQuery</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                           </span><span class="s">"INSERT INTO customers(                          "</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"id,                                             "</span><span class="w">   </span><span class="cm">/*1*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"address,                                        "</span><span class="w">   </span><span class="cm">/*2*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"dob,                                            "</span><span class="w">   </span><span class="cm">/*3*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"email,                                          "</span><span class="w">   </span><span class="cm">/*4*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"full_name,                                      "</span><span class="w">   </span><span class="cm">/*5*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"gender,                                         "</span><span class="w">   </span><span class="cm">/*6*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"phone)                                          "</span><span class="w">   </span><span class="cm">/*7*/</span><span class="w"></span>
+<span class="w">                </span><span class="o">+</span><span class="w">          </span><span class="s">"VALUES (?, ?, ?, ?, ?, ?, ?)                    "</span><span class="w"></span>
+<span class="w">                </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">UUID</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getRandomUUID</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">jdbcTemplate</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">sqlCustomerQuery</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">uuid</span><span class="p">.</span><span class="na">toString</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getAddress</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getDob</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getEmail</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getFullName</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getGender</span><span class="p">().</span><span class="na">toString</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getPhone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">uuid</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="p">,</span><span class="w"> </span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createOrders</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderRequestList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="p">,</span><span class="w"> </span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRequestList</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlOrderQuery</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                         </span><span class="s">"INSERT INTO orders(                                "</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"id,                                                "</span><span class="w"> </span><span class="cm">/*1*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"created_date,                                      "</span><span class="w"> </span><span class="cm">/*2*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"last_updated_date,                                 "</span><span class="w"> </span><span class="cm">/*3*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"order_name,                                        "</span><span class="w"> </span><span class="cm">/*4*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"order_status,                                      "</span><span class="w"> </span><span class="cm">/*5*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"customer_id)                                       "</span><span class="w"> </span><span class="cm">/*6*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">"VALUES(                                            "</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":id,                                               "</span><span class="w"> </span><span class="cm">/*1*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":created_date,                                     "</span><span class="w"> </span><span class="cm">/*2*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":last_updated_date,                                "</span><span class="w"> </span><span class="cm">/*3*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":order_name,                                       "</span><span class="w"> </span><span class="cm">/*4*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":order_status,                                     "</span><span class="w"> </span><span class="cm">/*5*/</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w">       </span><span class="s">":customer_id)                                      "</span><span class="w"> </span><span class="cm">/*6*/</span><span class="w"></span>
+<span class="w">                </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">SqlParameterSource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sqlParameterSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">OrderRequest</span><span class="w"> </span><span class="n">orderRequest</span><span class="p">:</span><span class="w"> </span><span class="n">orderRequestList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">UUID</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getRandomUUID</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">MapSqlParameterSource</span><span class="w"> </span><span class="n">mapSqlParameterSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MapSqlParameterSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"created_date"</span><span class="p">,</span><span class="n">now</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"last_updated_date"</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"order_name"</span><span class="p">,</span><span class="w"> </span><span class="n">orderRequest</span><span class="p">.</span><span class="na">getOrderName</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"order_status"</span><span class="p">,</span><span class="w"> </span><span class="n">OrderStatus</span><span class="p">.</span><span class="na">CREATED</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"customer_id"</span><span class="p">,</span><span class="w"> </span><span class="n">customerId</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">sqlParameterSources</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">mapSqlParameterSource</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="n">orderRequest</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">namedParameterJdbcOperations</span><span class="p">.</span><span class="na">batchUpdate</span><span class="p">(</span><span class="n">sqlOrderQuery</span><span class="p">,</span><span class="w"> </span><span class="n">sqlParameterSources</span><span class="p">.</span><span class="na">toArray</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SqlParameterSource</span><span class="o">[</span><span class="n">size</span><span class="o">]</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">map</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">createItems</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ItemRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">itemRequests</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemRequests</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">itemSqlQuery</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                                </span><span class="s">"INSERT INTO items(                                 "</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"id,                                                "</span><span class="w"> </span><span class="cm">/*1*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"item_name,                                         "</span><span class="w"> </span><span class="cm">/*2*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"price,                                             "</span><span class="w"> </span><span class="cm">/*3*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"quantity,                                          "</span><span class="w"> </span><span class="cm">/*4*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"order_id)                                          "</span><span class="w"> </span><span class="cm">/*5*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">"VALUES(                                            "</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">":id,                                               "</span><span class="w"> </span><span class="cm">/*1*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">":item_name,                                        "</span><span class="w"> </span><span class="cm">/*2*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">":price,                                            "</span><span class="w"> </span><span class="cm">/*3*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">":quantity,                                         "</span><span class="w"> </span><span class="cm">/*4*/</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w">       </span><span class="s">":order_id)                                         "</span><span class="w"> </span><span class="cm">/*5*/</span><span class="w"></span>
+<span class="w">                        </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">UUID</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getRandomUUID</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">SqlParameterSource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sqlParameterSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ItemRequest</span><span class="w"> </span><span class="n">itemRequest</span><span class="p">:</span><span class="w"> </span><span class="n">itemRequests</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">MapSqlParameterSource</span><span class="w"> </span><span class="n">mapSqlParameterSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MapSqlParameterSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"item_name"</span><span class="p">,</span><span class="w"> </span><span class="n">itemRequest</span><span class="p">.</span><span class="na">getItemName</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"price"</span><span class="p">,</span><span class="w"> </span><span class="n">itemRequest</span><span class="p">.</span><span class="na">getPrice</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"quantity"</span><span class="p">,</span><span class="w"> </span><span class="n">itemRequest</span><span class="p">.</span><span class="na">getQuantity</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">mapSqlParameterSource</span><span class="p">.</span><span class="na">addValue</span><span class="p">(</span><span class="s">"order_id"</span><span class="p">,</span><span class="w"> </span><span class="n">orderId</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="n">sqlParameterSources</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">mapSqlParameterSource</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">namedParameterJdbcOperations</span><span class="p">.</span><span class="na">batchUpdate</span><span class="p">(</span><span class="n">itemSqlQuery</span><span class="p">,</span><span class="w"> </span><span class="n">sqlParameterSources</span><span class="p">.</span><span class="na">toArray</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SqlParameterSource</span><span class="o">[</span><span class="n">size</span><span class="o">]</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">getRandomUUID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">#</a></h3>
+<ul>
+<li>Next we need to create a service named <code>CustomerJdbcService</code> to handle logics for create a Customer with many orders and items. The Customer will be created first, then if the Customer contains orders so orders will be created and if in every order which contains items then items will be also created. See example code below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.service</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.dao.CustomerDao</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.request.CustomerRequest</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.model.request.OrderRequest</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.UUID</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Service</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerJdbcService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerDao</span><span class="w"> </span><span class="n">customerDao</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">createCustomer</span><span class="p">(</span><span class="n">CustomerRequest</span><span class="w"> </span><span class="n">customerRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UUID</span><span class="w"> </span><span class="n">customerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">customerDao</span><span class="p">.</span><span class="na">createCustomer</span><span class="p">(</span><span class="n">customerRequest</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getOrders</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">orders</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">orders</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">UUID</span><span class="p">,</span><span class="w"> </span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderRequestMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">customerDao</span><span class="p">.</span><span class="na">createOrders</span><span class="p">(</span><span class="n">customerId</span><span class="p">,</span><span class="w"> </span><span class="n">customerRequest</span><span class="p">.</span><span class="na">getOrders</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">UUID</span><span class="p">,</span><span class="w"> </span><span class="n">OrderRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">orderRequestMap</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getItems</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">map</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getItems</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="na">customerDao</span><span class="p">.</span><span class="na">createItems</span><span class="p">(</span><span class="n">map</span><span class="p">.</span><span class="na">getKey</span><span class="p">(),</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getItems</span><span class="p">());</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customerId</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h3>
+<ul>
+<li>Now we will go to connection pool configuration with <code>commons-dbcp</code> from Apache. To do this, firstly you need to add these enviroment variables below into <strong>application.yml</strong>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: password
+    # config dbcp pool for jdbc
+    maxWait: 10000
+    maxActive: -1
+    maxIdle: 20
+    minIdle: 10
+    initialSize: 10
+</code></pre></div>
+<ul>
+<li>Then we will create an <code>ApplicationConfig</code> java class for <strong>DataSource</strong> and <strong>JdbcTemplate</strong> configurations as below</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.data.jdbc.app.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.commons.dbcp.BasicDataSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.core.env.Environment</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.jdbc.core.JdbcTemplate</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.sql.DataSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Objects</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ApplicationConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Environment</span><span class="w"> </span><span class="n">env</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">"dataSource"</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="nf">getDataSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sqlInitQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SHOW PROCESSLIST;"</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">BasicDataSource</span><span class="w"> </span><span class="n">basicDataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BasicDataSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setDriverClassName</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.driverClassName"</span><span class="p">)));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setUrl</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.url"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setUsername</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.username"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setPassword</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.password"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setInitialSize</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.initialSize"</span><span class="p">))));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setMinIdle</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.minIdle"</span><span class="p">))));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setMaxIdle</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.maxIdle"</span><span class="p">))));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setMaxWait</span><span class="p">(</span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.maxWait"</span><span class="p">))));</span><span class="w"></span>
+<span class="w">        </span><span class="n">basicDataSource</span><span class="p">.</span><span class="na">setMaxActive</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"spring.datasource.maxActive"</span><span class="p">))));</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">basicDataSource</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">"jdbcTemplate"</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="nf">getJdbcTemplate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">jdbcTemplate</span><span class="p">.</span><span class="na">setDataSource</span><span class="p">(</span><span class="n">getDataSource</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">jdbcTemplate</span><span class="p">.</span><span class="na">setLazyInit</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jdbcTemplate</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>For <strong>DataSource</strong> configuration, we will create a <strong>BasicDataSource</strong> with some parameters that we will load from the <strong>application.yml</strong>.</li>
+<li>To configure <strong>BasicDataSource</strong> to make conntections to DB we just need to focus on those parameters in table below.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Prameter</th>
+<th>Description</th>
+<th>Set Method</th>
+<th>Sample Configuration Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>The connection user name to be passed to our JDBC driver to establish a connection.</td>
+<td>setUsername()</td>
+<td>root</td>
+</tr>
+<tr>
+<td>password</td>
+<td>The connection password to be passed to our JDBC driver to establish a connection.</td>
+<td>setPassword()</td>
+<td>password</td>
+</tr>
+<tr>
+<td>url</td>
+<td>The connection URL to be passed to our JDBC driver to establish a connection.</td>
+<td>setUrl()</td>
+<td>jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8</td>
+</tr>
+<tr>
+<td>driverClassName</td>
+<td>The fully qualified Java class name of the JDBC driver to be used.</td>
+<td>setDriverClassName()</td>
+<td>com.mysql.cj.jdbc.Driver</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>To configure <strong>BasicDataSource</strong> with DBCP (Database Connection Pool) we will focus on some parameters below</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Prameter</th>
+<th>Description</th>
+<th>Set Method</th>
+<th>Default Value</th>
+<th>Sample Configuration Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initialSize</td>
+<td>The initial number of connections that are created when the pool is started. Since: 1.2</td>
+<td>setInitialSize()</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>maxTotal</td>
+<td>The maximum number of active connections that can be allocated from this pool at the same time, or negative for no limit.</td>
+<td>setMaxActive()</td>
+<td>8</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>maxIdle</td>
+<td>The maximum number of connections that can remain idle in the pool, without extra ones being released, or negative for no limit.</td>
+<td>setMaxIdle()</td>
+<td>8</td>
+<td>20</td>
+</tr>
+<tr>
+<td>minIdle</td>
+<td>The minimum number of connections that can remain idle in the pool, without extra ones being created, or zero to create none.</td>
+<td>setMinIdle()</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>maxWaitMillis</td>
+<td>The maximum number of milliseconds that the pool will wait (when there are no available connections) for a connection to be returned before throwing an exception, or -1 to wait indefinitely.</td>
+<td>setMaxWait()</td>
+<td>indefinitely</td>
+<td>10000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><a href="https://commons.apache.org/proper/commons-dbcp/configuration.html">You can find more here</a>.</p>
+</li>
+<li>
+<p>So after we have configured <strong>BasicDataSource</strong> then we will use it to create <strong>JdbcTemplate</strong> bean. As you can see in the code we will set <code>setLazyInit(false)</code>, So this mean when our application is started, all connections in pool will conntect to database.</p>
+</li>
+</ul>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
+<ul>
+<li>So now, let's start your Spring Boot service then login into mysql and use command <code>show processlist;</code> you will see the result as below</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mysql&gt; show processlist;
++----+-----------------+------------------+--------+---------+------+------------------------+------------------+
+| Id | User            | Host             | db     | Command | Time | State                  | Info             |
++----+-----------------+------------------+--------+---------+------+------------------------+------------------+
+|  5 | event_scheduler | localhost        | NULL   | Daemon  | 6356 | Waiting on empty queue | NULL             |
+| 12 | root            | 172.18.0.1:43650 | sample | Sleep   |  156 |                        | NULL             |
+| 13 | root            | 172.18.0.1:43652 | sample | Sleep   |  156 |                        | NULL             |
+| 14 | root            | 172.18.0.1:43656 | sample | Sleep   |  156 |                        | NULL             |
+| 15 | root            | 172.18.0.1:43658 | sample | Sleep   |  156 |                        | NULL             |
+| 16 | root            | 172.18.0.1:43660 | sample | Sleep   |  156 |                        | NULL             |
+| 17 | root            | 172.18.0.1:43662 | sample | Sleep   |  156 |                        | NULL             |
+| 18 | root            | 172.18.0.1:43664 | sample | Sleep   |  156 |                        | NULL             |
+| 19 | root            | 172.18.0.1:43666 | sample | Sleep   |  156 |                        | NULL             |
+| 20 | root            | 172.18.0.1:43668 | sample | Sleep   |  156 |                        | NULL             |
+| 21 | root            | 172.18.0.1:43670 | sample | Sleep   |  155 |                        | NULL             |
+| 24 | root            | localhost        | NULL   | Query   |    0 | init                   | show processlist |
++----+-----------------+------------------+--------+---------+------+------------------------+------------------+
+12 rows in set (0.00 sec)
+</code></pre></div>
+<ul>
+<li>As you can see, 10 database connections have been created (from Id 12 to Id 21) by our Spring Boot service to MySQL Database, It mean our database connection pool configuration has worked.</li>
+<li>Now when we execute a query from our Spring Boot service a transaction will be created then a database connection will be taken from the pool to run the query, when the query is committed a transaction will close and the connection will be available in pool again. So using connection pool will help us get connections to Database quickly and save time for create new connections for every executed query.</li>
+</ul>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../../Spring%20Boot/Spring%20Boot%20Introduction/">Spring Boot Introduction</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://github.com/minhducnguyen189/com.springboot.data">You can find the source code here</a></li>
+<li><a href="https://www.infoworld.com/article/3388036/what-is-jdbc-introduction-to-java-database-connectivity.html">INFO WORLD</a></li>
+<li><a href="https://www.geeksforgeeks.org/difference-between-jdbc-and-hibernate-in-java/">GEEKS FOR GEEKS</a></li>
+<li><a href="https://commons.apache.org/proper/commons-dbcp/configuration.html">COMMONS DBCP APACHE</a>.</li>
+</ul>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Spring Data Introduction" class="md-footer__link md-footer__link--prev" href="../Spring%20Data%20Introduction/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Spring Data Introduction
+            </div>
+</div>
+</a>
+<a aria-label="Next: JDBC And JPA In SpringBoot" class="md-footer__link md-footer__link--next" href="../JDBC%20And%20JPA%20In%20SpringBoot/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              JDBC And JPA In SpringBoot
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022 - 2022 Duc Nguyen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://www.linkedin.com/in/duc-nguyen-03109b141/" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/minhducnguyen189" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.ed9748b7.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js"></script>
+<script src="../../extra/refresh_on_toggle_dark_light.js"></script>
+</body>
+</html>
