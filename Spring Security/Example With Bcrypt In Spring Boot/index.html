@@ -1173,21 +1173,21 @@
 <li>In which, we will override the default <code>passwordEncoder</code> bean of <code>spring-security</code> by a <code>BCryptPasswordEncoder</code> which is initialized by a <code>strength</code> and a <code>SecureRandom</code>.</li>
 <li>We will configure the <code>strength</code> in the <code>application.yml</code> as below.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>hash:  
-  bcrypt:  
-    strength: 12
+<p><div class="highlight"><pre><span></span><code><span class="nt">hash</span><span class="p">:</span><span class="w">  </span>
+<span class="w">  </span><span class="nt">bcrypt</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">strength</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span><span class="w"></span>
 </code></pre></div>
 - One more thing we should note that, in this example, we just focus on the <code>Bcrypt</code> hashing so we will ignore the default <code>spring-security</code> configuration in the dependency <code>spring-boot-starter-security</code>. So we will add one more configuration as below to disable the default <code>spring-security</code> configuration.</p>
-<div class="highlight"><pre><span></span><code>spring:
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
-      - org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">autoconfigure</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">exclude</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration</span><span class="w"></span>
 
 
-hash:  
-  bcrypt:  
-    strength: 12
+<span class="nt">hash</span><span class="p">:</span><span class="w">  </span>
+<span class="w">  </span><span class="nt">bcrypt</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">strength</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span><span class="w"></span>
 </code></pre></div>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">#</a></h3>
 <ul>

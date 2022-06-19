@@ -1276,9 +1276,9 @@
 <ul>
 <li>Then you can put the AES-256 secret key into the <strong>application.yml</strong> as below, then you can load it into your <code>Aes</code> Component that you created above with <code>@ConfigurationProperties</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>aes:
-  #ivSecret: 94A15E1F08550FF2
-    secret: 1A40C17CA7B7BED888D1E439BFD393C306E53086712AB4CD6940028C51916337
+<div class="highlight"><pre><span></span><code><span class="nt">aes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">#ivSecret: 94A15E1F08550FF2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1A40C17CA7B7BED888D1E439BFD393C306E53086712AB4CD6940028C51916337</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Next, you should restart your service again to reload your AES-256 secret key configuration. Then we can call api <strong>v1/cipher/encrypt</strong> to encrypt your data. Note that, every time you send a request you will always get a different ciphertext although your input data is the same, this is the result of using random IV as explained above.</li>

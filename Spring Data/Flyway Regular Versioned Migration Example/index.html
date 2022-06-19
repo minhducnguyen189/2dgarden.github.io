@@ -1023,25 +1023,25 @@
 <ul>
 <li>In this example, we will use mysql database and <a href="../Spring%20Data%20JPA/"> JPA</a>. So we will need to add some configurations below into our <code>application.yml</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code>spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/customer?useSSL=false
-    username: root
-    password: password
-  jpa:
-    hibernate.ddl-auto: none
-    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
-    generate-ddl: true
-    show-sql: false
-  flyway:
-#    enabled: true
-#    baselineOnMigrate: true
-    driverClassName: ${spring.datasource.driverClassName}
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    locations: classpath:db/migration
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">driverClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/customer?useSSL=false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">  </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hibernate.dialect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.MySQL5Dialect</span><span class="w"></span>
+<span class="w">    </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">flyway</span><span class="p">:</span><span class="w"></span>
+<span class="c1">#    enabled: true</span><span class="w"></span>
+<span class="c1">#    baselineOnMigrate: true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">driverClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.driverClassName}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.url}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.username}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${spring.datasource.password}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">locations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">classpath:db/migration</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>As you can see, we will stop using <code>ddl-auto</code> of JPA by set <code>none</code> value, because we want to control our table structures by Flyway with versions, not from the <a href="../Entity/"> Entities</a> relationships.</li>

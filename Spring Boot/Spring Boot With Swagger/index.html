@@ -1055,106 +1055,106 @@
 <li>Now let create swagger package in the <code>resources</code> folder and create <code>swagger-input.yml</code> with your api definitions. You can use <a href="https://editor.swagger.io/">swagger editor</a> to write your api definitions easily. The example swagger yml will look like below.</li>
 </ul>
 <p><img alt="spring-boot-swagger-resources.jpg" src="../Images/spring-boot-swagger-resources.jpg"/></p>
-<div class="highlight"><pre><span></span><code>"swagger": "2.0"
-info:
-  title: "Swagger Openapi Server"
-  description: "This is the Openapi Specification For Feign Server"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-  version: "1.0.0"
-tags:
-  - name: "server"
-    description: "all server apis"
-paths:
-  /v1/server/customers:
-    post:
-      tags:
-        - "server"
-      summary: "Create a customer"
-      description: "create a customer"
-      operationId: "createCustomer"
-      parameters:
-        - in: body
-          name: "customerRequest"
-          description: "request body"
-          required: true
-          schema:
-            $ref: "#/definitions/CustomerRequest"
-      responses:
-        "201":
-          description: "successful operation"
-          schema:
-            type: "string"
-            format: "uuid"
-    get:
-      tags:
-        - "server"
-      summary: "get customers"
-      description: "get customers"
-      operationId: "getCustomers"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Customer"
+<div class="highlight"><pre><span></span><code><span class="s">"swagger"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2.0"</span><span class="w"></span>
+<span class="nt">info</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Swagger</span><span class="nv"> </span><span class="s">Openapi</span><span class="nv"> </span><span class="s">Server"</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Openapi</span><span class="nv"> </span><span class="s">Specification</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">Feign</span><span class="nv"> </span><span class="s">Server"</span><span class="w"></span>
+<span class="w">  </span><span class="nt">license</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Apache</span><span class="nv"> </span><span class="s">2.0"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"http://www.apache.org/licenses/LICENSE-2.0.html"</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"1.0.0"</span><span class="w"></span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"server"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"all</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">apis"</span><span class="w"></span>
+<span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">/v1/server/customers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"server"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">"Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">customer"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">customer"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="s">"createCustomer"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"customerRequest"</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"request</span><span class="nv"> </span><span class="s">body"</span><span class="w"></span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/definitions/CustomerRequest"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="s">"201"</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"successful</span><span class="nv"> </span><span class="s">operation"</span><span class="w"></span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"uuid"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"server"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">"get</span><span class="nv"> </span><span class="s">customers"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"get</span><span class="nv"> </span><span class="s">customers"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="s">"getCustomers"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">200</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"successful</span><span class="nv"> </span><span class="s">operation"</span><span class="w"></span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"array"</span><span class="w"></span>
+<span class="w">            </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/definitions/Customer"</span><span class="w"></span>
 
-definitions:
-  CustomerRequest:
-    type: "object"
-    properties:
-      fullName:
-        type: "string"
-        example: "Nguyen Minh Duc"
-      email:
-        type: "string"
-        format: "email"
-        example: "ducnguyen@gmail.com"
-      address:
-        type: "string"
-        example: "3/115 Binh Duong"
-      phone:
-        type: "string"
-        example: "0999123445"
-      gender:
-        type: "string"
-        enum:
-          - "M"
-          - "F"
-      dob:
-        type: "string"
-        format: "date"
-  Customer:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      fullName:
-        type: "string"
-      email:
-        type: "string"
-        format: "email"
-      address:
-        type: "string"
-      phone:
-        type: "string"
-      gender:
-        type: "string"
-        enum:
-          - "M"
-          - "F"
-      dob:
-        type: "string"
-        format: "date"
-      createdAt:
-        type: "string"
-        format: "date-time"
-      updatedAt:
-        type: "string"
-        format: "date-time"
+<span class="nt">definitions</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">CustomerRequest</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"object"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">fullName</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">"Nguyen</span><span class="nv"> </span><span class="s">Minh</span><span class="nv"> </span><span class="s">Duc"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">email</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"email"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">"ducnguyen@gmail.com"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">"3/115</span><span class="nv"> </span><span class="s">Binh</span><span class="nv"> </span><span class="s">Duong"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">phone</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">"0999123445"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gender</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"M"</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"F"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">dob</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"date"</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Customer</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"object"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"uuid"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">fullName</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">email</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"email"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">phone</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gender</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"M"</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"F"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">dob</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"date"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">createdAt</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"date-time"</span><span class="w"></span>
+<span class="w">      </span><span class="nt">updatedAt</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"string"</span><span class="w"></span>
+<span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">"date-time"</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Next, you need to create a file <code>service-config.json</code> with some configuration as below</li>

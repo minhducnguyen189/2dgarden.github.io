@@ -1058,16 +1058,16 @@ Using generated security password: 696d439c-14c5-44b1-ae60-1814ab7973c9
 <li>So doing this way is not a best practice for security, because attacker can access your devices when you go away.</li>
 <li>To set timeout for session you can add the configuration below into your <code>application.yml</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>spring:  
-  security:  
-    user:  
-      name: user  
-      password: 12345  
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w">  </span>
+<span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12345</span><span class="w">  </span>
 
-server:  
-  servlet:  
-    session:  
-      timeout: 1m
+<span class="nt">server</span><span class="p">:</span><span class="w">  </span>
+<span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">session</span><span class="p">:</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>In which, the <code>session</code> will be destroyed in 1 minutes if you do nothing (make request to your springboot application) after your first request is authenticated successfully. See results in the images below.</li>

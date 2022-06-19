@@ -1075,24 +1075,24 @@
 </li>
 <li>An docker-compose.yml is like the example below. In this example we can see that we have 2 services, one is the <strong>mysql_db_container</strong> which is using image <code>mysql:latest</code> from the <strong>docker hub</strong>. The second one is the <code>adminer_container</code> which is using the image <code>adminer:latest</code> from the <strong>docker hub</strong> also.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>version: '3.7'
-services:
-  mysql_db_container:
-    image: mysql:latest
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-    MYSQL_ROOT_PASSWORD: password
-    MYSQL_DATABASE: todo
-    ports:
-    - 3306:3306
-    volumes:
-    - ./mysql:/var/lib/mysql:rw
-  adminer_container:
-    image: adminer:latest
-    environment:
-    ADMINER_DEFAULT_SERVER: mysql_db_container
-    ports:
-    - 9090:8080
+<p><div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.7'</span><span class="w"></span>
+<span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mysql_db_container</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--default-authentication-plugin=mysql_native_password</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">    </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todo</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306:3306</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./mysql:/var/lib/mysql:rw</span><span class="w"></span>
+<span class="w">  </span><span class="nt">adminer_container</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminer:latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ADMINER_DEFAULT_SERVER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_db_container</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:8080</span><span class="w"></span>
 </code></pre></div>
 - <a href="https://docs.docker.com/compose/">More information</a></p>
 <h2 id="install_docker_and_docker-compose">Install Docker And Docker-Compose<a class="headerlink" href="#install_docker_and_docker-compose" title="Permanent link">#</a></h2>

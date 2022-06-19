@@ -1201,11 +1201,11 @@
 <p>The <code>salt</code>, <code>iterations</code> and <code>hashWidth</code> will be load from the <code>application.yml</code>  into the <code>HashConfigProperties</code> component using <a href="../../Spring%20Boot/Spring%20Boot%20With%20%40ConfigurationProperties/"> @ConfigurationProperties</a>. The Salt will be any string, see the example below.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>hash:
-  pbkdf2:
-    salt: B6FC08FA50377E5E646CAE93C6B12E74F01D6D4E4DAE1F54DA53EB4D340EC75C
-    iterations: 185000
-    hashWidth: 256
+<div class="highlight"><pre><span></span><code><span class="nt">hash</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pbkdf2</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">salt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B6FC08FA50377E5E646CAE93C6B12E74F01D6D4E4DAE1F54DA53EB4D340EC75C</span><span class="w"></span>
+<span class="w">    </span><span class="nt">iterations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">185000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hashWidth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>So now, you can create generate a hash with <code>SecretKeyFactory</code> and <code>PBEKeySpec</code> as in the method <code>hash</code> of example code.</li>

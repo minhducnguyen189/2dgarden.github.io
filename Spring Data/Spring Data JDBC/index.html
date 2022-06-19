@@ -1220,18 +1220,18 @@
 <ul>
 <li>Now we will go to connection pool configuration with <code>commons-dbcp</code> from Apache. To do this, firstly you need to add these enviroment variables below into <strong>application.yml</strong>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8
-    username: root
-    password: password
-    # config dbcp pool for jdbc
-    maxWait: 10000
-    maxActive: -1
-    maxIdle: 20
-    minIdle: 10
-    initialSize: 10
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">driverClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># config dbcp pool for jdbc</span><span class="w"></span>
+<span class="w">    </span><span class="nt">maxWait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">maxActive</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">maxIdle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">    </span><span class="nt">minIdle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">    </span><span class="nt">initialSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Then we will create an <code>ApplicationConfig</code> java class for <strong>DataSource</strong> and <strong>JdbcTemplate</strong> configurations as below</li>

@@ -968,10 +968,10 @@
 <p>For example we have an <strong>application.yml</strong> with some environment as below. As you can see the <strong>data</strong> has 3 attributes are <strong>name</strong>, <strong>amount</strong> and <strong>price</strong>, so we can imagine that there is an object data has 3 attributes.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>    data:
-        name: notebook
-        amount: 500
-        price: 10.5
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notebook</span><span class="w"></span>
+<span class="w">        </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span><span class="w"></span>
+<span class="w">        </span><span class="nt">price</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>So the first thing we should do is create an object class with <strong>getter</strong> and <strong>setter</strong> as default. Then we add the annotation <code>@ConfigurationProperties(prefix = "data")</code>, The prefix of the properties that are valid to bind to object. Synonym for prefix, a valid prefix is defined by one or more words separated with dots (e.g. <strong>"company.customer.data"</strong>).</li>
@@ -1209,14 +1209,14 @@
 <p>Let's see the example below: As you can see the object <code>shipper</code> will be used in <code>data</code>. So how we can load them to become spring bean.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>data:
-  name: notebook
-  amount: 500
-  price: 10.5
-  shipper:
-    name: Duc
-    age: 26
-    phone: "0123456789"
+<div class="highlight"><pre><span></span><code><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notebook</span><span class="w"></span>
+<span class="w">  </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span><span class="w"></span>
+<span class="w">  </span><span class="nt">price</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">shipper</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Duc</span><span class="w"></span>
+<span class="w">    </span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26</span><span class="w"></span>
+<span class="w">    </span><span class="nt">phone</span><span class="p">:</span><span class="w"> </span><span class="s">"0123456789"</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>First we need to create a java class named <code>Shipper.java</code> as below</li>

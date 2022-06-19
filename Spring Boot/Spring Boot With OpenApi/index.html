@@ -1060,106 +1060,106 @@
 <li>Now let create swagger package in the <code>resources</code> folder and create <code>swagger-input.yml</code> with your api definitions. You can use <a href="https://editor.swagger.io/">swagger editor</a> to write your api definitions easily. The example swagger yml will look like below.</li>
 </ul>
 <p><img alt="spring-boot-openapi-resources.png" src="../Images/spring-boot-openapi-resources.png"/></p>
-<div class="highlight"><pre><span></span><code>openapi: 3.0.1
-info:
-  title: Swagger Openapi Server
-  description: 'This is the Openapi Specification For Feign Server'
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.0
-tags:
-- name: server
-  description: all server apis
-paths:
-  /v1/server/customers:
-    post:
-      tags:
-      - server
-      summary: Create a customer
-      description: create a customer
-      operationId: createCustomer
-      requestBody:
-        description: request body
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerRequest'
-        required: true
-      responses:
-        201:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: string
-                format: uuid
-    get:
-      tags:
-      - server
-      summary: get customers
-      description: get customers
-      operationId: getCustomers
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Customer'
-components:
-  schemas:
-    CustomerRequest:
-      type: object
-      properties:
-        fullName:
-          type: string
-          example: Nguyen Minh Duc
-        email:
-          type: string
-          format: email
-          example: ducnguyen@gmail.com
-        address:
-          type: string
-          example: 3/115 Binh Duong
-        phone:
-          type: string
-          example: 0999123445
-        gender:
-          type: string
-          enum: [M, F]
-        dob:
-          type: string
-          format: date
-    Customer:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        fullName:
-          type: string
-        email:
-          type: string
-          format: email
-        address:
-          type: string
-        phone:
-          type: string
-        gender:
-          type: string
-          enum: [ M, F ]
-        dob:
-          type: string
-          format: date
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.1</span><span class="w"></span>
+<span class="nt">info</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Swagger Openapi Server</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Openapi</span><span class="nv"> </span><span class="s">Specification</span><span class="nv"> </span><span class="s">For</span><span class="nv"> </span><span class="s">Feign</span><span class="nv"> </span><span class="s">Server'</span><span class="w"></span>
+<span class="w">  </span><span class="nt">license</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache 2.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://www.apache.org/licenses/LICENSE-2.0.html</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span><span class="w"></span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all server apis</span><span class="w"></span>
+<span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">/v1/server/customers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a customer</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create a customer</span><span class="w"></span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">createCustomer</span><span class="w"></span>
+<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request body</span><span class="w"></span>
+<span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">'#/components/schemas/CustomerRequest'</span><span class="w"></span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">201</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">successful operation</span><span class="w"></span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span><span class="w"></span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get customers</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get customers</span><span class="w"></span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getCustomers</span><span class="w"></span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">200</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">successful operation</span><span class="w"></span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">                </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">                  </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">'#/components/schemas/Customer'</span><span class="w"></span>
+<span class="nt">components</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CustomerRequest</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">fullName</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nguyen Minh Duc</span><span class="w"></span>
+<span class="w">        </span><span class="nt">email</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"></span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ducnguyen@gmail.com</span><span class="w"></span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3/115 Binh Duong</span><span class="w"></span>
+<span class="w">        </span><span class="nt">phone</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0999123445</span><span class="w"></span>
+<span class="w">        </span><span class="nt">gender</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">M</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">F</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">dob</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Customer</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span><span class="w"></span>
+<span class="w">        </span><span class="nt">fullName</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">email</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"></span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">phone</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">gender</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">M</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">F</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">dob</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span><span class="w"></span>
+<span class="w">        </span><span class="nt">createdAt</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date-time</span><span class="w"></span>
+<span class="w">        </span><span class="nt">updatedAt</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date-time</span><span class="w"></span>
 </code></pre></div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h2>
 <ul>

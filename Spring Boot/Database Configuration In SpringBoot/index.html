@@ -1165,17 +1165,17 @@
 <span class="na">  spring.jpa.show-sql</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
 </code></pre></div>
 <h3 id="applicationyml">Application.yml<a class="headerlink" href="#applicationyml" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>  spring:
-    datasource:
-      driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/todo?useUnicode=true&amp;characterEncoding=UTF-8
-      username: root
-      password: password
-    jpa:
-      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-      hibernate.ddl-auto: update
-      generate-ddl: true
-      show-sql: true
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">driverClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.jdbc.Driver</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/todo?useUnicode=true&amp;characterEncoding=UTF-8</span><span class="w"></span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.MySQL5InnoDBDialect</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">      </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <h2 id="configuration_for_oracle_database">Configuration For Oracle Database<a class="headerlink" href="#configuration_for_oracle_database" title="Permanent link">#</a></h2>
 <h3 id="dependencies_1">Dependencies<a class="headerlink" href="#dependencies_1" title="Permanent link">#</a></h3>
@@ -1212,17 +1212,17 @@
 <span class="na">  spring.jpa.show-sql</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
 </code></pre></div>
 <h3 id="applicationyml_1">Application.yml<a class="headerlink" href="#applicationyml_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>  spring:
-    datasource:
-      url: jdbc:oracle:thin:@localhost:1521:XE
-      username: xe
-      password: password
-      driver-class-name: oracle.jdbc.OracleDriver
-    jpa:
-      database-platform: org.hibernate.dialect.Oracle10gDialect
-      hibernate.ddl-auto: update
-      generate-ddl: true
-      show-sql: true
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:oracle:thin:@localhost:1521:XE</span><span class="w"></span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xe</span><span class="w"></span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oracle.jdbc.OracleDriver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.Oracle10gDialect</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">      </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <h2 id="configuration_for_posgresql_database">Configuration For Posgresql Database<a class="headerlink" href="#configuration_for_posgresql_database" title="Permanent link">#</a></h2>
 <h3 id="dependencies_2">Dependencies<a class="headerlink" href="#dependencies_2" title="Permanent link">#</a></h3>
@@ -1259,18 +1259,18 @@
 <span class="na">  spring.jpa.show-sql</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
 </code></pre></div>
 <h3 id="applicationyml_2">Application.yml<a class="headerlink" href="#applicationyml_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>  spring:
-    datasource:
-      driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/book_db
-      username: postgres
-      password: postgres
-    jpa:
-      database: postgresql
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
-      hibernate.ddl-auto: update
-      generate-ddl: true
-      show-sql: true
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.postgresql.Driver</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:postgresql://localhost:5432/book_db</span><span class="w"></span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w"></span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.PostgreSQLDialect</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">      </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <h2 id="configuration_for_h2_database">Configuration For H2 Database<a class="headerlink" href="#configuration_for_h2_database" title="Permanent link">#</a></h2>
 <h3 id="dependencies_3">Dependencies<a class="headerlink" href="#dependencies_3" title="Permanent link">#</a></h3>
@@ -1361,48 +1361,48 @@
 <ul>
 <li>For saving data in memory</li>
 </ul>
-<div class="highlight"><pre><span></span><code>  spring:
-    datasource:
-      url: jdbc:h2:mem:testdb
-      username: sa
-      password: password
-      driver-class-name: org.h2.Driver
-      platform: h2
-    jpa:
-      database-platform: org.hibernate.dialect.H2Dialect
-      hibernate.ddl-auto: update
-      generate-ddl: true
-      show-sql: true
-    h2:
-      console:
-        enabled: true
-        path: /h2-console
-        settings:
-          trace: false
-          web-allow-others: false
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:h2:mem:testdb</span><span class="w"></span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sa</span><span class="w"></span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.h2.Driver</span><span class="w"></span>
+<span class="w">      </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">h2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.H2Dialect</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">      </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">h2</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/h2-console</span><span class="w"></span>
+<span class="w">        </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">trace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">          </span><span class="nt">web-allow-others</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>For saving data in h2 file</li>
 </ul>
-<div class="highlight"><pre><span></span><code>spring:
-  datasource:
-    url: jdbc:h2:file:./testdb
-    username: sa
-    password: password
-    driver-class-name: org.h2.Driver
-    platform: h2
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:h2:file:./testdb</span><span class="w"></span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sa</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
+<span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.h2.Driver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">h2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.H2Dialect</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">    </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">h2</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/h2-console</span><span class="w"></span>
+<span class="w">      </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">trace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">        </span><span class="nt">web-allow-others</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </code></pre></div>
 <h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
 <ul>

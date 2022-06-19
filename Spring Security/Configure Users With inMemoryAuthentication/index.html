@@ -992,11 +992,11 @@
 <li>To create a user we use <code>withUser()</code> along with usename then <code>password()</code> along with password and use <code>authorities</code> along with authorities, then we use <code>and()</code> to end creating a user and prepare for configure user with password encoder step or we can create another user by repeating method as above. Finally we use <code>passwordEncoder()</code> to configure password encoder. In this case, we will use password encoder with plain text so it is the <code>NoOpPasswordEncoder.getInstance()</code>. We will learn more about kinds of <code>PasswordEncoder</code> later.</li>
 <li>Now, you can comment out the user that you defined in <code>application.yml</code> and start your service and try call to authenticated api with the credentials that you created in the configuration above for testing.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>#spring:
-#  security:
-#    user:
-#      name: user
-#      password: 12345
+<div class="highlight"><pre><span></span><code><span class="c1">#spring:</span><span class="w"></span>
+<span class="c1">#  security:</span><span class="w"></span>
+<span class="c1">#    user:</span><span class="w"></span>
+<span class="c1">#      name: user</span><span class="w"></span>
+<span class="c1">#      password: 12345</span><span class="w"></span>
 </code></pre></div>
 <p><img alt="spring-security-inmemory-user-test.png" src="../Images/spring-security-inmemory-user-test.png"/></p>
 <h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>

@@ -1094,21 +1094,21 @@
 <ul>
 <li>Then In your <code>application.yml</code>. Let's add some configuration. The details of configuration are put in the comments.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>#server run at port 8761
-server:
-  port: 8761
+<div class="highlight"><pre><span></span><code><span class="c1">#server run at port 8761</span><span class="w"></span>
+<span class="nt">server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8761</span><span class="w"></span>
 
-spring:
-  application:
-    #application name
-    name: eureka-server
+<span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#application name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eureka-server</span><span class="w"></span>
 
-eureka:
-  client:
-    #self register is false
-    register-with-eureka: false
-    #self fetch registry is false
-    fetch-registry: false
+<span class="nt">eureka</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#self register is false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">register-with-eureka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#self fetch registry is false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fetch-registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </code></pre></div>
 <h3 id="testing">TESTING<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
 <ul>
@@ -1204,24 +1204,24 @@ eureka:
 <ul>
 <li>Then add some configuration in <code>application.yml</code> as below to connect to <code>Eureka Server</code>. The property <code>“eureka.client.serviceUrl.defaultZone”</code> will be <code>the url for register of eureka server</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>#service run at port 9090
-server:
-  port: 9090
+<div class="highlight"><pre><span></span><code><span class="c1">#service run at port 9090</span><span class="w"></span>
+<span class="nt">server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090</span><span class="w"></span>
 
-spring:
-  application:
-    #service name which will be showed on eureka server dashboard
-    name: application-bff-service
-  #Enable Spring Cloud Discovery
-  cloud:
-    discovery:
-      enabled: true
+<span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#service name which will be showed on eureka server dashboard</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application-bff-service</span><span class="w"></span>
+<span class="w">  </span><span class="c1">#Enable Spring Cloud Discovery</span><span class="w"></span>
+<span class="w">  </span><span class="nt">cloud</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">discovery</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-#register this service to eureka server by url
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+<span class="c1">#register this service to eureka server by url</span><span class="w"></span>
+<span class="nt">eureka</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">serviceUrl</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">defaultZone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8761/eureka/</span><span class="w"></span>
 </code></pre></div>
 <h3 id="testing_1">Testing<a class="headerlink" href="#testing_1" title="Permanent link">#</a></h3>
 <ul>

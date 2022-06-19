@@ -1596,35 +1596,35 @@
 <ul>
 <li>Now, we will add some configurations into <code>application.yml</code> for Datasource and Connection Pool, because In <code>spring-boot-starter-data-jpa</code> dependency, we have <code>spring-boot-starter-jdbc</code> dependency and in JDBC dependency we have <code>HikariCP</code> dependency. So we can configure <a href="../HikariCP/">HikariCP</a> from the <code>application.yml</code> as below</li>
 </ul>
-<div class="highlight"><pre><span></span><code>spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8
-    username: root
-    password: password
+<div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">driverClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.mysql.cj.jdbc.Driver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://localhost:3306/sample?useUnicode=true&amp;characterEncoding=UTF-8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span><span class="w"></span>
 
-    #config hikari pool for jpa
-    hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 20
-      minimumIdle: 15
-      idleTimeout: 30000
-      maxLifetime: 180000
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-    open-in-view: true
-    properties:
-      hibernate:
-        generate_statistics: true
+<span class="w">    </span><span class="c1">#config hikari pool for jpa</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hikari</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">connection-timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maximum-pool-size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w"></span>
+<span class="w">      </span><span class="nt">minimumIdle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+<span class="w">      </span><span class="nt">idleTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">jpa</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">database-platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.hibernate.dialect.MySQL5InnoDBDialect</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hibernate.ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span><span class="w"></span>
+<span class="w">    </span><span class="nt">generate-ddl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">open-in-view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">generate_statistics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-logging:
-  level:
-    org:
-      hibernate:
-        stat: DEBUG
+<span class="nt">logging</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">org</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hibernate</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">stat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>For configure DataSource we will focus on properties as below</li>
