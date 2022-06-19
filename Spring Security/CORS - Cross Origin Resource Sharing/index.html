@@ -886,6 +886,11 @@
     Configure Global CORS
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -923,6 +928,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configure_global_cors">
     Configure Global CORS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
   </a>
 </li>
 </ul>
@@ -980,6 +990,11 @@
 <td>Access-Control-Allow-Methods: GET, POST, PUT</td>
 </tr>
 <tr>
+<td>Access-Control-Allow-Headers</td>
+<td>response header is used in response to a preflight request which includes the <code>Access-Control-Request-Headers</code> to indicate which HTTP headers can be used during the actual request. "*" represent any origin</td>
+<td>Access-Control-Allow-Headers: *</td>
+</tr>
+<tr>
 <td>Access-Control-Allow-Credentials</td>
 <td>Indicates whether or not the response to the request can be exposed when the credentials flag is true.</td>
 <td>Access-Control-Allow-Credentials: true</td>
@@ -994,6 +1009,139 @@
 <p><img alt="spring-security-cors-configurated-communication.jpg" src="../Images/spring-security-cors-configurated-communication.jpg"/></p>
 <h2 id="cors_configuration_in_spring_security">CORS Configuration In Spring Security<a class="headerlink" href="#cors_configuration_in_spring_security" title="Permanent link">#</a></h2>
 <h3 id="configure_global_cors">Configure Global CORS<a class="headerlink" href="#configure_global_cors" title="Permanent link">#</a></h3>
+<ul>
+<li>Base on the current implementation of spring security example that implemented in <a href="../Custom%20Authentication%20Provider/">Custom Authentication Provider</a>. So now, we will continue to add CORS configuration for our spring security application.</li>
+<li><a href="https://github.com/minhducnguyen189/com.springboot.security/tree/master/custom-basic-spring-security">Full source code here</a></li>
+<li>So let's add the <code>corsConfigurationSource</code> bean in the class <code>ProjectSecurityConfig</code> as below.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.builders.HttpSecurity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfiguration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.UrlBasedCorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProjectSecurityConfig</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">WebSecurityConfigurerAdapter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     *</span>
+<span class="cm">     * contact: Not Secure</span>
+<span class="cm">     * notice: Not Secure</span>
+<span class="cm">     * balance: Secure</span>
+<span class="cm">     * Card: Secure</span>
+<span class="cm">     * Loan: Secure</span>
+<span class="cm">     * Account: Secure</span>
+<span class="cm">     *</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="na">cors</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="c1">//    @Override</span><span class="w"></span>
+<span class="c1">//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {</span><span class="w"></span>
+<span class="c1">//        auth.inMemoryAuthentication().withUser("admin").password("12345").authorities("admin")</span><span class="w"></span>
+<span class="c1">//                .and().withUser("user").password("12345").authorities("read")</span><span class="w"></span>
+<span class="c1">//                .and().passwordEncoder(NoOpPasswordEncoder.getInstance());</span><span class="w"></span>
+<span class="c1">//    }</span><span class="w"></span>
+
+<span class="c1">//    @Override</span><span class="w"></span>
+<span class="c1">//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {</span><span class="w"></span>
+<span class="c1">//        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();</span><span class="w"></span>
+<span class="c1">//        UserDetails user1 = User.withUsername("admin").password("12345").authorities("admin").build();</span><span class="w"></span>
+<span class="c1">//        UserDetails user2 = User.withUsername("user").password("12345").authorities("admin").build();</span><span class="w"></span>
+<span class="c1">//        userDetailsManager.createUser(user1);</span><span class="w"></span>
+<span class="c1">//        userDetailsManager.createUser(user2);</span><span class="w"></span>
+<span class="c1">//        auth.userDetailsService(userDetailsManager);</span><span class="w"></span>
+<span class="c1">//    }</span><span class="w"></span>
+
+<span class="c1">//    @Bean</span><span class="w"></span>
+<span class="c1">//    public UserDetailsService userDetailsService(DataSource dataSource) {</span><span class="w"></span>
+<span class="c1">//        return new JdbcUserDetailsManager(dataSource);</span><span class="w"></span>
+<span class="c1">//    }</span><span class="w"></span>
+
+<span class="c1">//    @Bean</span><span class="w"></span>
+<span class="c1">//    public PasswordEncoder passwordEncoder() {</span><span class="w"></span>
+<span class="c1">//        return NoOpPasswordEncoder.getInstance();</span><span class="w"></span>
+<span class="c1">//    }</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PasswordEncoder</span><span class="w"> </span><span class="nf">passwordEncoder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BCryptPasswordEncoder</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>So firstly we will create the <code>CorsConfiguration</code> and set some parameters as the table below.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Corresponding Header</th>
+<th>Example Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAllowedHeaders()</td>
+<td><code>Access-Control-Allow-Headers</code></td>
+<td>*</td>
+</tr>
+<tr>
+<td>setAllowedOriginPatterns()</td>
+<td><code>Access-Control-Allow-Origin</code></td>
+<td>*</td>
+</tr>
+<tr>
+<td>setAllowedMethods()</td>
+<td><code>Access-Control-Allow-Methods</code></td>
+<td>*</td>
+</tr>
+<tr>
+<td>setAllowCredentials()</td>
+<td><code>Access-Control-Allow-Credentials</code></td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Then we will create <code>corsConfigurationSource</code> bean by creating <code>UrlBasedCorsConfigurationSource</code> and set the <code>CorsConfiguration</code> with the path pattern that we want to apply. In this example we will apply this <code>CorsConfiguration</code> for all path, so we will use <code>registerCorsConfiguration()</code> method with <code>/**</code>.</li>
+<li>If you just define the bean for CORS configuration, so it will not work, you have to edit the method in the  <code>configure()</code> by adding the method <code>cors()...</code> to apply your new CORS configuration in Spring Security.</li>
+</ul>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
 </article>
 </div>
 </div>
