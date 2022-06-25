@@ -922,13 +922,17 @@
 </nav>
 <h1 id="csrf_-_cross-site_request_forgery">CSRF - Cross-Site Request Forgery<a class="headerlink" href="#csrf_-_cross-site_request_forgery" title="Permanent link">#</a></h1>
 <h2 id="what_is_the_csrf">What Is The CSRF?<a class="headerlink" href="#what_is_the_csrf" title="Permanent link">#</a></h2>
-<p>-Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.
-- Consider a wedsite abc.com and the attacker's website xyz.com. Also assume that the victim is logged in and his session is being maintained by cookies. The attacker will:
-    - Find out what action he needs to perform on behalf of the victim and find out its endpoint (for example, to change password on abc.com a POST request is made to the website that contains new password as the parameter)
-    - Place HTML code on his website xyz.com that will imitate a legal request to abc.comn (for example, a form with method as post and a hidden input field that contains the new password).
-    - Make sure that the form is submitted by either using "autosubmit" or luring the victim to click on a submit button.
-    - When the victim visits xyz.com and that form is submitted, the victim's browser makes a request to abc.com for a password change. Also the browser appends the cookies with the request. The server treats it as a genuine request and reset the victim's password to the attacker's supplied value. This way the victim's account gets taken over by the attacker.
-    - There are many proposed way to implement CSRF protection on server side, among which the use of CSRF tokens is most popular. A CSRF token is a string that is tied to a user's session but is not submitted automatically. A website proceeds only when it received a valid CSRF token along with the cookies, since there is no way for an attacker to know a user specific token, the attacker can not perform actions on user's behalf.</p>
+<ul>
+<li>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.</li>
+<li>Consider a wedsite abc.com and the attacker's website xyz.com. Also assume that the victim is logged in and his session is being maintained by cookies. The attacker will:<ul>
+<li>Find out what action he needs to perform on behalf of the victim and find out its endpoint (for example, to change password on abc.com a POST request is made to the website that contains new password as the parameter)</li>
+<li>Place HTML code on his website xyz.com that will imitate a legal request to abc.comn (for example, a form with method as post and a hidden input field that contains the new password).</li>
+<li>Make sure that the form is submitted by either using "autosubmit" or luring the victim to click on a submit button.</li>
+<li>When the victim visits xyz.com and that form is submitted, the victim's browser makes a request to abc.com for a password change. Also the browser appends the cookies with the request. The server treats it as a genuine request and reset the victim's password to the attacker's supplied value. This way the victim's account gets taken over by the attacker.</li>
+<li>There are many proposed way to implement CSRF protection on server side, among which the use of CSRF tokens is most popular. A CSRF token is a string that is tied to a user's session but is not submitted automatically. A website proceeds only when it received a valid CSRF token along with the cookies, since there is no way for an attacker to know a user specific token, the attacker can not perform actions on user's behalf.</li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 </div>
