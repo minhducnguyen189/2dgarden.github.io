@@ -1247,9 +1247,12 @@
 <ul>
 <li>Now, go to the browser with address <code>http://localhost:8000</code> then open network tool and console  on your browser, you will see the error as below.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>Access to fetch at 'http://localhost:8080/v1/contact' from origin 'http://localhost:8000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+<div class="highlight"><pre><span></span><code>Access to fetch at 'http://localhost:8080/v1/contact' from origin
+'http://localhost:8000' has been blocked by CORS policy: Response to preflight 
+request doesn't pass access control check: No 'Access-Control-Allow-Origin' header 
+is present on the requested resource. If an opaque response serves your needs, set 
+the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 </code></pre></div>
-<p><img alt="spring-security-no-cors-config-test.png" src="../Images/spring-security-no-cors-config-test.png"/></p>
 <ul>
 <li>Then, if you look into the response of the preflight request, you will see there are no headers for CORS.</li>
 </ul>
