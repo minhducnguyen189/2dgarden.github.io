@@ -894,6 +894,16 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -942,6 +952,16 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
 </li>
 </ul>
 </nav>
@@ -1147,6 +1167,176 @@
 <li>If you just define the bean for CORS configuration, so it will not work, you have to edit the method in the  <code>configure()</code> by adding the method <code>cors()...</code> to apply your new CORS configuration in Spring Security.</li>
 </ul>
 <h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
+<ul>
+<li>Now, let's create a simple html file which contain a javascript to call api of our spring security application and this html will be served by another http web server.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content</span><span class="o">=</span><span class="s">"IE=edge"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://localhost:8080/v1/contact'</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'get'</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">'Accept'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="p">});</span><span class="w"></span>
+<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'err'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li>Then if you are using python on your machine, then use the command below to start a simple http web server. By default it will run at port <code>8000</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python3 -m http.server
+</code></pre></div>
+<ul>
+<li>Now, we will try starting our spring security application without CORS configuration first, so we will remove the CORS configuration as below. Then start the application, it will run at port <code>8080</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">//...........</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">http</span><span class="p">.</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="c1">//...........</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Now, go to the browser with address <code>http://localhost:8000</code> then open network tool and console  on your browser, you will see the error as below.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Access to fetch at 'http://localhost:8080/v1/contact' from origin 'http://localhost:8000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+</code></pre></div>
+<p><img alt="spring-security-no-cors-config-test.png" src="../Images/spring-security-no-cors-config-test.png"/></p>
+<ul>
+<li>Then, if you look into the response of the preflight request, you will see there are no headers for CORS.</li>
+</ul>
+<p><img alt="spring-security-no-cors-header-prelight-request.png" src="../Images/spring-security-no-cors-header-prelight-request.png"/></p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 403
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Transfer-Encoding: chunked
+Date: Sun, 26 Jun 2022 09:20:51 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+</code></pre></div>
+<ul>
+<li>So, it means that when the browser execute a script to call to another domain (http://localhost:8080) and the server of this domain has not been configured to response some required headers of CORS in the preflight request so the browser has blocked this request by default CORS policy.</li>
+<li>Now, let's go back to our spring security application and apply the CORS configuration and start the spring security application again.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">//...........</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="na">cors</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="c1">//...........</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Now, let's refresh <code>http://localhost:8000</code> on your browser, you will see the error has been disappear and you can call the api successfully.</li>
+<li>Then, if you look into the response headers from spring security application in the preflight request, you will see there are some headers of CORS configuration.</li>
+</ul>
+<p><img alt="spring-security-cors-configured-test.png" src="../Images/spring-security-cors-configured-test.png"/></p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 200
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Access-Control-Allow-Origin: http://localhost:8000
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: content-type
+Access-Control-Allow-Credentials: true
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 0
+Date: Sun, 26 Jun 2022 09:06:16 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+</code></pre></div>
+<p><img alt="spring-security-cors-test-success.png" src="../Images/spring-security-cors-test-success.png"/></p>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../Custom%20Authentication%20Provider/">Custom Authentication Provider</a></li>
+<li><a href="https://github.com/minhducnguyen189/com.springboot.security/tree/master/custom-basic-spring-security">Full source code here</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://www.udemy.com/course/spring-security-zero-to-master/">Spring Security Zero To Master</a></li>
+</ul>
 </article>
 </div>
 </div>
