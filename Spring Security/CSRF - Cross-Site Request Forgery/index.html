@@ -880,6 +880,35 @@
     What Is The CSRF?
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csrf_in_spring_security">
+    CSRF In Spring Security
+  </a>
+<nav aria-label="CSRF In Spring Security" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disable_default_csrf_protection">
+    Disable Default CSRF Protection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate_csrf_token">
+    Generate CSRF Token
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -905,6 +934,35 @@
     What Is The CSRF?
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csrf_in_spring_security">
+    CSRF In Spring Security
+  </a>
+<nav aria-label="CSRF In Spring Security" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disable_default_csrf_protection">
+    Disable Default CSRF Protection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate_csrf_token">
+    Generate CSRF Token
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -924,14 +982,184 @@
 <h2 id="what_is_the_csrf">What Is The CSRF?<a class="headerlink" href="#what_is_the_csrf" title="Permanent link">#</a></h2>
 <ul>
 <li>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.</li>
-<li>Consider a wedsite abc.com and the attacker's website xyz.com. Also assume that the victim is logged in and his session is being maintained by cookies. The attacker will:<ul>
-<li>Find out what action he needs to perform on behalf of the victim and find out its endpoint (for example, to change password on abc.com a POST request is made to the website that contains new password as the parameter)</li>
-<li>Place HTML code on his website xyz.com that will imitate a legal request to abc.comn (for example, a form with method as post and a hidden input field that contains the new password).</li>
-<li>Make sure that the form is submitted by either using "autosubmit" or luring the victim to click on a submit button.</li>
-<li>When the victim visits xyz.com and that form is submitted, the victim's browser makes a request to abc.com for a password change. Also the browser appends the cookies with the request. The server treats it as a genuine request and reset the victim's password to the attacker's supplied value. This way the victim's account gets taken over by the attacker.</li>
-<li>There are many proposed way to implement CSRF protection on server side, among which the use of CSRF tokens is most popular. A CSRF token is a string that is tied to a user's session but is not submitted automatically. A website proceeds only when it received a valid CSRF token along with the cookies, since there is no way for an attacker to know a user specific token, the attacker can not perform actions on user's behalf.</li>
+<li>Consider there are two websites, a victim is using the wedsite <code>abc.com</code> and the attacker's website is <code>xyz.com</code>. Also assume that the victim is logged in and his session is being maintained by <a href="../../Others/Cookie/">Cookie</a>. The attacker will:<ul>
+<li>Assume that the attacker knows the api for changing password of <code>abc.com</code> website with a POST request which contains the new password as a parameter.</li>
+<li>Then the attacker will place the request with change password in the HTML code on his website <code>xyz.com</code>. So that, It will imitate a legal request to <code>abc.com</code> (for example, a form with method as post and a hidden input field that contains the new password).</li>
+<li>So the attacker will make sure that the form is submitted by either using "autosubmit" when the HTML page of <code>xyz.com</code> is loaded or luring the victim to click on a submit button.</li>
+<li>When the victim visits <code>xyz.com</code> and that form is submitted, the victim's <a href="../../Others/Web%20Browser/">Web Browser</a> makes a request to <code>abc.com</code> for a password change. Also the browser appends the session cookie automatically with the request. The server treats it as a genuine request and reset the victim's password to the attacker's supplied value. This way the victim's account gets taken over by the attacker.</li>
 </ul>
 </li>
+<li>There are many proposed way to implement CSRF protection on server side, among which the use of <code>CSRF tokens</code> is most popular. <code>A CSRF token</code> is a string that is tied to a user's <a href="../../Others/Session/">Session</a> but is not submitted automatically. </li>
+<li>For details, the server will generate a <code>CSRF token</code> and put in the response cookie for user's browser, so when the user on the <code>abc.com</code> makes a request to the server, the token will be added into the request header by <code>abc.com</code> and the server will check this token is valid or not to continue. Then if the user loads the <code>xyz.com</code> or click the submit button on <code>xyz.com</code> the request will also go to the server, however there is no the <code>CSRF token</code> in the request header because the browser is only add the session cookie automatically into the request header so the server will check this request and there is no <code>CSRF token</code> and the request will be rejected. If the attacker try to add the <code>CSRF token</code> header into the request so there is no way for him to know what is the valid token value that the user is using on <code>abc.com</code>.</li>
+</ul>
+<p><img alt="spring-security-csrf-cookie-token.png" src="../Images/spring-security-csrf-cookie-token.png"/></p>
+<h2 id="csrf_in_spring_security">CSRF In Spring Security<a class="headerlink" href="#csrf_in_spring_security" title="Permanent link">#</a></h2>
+<h3 id="disable_default_csrf_protection">Disable Default CSRF Protection<a class="headerlink" href="#disable_default_csrf_protection" title="Permanent link">#</a></h3>
+<ul>
+<li>By default, any web application or web framework will stop the communication if someone is using POST, PUT and DELETE Http methods which will potentially alter the data using causative issue.</li>
+<li>So, if you start your spring security application and try calling apis with POST, PUT and DELETE methods, you would see the error code 403 although you put the correct credentials for calling those apis.</li>
+</ul>
+<p><img alt="spring-security-failed-post-csrf-default.png" src="../Images/spring-security-failed-post-csrf-default.png"/></p>
+<ul>
+<li>In case your spring boot application is running in the internal network behind firewalls and the outside hackers can not access your links. Then you can simply disable CSRF inside your spring security framework.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.builders.HttpSecurity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfiguration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.UrlBasedCorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProjectSecurityConfig</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">WebSecurityConfigurerAdapter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     *</span>
+<span class="cm">     * contact: Not Secure</span>
+<span class="cm">     * notice: Not Secure</span>
+<span class="cm">     * balance: Secure</span>
+<span class="cm">     * Card: Secure</span>
+<span class="cm">     * Loan: Secure</span>
+<span class="cm">     * Account: Secure</span>
+<span class="cm">     *</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="na">csrf</span><span class="p">().</span><span class="na">disable</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">cors</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PasswordEncoder</span><span class="w"> </span><span class="nf">passwordEncoder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BCryptPasswordEncoder</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>We can use <code>http.csrf().disable()</code> to disable default CSRF in spring security.</li>
+<li>Now, let's start your spring security application and call POST api again, you should see the 200 status as below.</li>
+</ul>
+<p><img alt="spring-security-disable-csrf-test.png" src="../Images/spring-security-disable-csrf-test.png"/></p>
+<h3 id="generate_csrf_token">Generate CSRF Token<a class="headerlink" href="#generate_csrf_token" title="Permanent link">#</a></h3>
+<ul>
+<li>As discussed above, using <code>CSRF tokens</code> is most popular way that we can protect our users from CSRF attacks, so we will configure our spring security application to generate a <code>CSRF tokens</code> which will be added into the response cookies.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.builders.HttpSecurity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.web.csrf.CookieCsrfTokenRepository</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfiguration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.UrlBasedCorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProjectSecurityConfig</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">WebSecurityConfigurerAdapter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     *</span>
+<span class="cm">     * contact: Not Secure</span>
+<span class="cm">     * notice: Not Secure</span>
+<span class="cm">     * balance: Secure</span>
+<span class="cm">     * Card: Secure</span>
+<span class="cm">     * Loan: Secure</span>
+<span class="cm">     * Account: Secure</span>
+<span class="cm">     *</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="na">csrf</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">ignoringAntMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">csrfTokenRepository</span><span class="p">(</span><span class="n">CookieCsrfTokenRepository</span><span class="p">.</span><span class="na">withHttpOnlyFalse</span><span class="p">())</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">cors</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">authenticated</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PasswordEncoder</span><span class="w"> </span><span class="nf">passwordEncoder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BCryptPasswordEncoder</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>If you look into the <code>configure()</code> method, you can see we will firstly configure ignoring CSRF protection for specific apis by <code>http.csrf().ignoringAntMatchers(&lt;path pattern&gt;)</code> so we can use POST, PUT and DELETE methods with <code>CSRF token</code> for those apis.</li>
+<li>Then to generate <code>CSRF token</code> and put it in the response cookies we will use <code>.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</code> method. So our spring security application will generate a <code>CSRF token</code> string and put it into a cookie with <code>HttpOnly</code> is <code>false</code>. The <code>HttpOnly: false</code> means that the FE side can use script to access and get the value of the cookie, if the <code>HttpOnly: true</code> the FE side can't use script to access and get value of the cookie, if the developer try to use script to get this cookie value, he will received an empty string by default. However, the browser in some case, can still send the value of  cookie to the server although the cookie with parameter <code>HttpOnly: true</code>. This is the reason why you can see the session cookie with <code>HttpOnly: true</code> but you still see it is appended in the request to server, this is the feature of the browser.</li>
+<li>Go back to the <code>CSRF token</code>, we have the  <code>HttpOnly: false</code> so it means the FE side have to use script to collect the <code>CSRF token</code> cookie and add it's value into request's header, this is not the session cookie so the browser will not do it automatically for you.</li>
+<li>Now, let's start your spring security application and call the post api again, you will received the status 200 and one more cookie with name <code>XSRF-TOKEN</code>, so it is the <code>CSRF token</code> cookie.</li>
+</ul>
+<p><img alt="spring-security-csrf-token-test.png" src="../Images/spring-security-csrf-token-test.png"/></p>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../../Others/Cookie/">Cookie</a></li>
+<li><a href="../../Others/Session/">Session</a></li>
+<li><a href="../../Others/Web%20Browser/">Web Browser</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://www.udemy.com/course/spring-security-zero-to-master">Spring Security Zero To Master</a></li>
+<li><a href="https://stackoverflow.com/questions/5207160/what-is-a-csrf-token-what-is-its-importance-and-how-does-it-work">Stackoverflow</a></li>
 </ul>
 </article>
 </div>

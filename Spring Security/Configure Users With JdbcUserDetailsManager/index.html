@@ -1086,23 +1086,6 @@
 <span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//    @Override</span><span class="w"></span>
-<span class="c1">//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {</span><span class="w"></span>
-<span class="c1">//        auth.inMemoryAuthentication().withUser("admin").password("12345").authorities("admin")</span><span class="w"></span>
-<span class="c1">//                .and().withUser("user").password("12345").authorities("read")</span><span class="w"></span>
-<span class="c1">//                .and().passwordEncoder(NoOpPasswordEncoder.getInstance());</span><span class="w"></span>
-<span class="c1">//    }</span><span class="w"></span>
-
-<span class="c1">//    @Override</span><span class="w"></span>
-<span class="c1">//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {</span><span class="w"></span>
-<span class="c1">//        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();</span><span class="w"></span>
-<span class="c1">//        UserDetails user1 = User.withUsername("admin").password("12345").authorities("admin").build();</span><span class="w"></span>
-<span class="c1">//        UserDetails user2 = User.withUsername("user").password("12345").authorities("admin").build();</span><span class="w"></span>
-<span class="c1">//        userDetailsManager.createUser(user1);</span><span class="w"></span>
-<span class="c1">//        userDetailsManager.createUser(user2);</span><span class="w"></span>
-<span class="c1">//        auth.userDetailsService(userDetailsManager);</span><span class="w"></span>
-<span class="c1">//    }</span><span class="w"></span>
-
 <span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">UserDetailsService</span><span class="w"> </span><span class="nf">userDetailsService</span><span class="p">(</span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JdbcUserDetailsManager</span><span class="p">(</span><span class="n">dataSource</span><span class="p">);</span><span class="w"></span>
