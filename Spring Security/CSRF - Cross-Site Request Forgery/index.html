@@ -111,7 +111,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Others/Cookie/">
+<a class="md-tabs__link" href="../../Others/Web%20Browser/">
         Others
       </a>
 </li>
@@ -210,6 +210,11 @@
           Others
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Web%20Browser/">
+        Web Browser
+      </a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Others/Cookie/">
         Cookie Introduction
@@ -1145,7 +1150,7 @@
 </code></pre></div>
 <ul>
 <li>If you look into the <code>configure()</code> method, you can see we will firstly configure ignoring CSRF protection for specific apis by <code>http.csrf().ignoringAntMatchers(&lt;path pattern&gt;)</code> so we can use POST, PUT and DELETE methods with <code>CSRF token</code> for those apis.</li>
-<li>Then to generate <code>CSRF token</code> and put it in the response cookies we will use <code>.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</code> method. So our spring security application will generate a <code>CSRF token</code> string and put it into a cookie with <code>HttpOnly</code> is <code>false</code>. The <code>HttpOnly: false</code> means that the FE side can use script to access and get the value of the cookie, if the <code>HttpOnly: true</code> the FE side can't use script to access and get value of the cookie, if the developer try to use script to get this cookie value, he will received an empty string by default. However, the browser in some case, can still send the value of  cookie to the server although the cookie with parameter <code>HttpOnly: true</code>. This is the reason why you can see the session cookie with <code>HttpOnly: true</code> but you still see it is appended in the request to server, this is the feature of the browser.</li>
+<li>Then to generate <code>CSRF token</code> and put it in the response cookies we will use <code>.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</code> method. So our spring security application will generate a <code>CSRF token</code> string and put it into a cookie with <code>HttpOnly</code> is <code>false</code>. The <code>HttpOnly: false</code> means that the FE side can use script to access and get the value of the cookie, if the <code>HttpOnly: true</code> the FE side can't use script to access and get value of the cookie, if the developer try to use script to get this cookie value, he will be received an empty string by default. However, the browser in some case, can still send the value of cookie to the server although the cookie with parameter <code>HttpOnly: true</code>. This is the reason why you can see the session cookie with <code>HttpOnly: true</code> but you still see it is appended in the request to server, this is the feature of the browser.</li>
 <li>Go back to the <code>CSRF token</code>, we have the  <code>HttpOnly: false</code> so it means the FE side have to use script to collect the <code>CSRF token</code> cookie and add it's value into request's header, this is not the session cookie so the browser will not do it automatically for you.</li>
 <li>Now, let's start your spring security application and call the post api again, you will received the status 200 and one more cookie with name <code>XSRF-TOKEN</code>, so it is the <code>CSRF token</code> cookie.</li>
 </ul>
