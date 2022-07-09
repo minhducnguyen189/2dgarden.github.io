@@ -921,6 +921,15 @@
 <a class="md-nav__link" href="#example_configurations">
     Example Configurations
   </a>
+<nav aria-label="Example Configurations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#database_tables">
+    Database Tables
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -954,6 +963,15 @@
 <a class="md-nav__link" href="#example_configurations">
     Example Configurations
   </a>
+<nav aria-label="Example Configurations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#database_tables">
+    Database Tables
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -998,6 +1016,62 @@
 </tbody>
 </table>
 <h2 id="example_configurations">Example Configurations<a class="headerlink" href="#example_configurations" title="Permanent link">#</a></h2>
+<ul>
+<li>So base on the spring security application that we used in the <a href="../CSRF%20-%20Cross-Site%20Request%20Forgery/">CSRF - Cross-Site Request Forgery</a> configuration, we will continue configuring authorization. </li>
+</ul>
+<h3 id="database_tables">Database Tables<a class="headerlink" href="#database_tables" title="Permanent link">#</a></h3>
+<ul>
+<li>We will create the <code>authorities</code> table which will contain <code>authorities</code> name such as <code>READ</code>, <code>WRITE</code>, <code>DELETE</code>.</li>
+<li>Next, we will extend the <code>customers</code> table which will link to the <code>authorities</code> table. So every customer will have one or many authorities.</li>
+<li>User the SQL statement below to create <code>authorities</code> table.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">-- authorities definition</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">authorities</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="o">`</span><span class="n">authority</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="o">`</span><span class="n">customer_id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">customer_id</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">customer_id</span><span class="o">`</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">`</span><span class="n">authorities_customer_constraint</span><span class="o">`</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">customer_id</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="o">`</span><span class="n">customers</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_ai_ci</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Now for the current customer with email <code>han.do@example.com</code> in the <code>customers</code> table we will use the SQL statements below to set some <code>authorities</code> such as <code>READ</code>, <code>WRITE</code> and <code>DELETE</code>. So this customer will have 3 authorities.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">eazybank</span><span class="p">.</span><span class="n">authorities</span><span class="w"> </span><span class="p">(</span><span class="n">authority</span><span class="p">,</span><span class="w"> </span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">'READ'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">eazybank</span><span class="p">.</span><span class="n">authorities</span><span class="w"> </span><span class="p">(</span><span class="n">authority</span><span class="p">,</span><span class="w"> </span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">'WRITE'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">eazybank</span><span class="p">.</span><span class="n">authorities</span><span class="w"> </span><span class="p">(</span><span class="n">authority</span><span class="p">,</span><span class="w"> </span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Next, we will use the SQL statements below to create a new customer and only set one authority <code>READ</code> for it.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">eazybank</span><span class="p">.</span><span class="n">customers</span><span class="w"></span>
+<span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">)</span><span class="w"></span>
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'duc.nguyen@example.com'</span><span class="p">,</span><span class="w"> </span><span class="s1">'$2a$12$V.A53NkiPnA45W44aRYi2OLwUbbu08aDoY409/SKY/bT7cdF1PpLO'</span><span class="p">,</span><span class="w"> </span><span class="s1">'user'</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">eazybank</span><span class="p">.</span><span class="n">authorities</span><span class="w"> </span><span class="p">(</span><span class="n">authority</span><span class="p">,</span><span class="w"> </span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">'READ'</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>So, after all our table will have data as below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">-- customers table</span>
+
+<span class="o">|</span><span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="n">email</span><span class="w">                 </span><span class="o">|</span><span class="n">password</span><span class="w">                                                    </span><span class="o">|</span><span class="k">role</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="c1">---|----------------------|------------------------------------------------------------|-----|</span>
+<span class="o">|</span><span class="mi">1</span><span class="w">  </span><span class="o">|</span><span class="n">duc</span><span class="p">.</span><span class="n">nguyen</span><span class="o">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">|</span><span class="mi">12345</span><span class="w">                                                       </span><span class="o">|</span><span class="k">admin</span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="mi">2</span><span class="w">  </span><span class="o">|</span><span class="n">han</span><span class="p">.</span><span class="k">do</span><span class="o">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w">    </span><span class="o">|</span><span class="err">$</span><span class="mi">2</span><span class="n">a$12$V</span><span class="p">.</span><span class="n">A53NkiPnA45W44aRYi2OLwUbbu08aDoY409</span><span class="o">/</span><span class="n">SKY</span><span class="o">/</span><span class="n">bT7cdF1PpLO</span><span class="o">|</span><span class="k">admin</span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="mi">3</span><span class="w">  </span><span class="o">|</span><span class="n">john</span><span class="p">.</span><span class="n">wick</span><span class="o">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="o">|</span><span class="err">$</span><span class="mi">2</span><span class="n">a$12$V</span><span class="p">.</span><span class="n">A53NkiPnA45W44aRYi2OLwUbbu08aDoY409</span><span class="o">/</span><span class="n">SKY</span><span class="o">/</span><span class="n">bT7cdF1PpLO</span><span class="o">|</span><span class="k">user</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">-- authorities table</span>
+
+<span class="n">id</span><span class="o">|</span><span class="n">authority</span><span class="o">|</span><span class="n">customer_id</span><span class="o">|</span><span class="w"></span>
+<span class="c1">--+---------+-----------+</span>
+<span class="w"> </span><span class="mi">6</span><span class="o">|</span><span class="k">READ</span><span class="w">     </span><span class="o">|</span><span class="w">          </span><span class="mi">2</span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="mi">7</span><span class="o">|</span><span class="k">WRITE</span><span class="w">    </span><span class="o">|</span><span class="w">          </span><span class="mi">2</span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="mi">8</span><span class="o">|</span><span class="k">DELETE</span><span class="w">   </span><span class="o">|</span><span class="w">          </span><span class="mi">2</span><span class="o">|</span><span class="w"></span>
+<span class="w"> </span><span class="mi">9</span><span class="o">|</span><span class="k">READ</span><span class="w">     </span><span class="o">|</span><span class="w">          </span><span class="mi">3</span><span class="o">|</span><span class="w"></span>
+</code></pre></div>
 </article>
 </div>
 </div>
