@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.0, mkdocs-material-8.3.6" name="generator"/>
-<title>Defining And Managing Users - 2D-Garden</title>
+<title>Authentication And Authorization Internal Flow - 2D-Garden</title>
 <link href="../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#defining_and_managing_users">
+<a class="md-skip" href="#authentication_and_authorization_internal_flow">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Defining And Managing Users
+              Authentication And Authorization Internal Flow
             
           </span>
 </div>
@@ -645,8 +645,8 @@
         Custom Basic Spring Security
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_6" id="__nav_8_6" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_6" id="__nav_8_6" type="checkbox"/>
 <label class="md-nav__link" for="__nav_8_6">
           Defining And Managing Users
           <span class="md-nav__icon md-icon"></span>
@@ -657,43 +657,10 @@
           Defining And Managing Users
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Defining And Managing Users
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Defining%20And%20Managing%20Users/">
         Defining And Managing Users
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#user_detail_service_and_password_encoder">
-    User Detail Service And Password Encoder
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#summary">
-    Summary
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#see_also">
-    See Also
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#references">
-    References
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../Configure%20Users%20With%20inMemoryAuthentication/">
@@ -903,8 +870,8 @@
         CSRF - Cross-Site Request Forgery
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_13" id="__nav_8_13" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_13" id="__nav_8_13" type="checkbox"/>
 <label class="md-nav__link" for="__nav_8_13">
           Spring Security With Authorization
           <span class="md-nav__icon md-icon"></span>
@@ -920,10 +887,38 @@
         Spring Security With Authorization
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Authentication%20And%20Authorization%20Internal%20Flow/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Authentication And Authorization Internal Flow
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Authentication And Authorization Internal Flow
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authentication_and_authorization_filter_flow">
+    Authentication And Authorization Filter Flow
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../How%20Authorities%20Stored/">
@@ -956,13 +951,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#user_detail_service_and_password_encoder">
-    User Detail Service And Password Encoder
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#summary">
-    Summary
+<a class="md-nav__link" href="#authentication_and_authorization_filter_flow">
+    Authentication And Authorization Filter Flow
   </a>
 </li>
 <li class="md-nav__item">
@@ -989,44 +979,17 @@
 <a class="md-tag" href="../../tags/#security">
           Security
         </a>
-<a class="md-tag" href="../../tags/#springboot">
-          SpringBoot
-        </a>
 </nav>
-<h1 id="defining_and_managing_users">Defining And Managing Users<a class="headerlink" href="#defining_and_managing_users" title="Permanent link">#</a></h1>
-<h2 id="user_detail_service_and_password_encoder">User Detail Service And Password Encoder<a class="headerlink" href="#user_detail_service_and_password_encoder" title="Permanent link">#</a></h2>
+<h1 id="authentication_and_authorization_internal_flow">Authentication And Authorization Internal Flow<a class="headerlink" href="#authentication_and_authorization_internal_flow" title="Permanent link">#</a></h1>
+<h2 id="authentication_and_authorization_filter_flow">Authentication And Authorization Filter Flow<a class="headerlink" href="#authentication_and_authorization_filter_flow" title="Permanent link">#</a></h2>
 <ul>
-<li><code>user detail service</code> and <code>password encoder</code> are the important interfaces that helps in maintaining the user details and validating them. That means if someone provides some credentials, these two user detail services and password and take the responsibility of validating whether the username and password entered by user is correct or not.</li>
+<li>When the Client makes a request with the credentials, the <code>authentication filter</code> will intercept the request and validate. If the user is valid then at the post authentication, the filter will store the <code>UserDetails</code> in the <code>SecurityContext</code>. The <code>UserDetails</code> will have username, authorities etc. Now the <code>authorization filter</code> will intercept and decide whether the user has access to the given path based on this authorities stored in the <code>SecurityContext</code>. If authorized the request will be forwarded to the applicable controllers. See the image below:</li>
 </ul>
-<p><img alt="spring-security-internal-architecture.png" src="../Images/spring-security-internal-architecture.png"/></p>
-<ul>
-<li>
-<p>Below are some ways for us to configure  <code>user detail service</code> and basic <code>password encoder</code>:</p>
-</li>
-<li>
-<p><a href="../Understanding%20User%20Management%20interfaces%20and%20Classes/">Understanding User Management interfaces and Classes</a></p>
-</li>
-<li><a href="../Configure%20Users%20With%20inMemoryAuthentication/">Configure Users With inMemoryAuthentication</a></li>
-<li><a href="../Configure%20Users%20With%20inMemoryUserDetailsManager/">Configure Users With inMemoryUserDetailsManager</a></li>
-<li><a href="../Configure%20Users%20With%20JdbcUserDetailsManager/">Configure Users With JdbcUserDetailsManager</a></li>
-<li><a href="../Custom%20UserDetailsService%20Of%20Spring%20Security/">Custom UserDetailsService Of Spring Security</a></li>
-</ul>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
-<ul>
-<li>Look at how to configure users inside memory of the application using <a href="../Configure%20Users%20With%20inMemoryAuthentication/"> inMemoryAuthentication</a> and <a href="../Configure%20Users%20With%20inMemoryUserDetailsManager/"> InMemoryUserDetailsManager</a></li>
-<li>Look at the important interfaces and classes present in the spring security regarding defining and managing the <code>UserDetails</code> for performing authentication.<ul>
-<li>org.springframework.security.core.userdetails.UserDetails</li>
-<li>org.springframework.security.core.userdetails.User</li>
-<li>org.springframework.security.core.userdetails.UserDetailsService</li>
-<li>org.springframework.security.provisioning.InMemoryUserDetailsManager</li>
-<li>org.springframework.security.provisioning.JdbcUserDetailsManager</li>
-</ul>
-</li>
-<li>Implement custom implementation of <code>UserDetailsService</code> (See <a href="../Custom%20UserDetailsService%20Of%20Spring%20Security/">Custom UserDetailsService Of Spring Security</a>) to perform authentication using our own tables and column present inside the application database.</li>
-</ul>
+<p><img alt="spring-security-authentication-authorization-filter-flow.jpg" src="../Images/spring-security-authentication-authorization-filter-flow.jpg"/></p>
 <h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../Password%20Management%20With%20PasswordEncoder/">Password Management With PasswordEncoder</a></li>
+<li><a href="../Spring%20Security%20With%20Authorization/">Spring Security With Authorization</a></li>
+<li><a href="../How%20Authorities%20Stored/">How Authorities Stored</a></li>
 </ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
@@ -1042,7 +1005,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Custom Basic Spring Security" class="md-footer__link md-footer__link--prev" href="../Custom%20Basic%20Spring%20Security/" rel="prev">
+<a aria-label="Previous: Spring Security With Authorization" class="md-footer__link md-footer__link--prev" href="../Spring%20Security%20With%20Authorization/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -1051,17 +1014,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              Custom Basic Spring Security
+              Spring Security With Authorization
             </div>
 </div>
 </a>
-<a aria-label="Next: Configure Users With inMemoryAuthentication" class="md-footer__link md-footer__link--next" href="../Configure%20Users%20With%20inMemoryAuthentication/" rel="next">
+<a aria-label="Next: How Authorities Stored" class="md-footer__link md-footer__link--next" href="../How%20Authorities%20Stored/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Configure Users With inMemoryAuthentication
+              How Authorities Stored
             </div>
 </div>
 <div class="md-footer__button md-icon">
