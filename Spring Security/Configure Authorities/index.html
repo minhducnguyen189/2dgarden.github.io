@@ -928,8 +928,38 @@
     Database Tables
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entity">
+    Entity
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit_authentication_provider">
+    Edit Authentication Provider
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authorization_configuration">
+    Authorization Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
 </li>
 </ul>
 </nav>
@@ -970,8 +1000,38 @@
     Database Tables
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#entity">
+    Entity
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit_authentication_provider">
+    Edit Authentication Provider
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authorization_configuration">
+    Authorization Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
 </li>
 </ul>
 </nav>
@@ -1017,7 +1077,7 @@
 </table>
 <h2 id="example_configurations">Example Configurations<a class="headerlink" href="#example_configurations" title="Permanent link">#</a></h2>
 <ul>
-<li>So base on the spring security application that we used in the <a href="../CSRF%20-%20Cross-Site%20Request%20Forgery/">CSRF - Cross-Site Request Forgery</a> configuration, we will continue configuring authorization. </li>
+<li>So base on the spring security application that we used in the <a href="../CSRF%20-%20Cross-Site%20Request%20Forgery/">CSRF - Cross-Site Request Forgery</a> configuration, we will continue configuring authority. </li>
 </ul>
 <h3 id="database_tables">Database Tables<a class="headerlink" href="#database_tables" title="Permanent link">#</a></h3>
 <ul>
@@ -1072,6 +1132,228 @@
 <span class="w"> </span><span class="mi">8</span><span class="o">|</span><span class="k">DELETE</span><span class="w">   </span><span class="o">|</span><span class="w">          </span><span class="mi">2</span><span class="o">|</span><span class="w"></span>
 <span class="w"> </span><span class="mi">9</span><span class="o">|</span><span class="k">READ</span><span class="w">     </span><span class="o">|</span><span class="w">          </span><span class="mi">3</span><span class="o">|</span><span class="w"></span>
 </code></pre></div>
+<h3 id="entity">Entity<a class="headerlink" href="#entity" title="Permanent link">#</a></h3>
+<ul>
+<li>So after updating database, we will also extend our <code>CustomerEntity</code> with <code>AuthorityEntity</code>. So in <code>CustomerEntity</code> we will have a set of <code>AuthorityEntity</code> with <code>@OneToMany</code> relationship.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.entity</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Getter</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Setter</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.*</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Entity</span><span class="w"></span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"customers"</span><span class="p">)</span><span class="w"></span>
+<span class="nd">@Getter</span><span class="w"></span>
+<span class="nd">@Setter</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerEntity</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Id</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">AUTO</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">role</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@OneToMany</span><span class="p">(</span><span class="n">mappedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"customer"</span><span class="p">,</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FetchType</span><span class="p">.</span><span class="na">EAGER</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">AuthorityEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">authorities</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Then in we create the <code>AuthorityEntity</code> class as below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.entity</span><span class="p">;</span><span class="w">  </span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Getter</span><span class="p">;</span><span class="w">  </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Setter</span><span class="p">;</span><span class="w">  </span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.*</span><span class="p">;</span><span class="w">  </span>
+
+<span class="nd">@Entity</span><span class="w">  </span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"authorities"</span><span class="p">)</span><span class="w">  </span>
+<span class="nd">@Getter</span><span class="w">  </span>
+<span class="nd">@Setter</span><span class="w">  </span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AuthorityEntity</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+
+<span class="w">    </span><span class="nd">@Id</span><span class="w">  </span>
+<span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">AUTO</span><span class="p">)</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">  </span>
+
+<span class="w">    </span><span class="nd">@ManyToOne</span><span class="w">  </span>
+<span class="w">    </span><span class="nd">@JoinColumn</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"customer_id"</span><span class="p">)</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerEntity</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span><span class="w">  </span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">authority</span><span class="p">;</span><span class="w">  </span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="edit_authentication_provider">Edit Authentication Provider<a class="headerlink" href="#edit_authentication_provider" title="Permanent link">#</a></h3>
+<ul>
+<li>Now, we are changing our database and Entities which are used for <code>Authentication</code>. In the <a href="../Custom%20Authentication%20Provider/">Custom Authentication Provider</a>, we create the list of <code>GrantedAuthority</code> as empty mean mean there are no <code>Authority</code>. Thus, we will update this code by getting the set of <code>Authorities</code> from the database through <code>CustomerEntity</code> and map them to <code>List&lt;GrantedAuthority&gt;</code>.</li>
+<li>The <code>CustomerAuthenticationProvider</code> will be changed as below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.entity.AuthorityEntity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.entity.CustomerEntity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.repository.CustomerRepository</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.Logger</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.LoggerFactory</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.authentication.AuthenticationProvider</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.authentication.BadCredentialsException</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.authentication.UsernamePasswordAuthenticationToken</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.core.Authentication</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.core.AuthenticationException</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.core.GrantedAuthority</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.core.authority.SimpleGrantedAuthority</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Component</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerAuthenticationProvider</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AuthenticationProvider</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">LOGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoggerFactory</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">CustomerAuthenticationProvider</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CustomerRepository</span><span class="w"> </span><span class="n">customerRepository</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PasswordEncoder</span><span class="w"> </span><span class="n">passwordEncoder</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Authentication</span><span class="w"> </span><span class="nf">authenticate</span><span class="p">(</span><span class="n">Authentication</span><span class="w"> </span><span class="n">authentication</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">AuthenticationException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"CustomerAuthenticationProvider is triggered"</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">authentication</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">authentication</span><span class="p">.</span><span class="na">getCredentials</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CustomerEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">customerEntities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">customerRepository</span><span class="p">.</span><span class="na">findByEmail</span><span class="p">(</span><span class="n">username</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">customerEntities</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">passwordEncoder</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">customerEntities</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getPassword</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UsernamePasswordAuthenticationToken</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="k">this</span><span class="p">.</span><span class="na">getGrantedAuthorities</span><span class="p">(</span><span class="n">customerEntities</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getAuthorities</span><span class="p">()));</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BadCredentialsException</span><span class="p">(</span><span class="s">"Invalid Password"</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BadCredentialsException</span><span class="p">(</span><span class="s">"No user registered with this details"</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">GrantedAuthority</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getGrantedAuthorities</span><span class="p">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">AuthorityEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">authorityEntities</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">GrantedAuthority</span><span class="o">&gt;</span><span class="w"> </span><span class="n">authorities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">authorityEntities</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">authorities</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SimpleGrantedAuthority</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getAuthority</span><span class="p">())));</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">authorities</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">supports</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">authentication</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">authentication</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">UsernamePasswordAuthenticationToken</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="authorization_configuration">Authorization Configuration<a class="headerlink" href="#authorization_configuration" title="Permanent link">#</a></h3>
+<ul>
+<li>In the <code>ProjectSecurityConfig</code>, we will update <code>configure()</code> method for applying <code>Authorities</code>. We will use <code>hasAnyAuthority()</code> or <code>hasAuthority()</code>  method after <code>antMatchers()</code> methods. In details, every <code>antMatchers()</code>(api path pattern) will need  <code>Authorities</code> which is matched as defined in <code>hasAuthority()</code> or <code>hasAnyAuthority()</code> to access.</li>
+<li>Our configurations will look like below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.springboot.security.custom.basic.spring.security.config</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.builders.HttpSecurity</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.security.web.csrf.CookieCsrfTokenRepository</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfiguration</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.CorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.cors.UrlBasedCorsConfigurationSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProjectSecurityConfig</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">WebSecurityConfigurerAdapter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     *</span>
+<span class="cm">     * contact: Not Secure</span>
+<span class="cm">     * notice: Not Secure</span>
+<span class="cm">     * balance: Secure</span>
+<span class="cm">     * Card: Secure</span>
+<span class="cm">     * Loan: Secure</span>
+<span class="cm">     * Account: Secure</span>
+<span class="cm">     *</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="na">csrf</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">ignoringAntMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">csrfTokenRepository</span><span class="p">(</span><span class="n">CookieCsrfTokenRepository</span><span class="p">.</span><span class="na">withHttpOnlyFalse</span><span class="p">())</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">cors</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">authorizeRequests</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/user"</span><span class="p">).</span><span class="na">hasAnyAuthority</span><span class="p">(</span><span class="s">"READ"</span><span class="p">,</span><span class="w"> </span><span class="s">"WRITE"</span><span class="p">,</span><span class="w"> </span><span class="s">"DELETE"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/accounts/**"</span><span class="p">).</span><span class="na">hasAnyAuthority</span><span class="p">(</span><span class="s">"WRITE"</span><span class="p">,</span><span class="w"> </span><span class="s">"DELETE"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/balance"</span><span class="p">).</span><span class="na">hasAuthority</span><span class="p">(</span><span class="s">"READ"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/loan"</span><span class="p">).</span><span class="na">hasAuthority</span><span class="p">(</span><span class="s">"WRITE"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/card"</span><span class="p">).</span><span class="na">hasAuthority</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/contact"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">"/v1/notice"</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">formLogin</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">().</span><span class="na">httpBasic</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">CorsConfigurationSource</span><span class="w"> </span><span class="nf">corsConfigurationSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UrlBasedCorsConfigurationSource</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">CorsConfiguration</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CorsConfiguration</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedHeaders</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedOriginPatterns</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowedMethods</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="s">"*"</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">corsConfiguration</span><span class="p">.</span><span class="na">setAllowCredentials</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">source</span><span class="p">.</span><span class="na">registerCorsConfiguration</span><span class="p">(</span><span class="s">"/**"</span><span class="p">,</span><span class="w"> </span><span class="n">corsConfiguration</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PasswordEncoder</span><span class="w"> </span><span class="nf">passwordEncoder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BCryptPasswordEncoder</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>So now, only customer user with <code>DELETE</code> authority can access the <code>/v1/card</code> api, then for <code>/v1/user</code> any customer user which has one in 3 authorities <code>READ</code>, <code>WRITE</code>, <code>DELETE</code> can access this api.</li>
+</ul>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
+<ul>
+<li>So, let's start our spring security application and call api <code>v1/loan</code> for testing, so this api will need the user with <code>READ</code> authorization to access, so the user with email <code>han.do@example.com</code> can access this api because it has 3 authorities <code>READ</code>, <code>WRITE</code> and <code>DELETE</code> in database. The user with email <code>john.wick@example.com</code> can not access this api because it has only <code>READ</code> authority.</li>
+<li>Using email <code>han.do@example.com</code> we can access <code>v1/loan</code> successfully.</li>
+</ul>
+<p><img alt="spring-security-authorization-test-success.png" src="../Images/spring-security-authorization-test-success.png"/></p>
+<ul>
+<li>Then using <code>john.wick@example.com</code> we will get the error code 403 forbidden.</li>
+</ul>
+<p><img alt="spring-security-authorization-test-false.png" src="../Images/spring-security-authorization-test-false.png"/></p>
+<ul>
+<li>Now, let's try to call api <code>/v1/user</code>, we expect that 2 users above can access this api because this api requires one of 3 authorities, <code>READ</code>, <code>WRITE</code> and <code>DELETE</code>.</li>
+</ul>
+<p><img alt="spring-security-has-any-authority-test-success-2.png" src="../Images/spring-security-has-any-authority-test-success-2.png"/></p>
+<p><img alt="spring-security-has-any-authority-test-success.png" src="../Images/spring-security-has-any-authority-test-success.png"/></p>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../Spring%20Security%20With%20Authorization/">Spring Security With Authorization</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://www.udemy.com/course/spring-security-zero-to-master/">Spring Security Zero To Master</a></li>
+<li><a href="https://github.com/minhducnguyen189/com.springboot.security/tree/master/custom-basic-spring-security">Source Code</a></li>
+</ul>
 </article>
 </div>
 </div>
