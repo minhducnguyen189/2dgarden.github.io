@@ -13,6 +13,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
 <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="default" dir="ltr">
@@ -233,6 +234,60 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#how_does_it_work">
     How Does It Work?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web_browser_components">
+    Web Browser Components
+  </a>
+<nav aria-label="Web Browser Components" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user_interface">
+    User Interface
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser_engine">
+    Browser Engine
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rendering_engine">
+    Rendering Engine
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networking">
+    Networking
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#javascript_interpreter">
+    JavaScript Interpreter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ui_backend">
+    UI Backend
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data_storage">
+    Data Storage
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
   </a>
 </li>
 </ul>
@@ -955,6 +1010,60 @@
     How Does It Work?
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web_browser_components">
+    Web Browser Components
+  </a>
+<nav aria-label="Web Browser Components" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user_interface">
+    User Interface
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser_engine">
+    Browser Engine
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rendering_engine">
+    Rendering Engine
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#networking">
+    Networking
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#javascript_interpreter">
+    JavaScript Interpreter
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ui_backend">
+    UI Backend
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data_storage">
+    Data Storage
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -974,6 +1083,63 @@
 <li>A Web browser is a client program that uses HTTP (Hypertext Transfer Protocol) to make requests of Web servers throughout the Internet on behalf of the browser user. Most browsers support e-mail and the File Transfer Protocol (FTP), but a Web browser is not required for those Internet protocols, more specialized client programs are more popular. <a href="https://www.techtarget.com/whatis/definition/browser">More information</a></li>
 </ul>
 <h2 id="how_does_it_work">How Does It Work?<a class="headerlink" href="#how_does_it_work" title="Permanent link">#</a></h2>
+<ul>
+<li>So, when you enter an URL in your browser, the browser will find the IP address for the domain using the DNS.</li>
+<li>Once the browser has identified which server is going to serve, it will initiate a TCP connection with the server and begin the HTTP exchange. An HTTP exchange involves the client (the browser) which sends a request, and the server replies back with a response. Usually, our browser will be supported to received many kind of formats in the server's response such as HTML, JSON, XML, image etc.</li>
+<li>Assume the browser will receive a HTML file, then the browser will parse the HTML and fetch other additional resources from server such as images, CSS documents or JavaScript documents which are included in the HTML content.</li>
+<li>The browser renders and displays the HTML content which is the web page.</li>
+</ul>
+<h2 id="web_browser_components">Web Browser Components<a class="headerlink" href="#web_browser_components" title="Permanent link">#</a></h2>
+<ul>
+<li>Any web browser has two elements- front-end and back-end. The front-end is the interface we interact with, which looks fairly simple. However, it’s the complex back-end that facilitates the core functioning of a browser. A browser has the following main components.</li>
+</ul>
+<h3 id="user_interface">User Interface<a class="headerlink" href="#user_interface" title="Permanent link">#</a></h3>
+<ul>
+<li>The interface is the space where users interact with the browser. It includes the address bar, on-screen controls like home, back, forward, and refresh, followed by the part where the web page is displayed, bookmarks button, and all other options on the browser screen.</li>
+</ul>
+<h3 id="browser_engine">Browser Engine<a class="headerlink" href="#browser_engine" title="Permanent link">#</a></h3>
+<ul>
+<li>The Browser Engine provides a link between the user interface and the rendering engine. It manages and manipulates the rendering engine based on inputs from various user interfaces.</li>
+</ul>
+<h3 id="rendering_engine">Rendering Engine<a class="headerlink" href="#rendering_engine" title="Permanent link">#</a></h3>
+<ul>
+<li>The Rendering Engine renders the requested web page on the browser screen. A web page is a document commonly written in HTML- rendering engine converts this document and data to an understandable format so that users can see the desired site, image, or video.</li>
+<li>It deals with HTML and XML documents and other files to generate the layout displayed in the user interface. The rendering engine can also work with other types of data with the help of certain plugins and extensions. Below are the rendering engines used by major web browsers:</li>
+</ul>
+<blockquote>
+<p>Blink – Google Chrome, Opera, Microsoft Edge (previously used EdgeHTML).
+WebKit – Used in Safari.
+Gecko – Mozilla Firefox.
+Trident – Internet Explorer.
+Presto – Legacy rendering engine for Opera.</p>
+</blockquote>
+<h3 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">#</a></h3>
+<ul>
+<li>The Networking component handles internet communication and security. It retrieves the URLs using common internet protocols like HTML and FTP.</li>
+</ul>
+<h3 id="javascript_interpreter">JavaScript Interpreter<a class="headerlink" href="#javascript_interpreter" title="Permanent link">#</a></h3>
+<ul>
+<li>The JavaScript Interpreter, as the name suggests, interprets and executes the JavaScript code embedded in a website. The results then are sent to the rendering engine for display.</li>
+</ul>
+<h3 id="ui_backend">UI Backend<a class="headerlink" href="#ui_backend" title="Permanent link">#</a></h3>
+<ul>
+<li>UI Backend helps to draw basic widgets like a select box, an input box, a window, a check box, etc. It uses the underlying operating system user interface methods for the same.</li>
+</ul>
+<h3 id="data_storage">Data Storage<a class="headerlink" href="#data_storage" title="Permanent link">#</a></h3>
+<ul>
+<li>It is a uniform layer that the browser uses to store all its data including <a href="../Cookie/">Cookie</a>, Local Storage, <a href="../Session/">Session</a> Storage, IndexedDB, WebSQL, and FileSystem.</li>
+</ul>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../Cookie/">Cookie</a></li>
+<li><a href="../Session/">Session</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Web_browser">Wikipedia</a></li>
+<li><a href="https://www.techtarget.com/whatis/definition/browser">Techtarget</a></li>
+<li><a href="https://browsertouse.com/blog/1190/what-is-web-browser-how-it-works/">Browsertouse</a></li>
+</ul>
 </article>
 </div>
 </div>

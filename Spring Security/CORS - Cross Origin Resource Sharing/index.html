@@ -13,6 +13,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
 <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="default" dir="ltr">
@@ -1022,7 +1023,7 @@
 <h2 id="what_is_the_cors">What Is The CORS?<a class="headerlink" href="#what_is_the_cors" title="Permanent link">#</a></h2>
 <ul>
 <li><code>CORS - Cross Origin Resource Sharing</code> is a protocol that enables scripts running on a browser client to interact with resources from a different origin.</li>
-<li>For example, if an UI app wishes to make an API call running on a different domain, it would be blocked from doing so by default due to the <code>CORS</code>. So <code>CORS</code> is not a security issue/attack but the default protection provided by browsers to stop sharing the data/communication between different origins.</li>
+<li>For example, if an UI app wishes to make an API call running on a different domain, it would be blocked from doing so by default due to the <code>CORS</code>. So <code>CORS</code> is not a security issue/attack but the default protection provided by <a href="../../Others/Web%20Browser/">Web Browser</a> to stop sharing the data/communication between different origins.</li>
 <li><code>Other origins</code> mean the URL being accessed differs from the location that the JavaScript is running from by having:<ul>
 <li>A different schema (HTTP or HTTPS)</li>
 <li>A different domain</li>
@@ -1346,6 +1347,7 @@ Connection: keep-alive
 <p><img alt="spring-security-cors-test-success.png" src="../Images/spring-security-cors-test-success.png"/></p>
 <h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="../../Others/Web%20Browser/">Web Browser</a></li>
 <li><a href="../Custom%20Authentication%20Provider/">Custom Authentication Provider</a></li>
 <li><a href="https://github.com/minhducnguyen189/com.springboot.security/tree/master/custom-basic-spring-security">Full source code here</a></li>
 </ul>
