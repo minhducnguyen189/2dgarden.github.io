@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.0, mkdocs-material-8.3.6" name="generator"/>
-<title>Spring Security With Authorization - 2D-Garden</title>
+<title>Authority And Role In Spring Security - 2D-Garden</title>
 <link href="../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#spring_security_with_authorization">
+<a class="md-skip" href="#authority_and_role_in_spring_security">
           Skip to content
         </a>
 </div>
@@ -46,7 +46,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Spring Security With Authorization
+              Authority And Role In Spring Security
             
           </span>
 </div>
@@ -911,8 +911,8 @@
         CSRF - Cross-Site Request Forgery
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_13" id="__nav_9_13" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_13" id="__nav_9_13" type="checkbox"/>
 <label class="md-nav__link" for="__nav_9_13">
           Spring Security With Authorization
           <span class="md-nav__icon md-icon"></span>
@@ -923,38 +923,10 @@
           Spring Security With Authorization
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Spring Security With Authorization
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Security%20With%20Authorization/">
         Spring Security With Authorization
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what_is_the_authorization">
-    What Is The Authorization?
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#authentication_and_authorization_differences">
-    Authentication And Authorization Differences
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#understanding_and_implementing_authorization">
-    Understanding And Implementing Authorization
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../Authentication%20And%20Authorization%20Internal%20Flow/">
@@ -992,18 +964,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#what_is_the_authorization">
-    What Is The Authorization?
+<a class="md-nav__link" href="#authority_and_role_differences">
+    Authority And Role Differences
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#authentication_and_authorization_differences">
-    Authentication And Authorization Differences
+<a class="md-nav__link" href="#see_also">
+    See Also
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#understanding_and_implementing_authorization">
-    Understanding And Implementing Authorization
+<a class="md-nav__link" href="#references">
+    References
   </a>
 </li>
 </ul>
@@ -1021,52 +993,54 @@
           Security
         </a>
 </nav>
-<h1 id="spring_security_with_authorization">Spring Security With Authorization<a class="headerlink" href="#spring_security_with_authorization" title="Permanent link">#</a></h1>
-<h2 id="what_is_the_authorization">What Is The Authorization?<a class="headerlink" href="#what_is_the_authorization" title="Permanent link">#</a></h2>
-<ul>
-<li><code>Authorization</code> is the process of giving someone permission to do or have something. In multi-user computer systems, a system administrator defines for the system which users are allowed access to the system and what privileges of use (such as access to which file directories, hours of access, amount of allocated storage space, and so forth). Assuming that someone has logged in to a computer operating system or application, the system or application may want to identify what resources the user can be given during this session. Thus, <code>authorization</code> is sometimes seen as both the preliminary setting up of permissions by a system administrator and the actual checking of the permission values that have been set up when a user is getting access. <a href="https://www.techtarget.com/searchsoftwarequality/definition/authorization">More information</a>.</li>
-</ul>
-<h2 id="authentication_and_authorization_differences">Authentication And Authorization Differences<a class="headerlink" href="#authentication_and_authorization_differences" title="Permanent link">#</a></h2>
-<ul>
-<li>In <code>Authentication</code> the identification of the user will happen. Suppose, as an application architect, if we want to secure our application in our login page, we will ask our users prove their identity like with their email address passwords and that is what <code>authentication</code>. Whereas <code>authorization</code> means once the authenticated person comes into our application, there might be different roles, access rules that we have defined in our application. Like the user A should act like admin, the user B should act like normal user. So base on upon these authorities, roles we should control what action a user should perform inside our application, that is <code>Authorization</code>.</li>
-</ul>
+<h1 id="authority_and_role_in_spring_security">Authority And Role In Spring Security<a class="headerlink" href="#authority_and_role_in_spring_security" title="Permanent link">#</a></h1>
+<h2 id="authority_and_role_differences">Authority And Role Differences<a class="headerlink" href="#authority_and_role_differences" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>Authentication</th>
-<th>Authorization</th>
+<th>Authority</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>In authentication, the identity of users are checked for providing the access to the system.</td>
-<td>In authorization, person's or user's authorities are checked for accessing the resources</td>
+<td>Authority is like an individual privilege</td>
+<td>Role is a group of privileges</td>
 </tr>
 <tr>
-<td>Authentication done before authorization</td>
-<td>Authorization always happens after authentication</td>
+<td>Restricting access in a fine-grained manner</td>
+<td>Restricting access in a coarse-grained manner</td>
 </tr>
 <tr>
-<td>It needs usually user's login details</td>
-<td>It needs user's privilege of roles</td>
+<td>Ex: READ, UPDATE, DELETE</td>
+<td>Ex: ROLE_ADMIN, ROLE_USER</td>
 </tr>
 <tr>
-<td>If authentication fails usually we will get 401 error response</td>
-<td>If authorization fails usually we will get 403 error response</td>
+<td>- Names of <code>authorities/roles</code> are arbitrary in nature and these names can be customized as per the business requirement.</td>
+<td></td>
 </tr>
 <tr>
-<td>For example as a Bank customer/employee in order to perform actions in the app, we need to prove our identity</td>
-<td>Once logged into the application, user's roles, authorities will decide what kind of actions that user can do</td>
+<td>- In Spring Security, there is no difference on how we configure authorities and rules except the method names to differentiate whether these are an authority or role.</td>
+<td></td>
+</tr>
+<tr>
+<td>- <code>Roles</code> are also represented using the same contract <code>GrantedAuthority</code> in Spring Security</td>
+<td></td>
+</tr>
+<tr>
+<td>- When defining a role, its name should start with the <code>ROLE_prefix</code>. This <code>prefix</code> specifies the difference between a <code>role</code> and an <code>authority</code>.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="understanding_and_implementing_authorization">Understanding And Implementing Authorization<a class="headerlink" href="#understanding_and_implementing_authorization" title="Permanent link">#</a></h2>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../Authentication%20And%20Authorization%20Internal%20Flow/">Authentication And Authorization Internal Flow</a></li>
-<li><a href="../How%20Authorities%20Stored/">How Authorities Stored</a></li>
 <li><a href="../Configure%20Authorities/">Configure Authorities</a></li>
-<li><a href="../Authority%20And%20Role%20In%20Spring%20Security/">Authority And Role In Spring Security</a></li>
 <li><a href="../Configure%20Roles/">Configure Roles</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://www.udemy.com/course/spring-security-zero-to-master/">Spring Security Zero To Master</a></li>
 </ul>
 </article>
 </div>
@@ -1078,7 +1052,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: CSRF - Cross-Site Request Forgery" class="md-footer__link md-footer__link--prev" href="../CSRF%20-%20Cross-Site%20Request%20Forgery/" rel="prev">
+<a aria-label="Previous: Authentication Provider" class="md-footer__link md-footer__link--prev" href="../Authentication%20Provider/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -1087,17 +1061,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              CSRF - Cross-Site Request Forgery
+              Authentication Provider
             </div>
 </div>
 </a>
-<a aria-label="Next: Authentication And Authorization Internal Flow" class="md-footer__link md-footer__link--next" href="../Authentication%20And%20Authorization%20Internal%20Flow/" rel="next">
+<a aria-label="Next: BCryptPasswordEncoder" class="md-footer__link md-footer__link--next" href="../BCryptPasswordEncoder/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Authentication And Authorization Internal Flow
+              BCryptPasswordEncoder
             </div>
 </div>
 <div class="md-footer__button md-icon">
