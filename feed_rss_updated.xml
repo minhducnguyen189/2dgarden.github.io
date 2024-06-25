@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    
+    <title>2D-Garden</title>
+    <description>Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.</description>
+    <link>https://2dgarden.com/</link>
+    <atom:link href="https://2dgarden.com/feed_rss_updated.xml" rel="self" type="application/rss+xml" />
+
+    
+    <managingEditor>minhducnguyen189@gmail.com</managingEditor>
+    
+    <language>en</language>
+
+    
+    <pubDate>Tue, 25 Jun 2024 15:35:04 -0000</pubDate>
+    <lastBuildDate>Tue, 25 Jun 2024 15:35:04 -0000</lastBuildDate>
+    <ttl>1440</ttl>
+
+    
+    <generator>MkDocs RSS plugin - v1.12.2</generator>
+
+    
+    
+
+    
+    
+    <item>
+      <title>Java Annotations</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java Annotations&lt;/h1&gt;
+&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Annotations, a form of metadata, provide data about a program that is not part of the program itself. Annotations have no ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Annotations/</link>
+      <pubDate>Tue, 25 Jun 2024 22:22:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Annotations/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Home</title>
+      
+      
+      
+      
+      <description></description>
+      <link>https://2dgarden.com/</link>
+      <pubDate>Tue, 25 Jun 2024 15:34:26 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/</guid>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;About&lt;/h1&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Hi there! 👋&lt;/li&gt;
+&lt;li&gt;My name is Duc, I&#39;m from Vietnam. I&#39;m a solfware engineer and working at &lt;a href=&#34;https://www.mesoneer.io/de/&#34;&gt;Mesoneer.io&lt;/a&gt;...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/about/</link>
+      <pubDate>Tue, 25 Jun 2024 15:34:26 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/about/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Java Reflection</title>
+      
+      
+      
+      
+      <description>&lt;hr&gt;
+&lt;p&gt;tags: [&#34;Java&#34;]
+status: &#34;Inprogress&#34;
+created: 2023-05-21 13:49
+modified: 2023-06-05 21:17&lt;/p&gt;
+&lt;hr&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Reflection/</link>
+      <pubDate>Tue, 25 Jun 2024 15:34:26 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Reflection/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Java Regular Expressions</title>
+      
+      
+      
+      
+      <description>&lt;hr&gt;
+&lt;p&gt;tags: [&#34;Java&#34;]
+status: &#34;Inprogress&#34;
+created: 2023-05-21 13:49
+modified: 2023-06-05 21:18&lt;/p&gt;
+&lt;hr&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Regular%20Expressions/</link>
+      <pubDate>Tue, 25 Jun 2024 15:34:26 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Regular%20Expressions/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Tag</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Tags&lt;/h1&gt;
+&lt;p&gt;Following is a list of relevant tags:&lt;/p&gt;
+&lt;h2&gt;&lt;span class=&#34;md-tag&#34;&gt;BuildTool&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;Build Tools/Gradle.md&#34;&gt;Gradle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Jfog Repository](Build Tools/JF...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/tags/</link>
+      <pubDate>Tue, 25 Jun 2024 15:34:26 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/tags/</guid>
+      
+    </item>
+    
+    <item>
+      <title>AOP Introduction</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring AOP Introduction&lt;/h1&gt;
+&lt;h2&gt;What Is The Aspect Oriented Programming (AOP)?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Aspect-oriented Programming (AOP) complements Object-oriented Programming (OOP)...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/</link>
+      <pubDate>Mon, 24 Jun 2024 22:09:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Content-Type Response Header</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring Boot Content-Type Response Header&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In web application development, it is imperative to possess the capability to manage and define the Content-Type...&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      <link>https://2dgarden.com/Spring%20Boot/Spring%20Boot%20Content-Type%20Response%20Header/</link>
+      <pubDate>Mon, 24 Jun 2024 18:46:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Boot/Spring%20Boot%20Content-Type%20Response%20Header/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Spring Core Technologies</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring Core Introduction&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Spring is one of the most popular frameworks for Java enterprise edition. Developers use Spring for developing reliable and hig...&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      <link>https://2dgarden.com/Spring%20Core/Spring%20Core%20Introduction/</link>
+      <pubDate>Mon, 24 Jun 2024 17:10:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Core/Spring%20Core%20Introduction/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Interface With Static Method</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java 8 Interface With Static Method&lt;/h1&gt;
+&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Java interface static method is similar to default method except that we  can not override them in the ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%208%20Interface%20With%20Static%20Method/</link>
+      <pubDate>Mon, 24 Jun 2024 16:55:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%208%20Interface%20With%20Static%20Method/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Interface With Default Method</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java 8 Interface With Default Method&lt;/h1&gt;
+&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Before the Java 8 an interface has one or multiple implementations, if one or more methods are added t...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%208%20Interface%20With%20Default%20Method/</link>
+      <pubDate>Sun, 23 Jun 2024 22:56:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%208%20Interface%20With%20Default%20Method/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Docker With Samba Server</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Docker With Samba Server&lt;/h1&gt;
+&lt;h2&gt;What Is The Samba Server?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A Samba file server &lt;strong&gt;enables file sharing across different operating systems over a network&lt;/strong&gt;. It ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Docker/Docker%20With%20Samba%20Server/</link>
+      <pubDate>Sun, 23 Jun 2024 17:03:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Docker/Docker%20With%20Samba%20Server/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Authorization Code Grant Type</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;OIDC Authorization Code Grant Type&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;In the &lt;a href=&#34;https://2dgarden.com/Spring%20Security/Keycloak%20Setup/&#34;&gt;Keycloak Setup&lt;/a&gt;, we learned how to set up &lt;code&gt;Keycloak&lt;/code&gt;...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type/</link>
+      <pubDate>Sun, 16 Jun 2024 15:06:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Google ReCaptcha Integration With Annotation</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Google ReCaptcha Integration With Annotation&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code FE](https://github.com/minhducnguyen189/com.springboot3.security/tree/maste...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration%20With%20Annotation/</link>
+      <pubDate>Sat, 15 Jun 2024 16:34:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration%20With%20Annotation/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Google ReCaptcha Integration</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Google ReCaptcha Integration&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code FE](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/angular-integr...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration/</link>
+      <pubDate>Sat, 15 Jun 2024 16:34:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Authorization Code Grant Type User Roles</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;OIDC Authorization Code Grant Type User Roles&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20User%20Roles/</link>
+      <pubDate>Sat, 15 Jun 2024 16:22:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20User%20Roles/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Authorization Code Grant Type CSRF</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;OIDC Authorization Code Grant Type CSRF&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/spring...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20CSRF/</link>
+      <pubDate>Sat, 15 Jun 2024 16:20:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20CSRF/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Authorization Code Grant Type Stateless Session</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;OIDC Authorization Code Grant Type Stateless Session&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20Stateless%20Session/</link>
+      <pubDate>Sat, 15 Jun 2024 16:20:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20Stateless%20Session/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JPA With Postgres View Table</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JPA With Postgres View Table&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code](https://github.com/minhducnguyen189/com.springboot.3.data/tree/master/jpa-with-postgres-vi...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/</link>
+      <pubDate>Sat, 15 Jun 2024 16:15:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JPA With Specification Query</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JPA With Specification Query&lt;/h1&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Full Source Code](https://github.com/minhducnguyen189/com.springboot.3.data/tree/master/jpa-with-specificati...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/</link>
+      <pubDate>Sat, 15 Jun 2024 16:13:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/</guid>
+      
+    </item>
+    
+  </channel>
+</rss>

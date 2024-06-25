@@ -1,0 +1,216 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "2D-Garden",
+    "home_page_url": "https://2dgarden.com/",
+    "feed_url": "https://2dgarden.com/feed_json_created.json",
+    "description": "Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.",
+    "icon": null,
+    "authors": [
+        {
+            "name": "minhducnguyen189@gmail.com"
+        }
+    ],
+    "language": "en",
+    "items": [
+        {
+            "id": "https://2dgarden.com/",
+            "url": "https://2dgarden.com/",
+            "title": "Home",
+            "content_html": "",
+            "image": null,
+            "date_published": "2024-06-25T15:34:26+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/about/",
+            "url": "https://2dgarden.com/about/",
+            "title": "About",
+            "content_html": "<h1>About</h1>\n<h2>Introduction</h2>\n<ul>\n<li>Hi there! \ud83d\udc4b</li>\n<li>My name is Duc, I'm from Vietnam. I'm a solfware engineer and working at <a href=\"https://www.mesoneer.io/de/\">Mesoneer.io</a>...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-06-25T15:34:26+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Reflection/",
+            "url": "https://2dgarden.com/Java/Java%20Reflection/",
+            "title": "Java Reflection",
+            "content_html": "<hr>\n<p>tags: [\"Java\"]\nstatus: \"Inprogress\"\ncreated: 2023-05-21 13:49\nmodified: 2023-06-05 21:17</p>\n<hr>",
+            "image": null,
+            "date_published": "2024-06-25T15:34:26+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Regular%20Expressions/",
+            "url": "https://2dgarden.com/Java/Java%20Regular%20Expressions/",
+            "title": "Java Regular Expressions",
+            "content_html": "<hr>\n<p>tags: [\"Java\"]\nstatus: \"Inprogress\"\ncreated: 2023-05-21 13:49\nmodified: 2023-06-05 21:18</p>\n<hr>",
+            "image": null,
+            "date_published": "2024-06-25T15:34:26+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/tags/",
+            "url": "https://2dgarden.com/tags/",
+            "title": "Tag",
+            "content_html": "<h1>Tags</h1>\n<p>Following is a list of relevant tags:</p>\n<h2><span class=\"md-tag\">BuildTool</span></h2>\n<ul>\n<li><a href=\"Build Tools/Gradle.md\">Gradle</a></li>\n<li>[Jfog Repository](Build Tools/JF...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-06-25T15:34:26+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20Samba%20Server/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20Samba%20Server/",
+            "title": "Docker With Samba Server",
+            "content_html": "<h1>Docker With Samba Server</h1>\n<h2>What Is The Samba Server?</h2>\n<ul>\n<li>A Samba file server\u00a0<strong>enables file sharing across different operating systems over a network</strong>. It ...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-06-22T23:11:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20Custom%20Annotation%20Time%20Execution/",
+            "url": "https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20Custom%20Annotation%20Time%20Execution/",
+            "title": "Custom Annotation Time Execution",
+            "content_html": "<h1>Custom Annotation Time Execution</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot.3.project/tree/master/spring-aop-cu...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-05-13T22:32:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration%20With%20Annotation/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration%20With%20Annotation/",
+            "title": "Google ReCaptcha Integration With Annotation",
+            "content_html": "<h1>Google ReCaptcha Integration With Annotation</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code FE](https://github.com/minhducnguyen189/com.springboot3.security/tree/maste...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20Google%20ReCaptcha%20Integration/",
+            "title": "Google ReCaptcha Integration",
+            "content_html": "<h1>Google ReCaptcha Integration</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code FE](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/angular-integr...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20CSRF/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20CSRF/",
+            "title": "Authorization Code Grant Type CSRF",
+            "content_html": "<h1>OIDC Authorization Code Grant Type CSRF</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/spring...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20Stateless%20Session/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20Stateless%20Session/",
+            "title": "Authorization Code Grant Type Stateless Session",
+            "content_html": "<h1>OIDC Authorization Code Grant Type Stateless Session</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20User%20Roles/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20User%20Roles/",
+            "title": "Authorization Code Grant Type User Roles",
+            "content_html": "<h1>OIDC Authorization Code Grant Type User Roles</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot3.security/tree/master/...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type/",
+            "url": "https://2dgarden.com/Spring%20Security/SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type/",
+            "title": "Authorization Code Grant Type",
+            "content_html": "<h1>OIDC Authorization Code Grant Type</h1>\n<ul>\n<li>In the\u00a0<a href=\"https://2dgarden.com/Spring%20Security/Keycloak%20Setup/\">Keycloak Setup</a>, we learned how to set up\u00a0<code>Keycloak</code>...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-02-17T09:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/",
+            "url": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/",
+            "title": "JPA With Postgres View Table",
+            "content_html": "<h1>JPA With Postgres View Table</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot.3.data/tree/master/jpa-with-postgres-vi...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-01-13T10:25:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/",
+            "url": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/",
+            "title": "JPA With Specification Query",
+            "content_html": "<h1>JPA With Specification Query</h1>\n<h2>References</h2>\n<ul>\n<li>[Full Source Code](https://github.com/minhducnguyen189/com.springboot.3.data/tree/master/jpa-with-specificati...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-01-13T10:24:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Some%20Notes/EnableWebMvc%20And%20OpenApi%20Issue/",
+            "url": "https://2dgarden.com/Spring%20Boot/Some%20Notes/EnableWebMvc%20And%20OpenApi%20Issue/",
+            "title": "@EnableWebMvc And OpenApi Issue",
+            "content_html": "<h1>@EnableWebMvc And OpenApi Issue</h1>\n<h2>Notes</h2>\n<ul>\n<li>Don't use annotation <code>@EnableWebMvc</code> if you are not using advance features of   <code>WebMvcConfigurer</code>, in stead let...</li>\n</ul>",
+            "image": null,
+            "date_published": "2023-12-29T22:33:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Fix%20Jpa%20OneToMany%20N%2B1%20Issue/",
+            "url": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Fix%20Jpa%20OneToMany%20N%2B1%20Issue/",
+            "title": "Jpa OneToMany N+1 Issue",
+            "content_html": "<h1>Jpa OneToMany N+1 Issue</h1>\n<h2>Fix N+1 Issue With OneToMany Relationship in Jpa.</h2>\n<ul>\n<li>In Jpa if we define <code>OneToMany</code> relationship as below. </li>\n</ul>\n<p>```java linenums=\"1...</p>",
+            "image": null,
+            "date_published": "2023-12-29T22:33:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Fix%20Jpa%20OneToOne%20N%2B1%20Issue/",
+            "url": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Fix%20Jpa%20OneToOne%20N%2B1%20Issue/",
+            "title": "Jpa OneToOne N+1 Issue",
+            "content_html": "<h1>Jpa OneToOne N+1 Issue</h1>\n<h2>Fix N+1 Issue With OneToOne Relationship in Jpa.</h2>\n<ul>\n<li>In Jpa if we define <code>OneToOne</code> relationship as below. </li>\n</ul>\n<p>```java linenums=\"1\" t...</p>",
+            "image": null,
+            "date_published": "2023-12-29T22:33:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Some%20Notes/List.of%20-%20Arrays.asList/",
+            "url": "https://2dgarden.com/Spring%20Boot/Some%20Notes/List.of%20-%20Arrays.asList/",
+            "title": "List.of() - Arrays.asList()",
+            "content_html": "<h1>List.of() - Arrays.asList()</h1>\n<h2>Notes</h2>\n<ul>\n<li><code>List.of()</code> and <code>Arrays.asList()</code> return <code>unmodifiable</code> lists. So please be careful when using these utils in update...</li>\n</ul>",
+            "image": null,
+            "date_published": "2023-12-29T22:33:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Spring%20Boot%203%20CSRF%20Configuration/",
+            "url": "https://2dgarden.com/Spring%20Boot/Some%20Notes/Spring%20Boot%203%20CSRF%20Configuration/",
+            "title": "Spring Boot 3 CSRF Configuration",
+            "content_html": "<h1>Spring Boot 3 CSRF Configuration</h1>\n<h2>Notes</h2>\n<p>```java linenums=\"1\" title=\"SecurityConfig.java\"</p>\n<p>package com.springboot.project.config;  </p>\n<p>import com.springb...</p>",
+            "image": null,
+            "date_published": "2023-12-29T22:33:00+00:00",
+            "authors": [],
+            "tags": null
+        }
+    ]
+}
