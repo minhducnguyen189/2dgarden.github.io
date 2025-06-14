@@ -1,0 +1,4020 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path." name="description"/>
+<meta content="minhducnguyen189@gmail.com" name="author"/>
+<link href="https://2dgarden.com/Spring%20Security/OAUTH2%20Flow/" rel="canonical"/>
+<link href="../OAUTH2%20Components/" rel="prev"/>
+<link href="../OAUTH2%20Resource%20Server%20Token%20Validation/" rel="next"/>
+<link href="../../feed_rss_created.xml" rel="alternate" title="RSS feed" type="application/rss+xml"/>
+<link href="../../feed_rss_updated.xml" rel="alternate" title="RSS feed of updated content" type="application/rss+xml"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.26" name="generator"/>
+<title>Flows - 2D-Garden</title>
+<link href="../../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/ubuntu-light-webfont.woff2" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-JGSJ7VP6BF"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-JGSJ7VP6BF",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-JGSJ7VP6BF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#oauth2_flow">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="2D-Garden" class="md-header__button md-logo" data-md-component="logo" href="../.." title="2D-Garden">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            2D-Garden
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Flows
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="green" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Java/Java%20Core%20Introduction/">
+          
+  
+  Java
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Spring%20Core/Spring%20Overview/">
+          
+  
+  Spring Framework
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Spring%20Boot/Spring%20Boot%20Introduction/">
+          
+  
+  Spring Boot
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Spring%20Cloud/Spring%20Cloud%20Introduction/">
+          
+  
+  Spring Cloud
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Spring%20Data/Spring%20Data%20Introduction/">
+          
+  
+  Spring Data
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../Spring%20Security%20Introduction/">
+          
+  
+  Spring Security
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Others/Web%20Browser/">
+          
+  
+  Others
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tags/">
+        
+  
+    
+  
+  Tag
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../about/">
+        
+  
+    
+  
+  About
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="2D-Garden" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="2D-Garden">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    2D-Garden
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Java
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Core%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Java Basic
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Java Basic
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Environment%20Setup/">
+<span class="md-ellipsis">
+    Environment Setup
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Keywords/">
+<span class="md-ellipsis">
+    Java Keywords
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Modifiers/">
+<span class="md-ellipsis">
+    Java Modifiers
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Collection%20Framework/">
+<span class="md-ellipsis">
+    Collection Framework
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Datatypes/">
+<span class="md-ellipsis">
+    Java Datatypes
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Control%20Structures/">
+<span class="md-ellipsis">
+    Java Control Structures
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+<span class="md-ellipsis">
+    OOP
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_7">
+<span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP%20Encapsulation/">
+<span class="md-ellipsis">
+    Encapsulation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP%20Abstraction/">
+<span class="md-ellipsis">
+    Abstraction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP%20Inheritance/">
+<span class="md-ellipsis">
+    Inheritance
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP%20Polymorphism/">
+<span class="md-ellipsis">
+    Polymorphism
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/OOP%20Method%20Overriding/">
+<span class="md-ellipsis">
+    Method Overriding
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Advances
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Advances
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Threads/">
+<span class="md-ellipsis">
+    Threads
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Generic/">
+<span class="md-ellipsis">
+    Java Generic
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Exceptions/">
+<span class="md-ellipsis">
+    Java Exceptions
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20File%20Handling/">
+<span class="md-ellipsis">
+    Java File Handling
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Reflection/">
+<span class="md-ellipsis">
+    Java Reflection
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Regular%20Expressions/">
+<span class="md-ellipsis">
+    Java Regular Expressions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Enums/">
+<span class="md-ellipsis">
+    Java Enums
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Annotations/">
+<span class="md-ellipsis">
+    Java Annotations
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Java Principles
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Java Principles
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Principles/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20SOLID%20Principles/">
+<span class="md-ellipsis">
+    SOLID Principles
+  </span>
+<span class="md-status md-status--Todo" title="To Do">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20KISS%20Principle/">
+<span class="md-ellipsis">
+    KISS Principle
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20DRY%20Principles/">
+<span class="md-ellipsis">
+    DRY Principles
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%20Composition%20Over%20Inheritance%20Principle/">
+<span class="md-ellipsis">
+    Composition Over Inheritance Principle
+  </span>
+<span class="md-status md-status--Todo" title="To Do">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Java 8
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            Java 8
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Interface%20With%20Default%20Method/">
+<span class="md-ellipsis">
+    Interface With Default Method
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Interface%20With%20Static%20Method/">
+<span class="md-ellipsis">
+    Interface With Static Method
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Functional%20Interface/">
+<span class="md-ellipsis">
+    Functional Interface
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Lambda%20Expression/">
+<span class="md-ellipsis">
+    Lamda Expression
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Stream/">
+<span class="md-ellipsis">
+    Stream
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java/Java%208%20Optional/">
+<span class="md-ellipsis">
+    Optional
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Framework
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Spring Framework
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Overview
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Overview/">
+<span class="md-ellipsis">
+    Spring Framework Overview
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Core%20Introduction/">
+<span class="md-ellipsis">
+    Spring Core Technologies
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Inversion Of Control
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Spring Inversion Of Control
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Inversion%20Of%20Control/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Inversion%20Of%20Control%20XML/">
+<span class="md-ellipsis">
+    Configure With XML
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Inversion%20Of%20Control%20Annotation/">
+<span class="md-ellipsis">
+    Configure With Annotation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Inversion%20Of%20Control%20Java%20Code/">
+<span class="md-ellipsis">
+    Configure With Java Code
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Dependency Injection
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Spring Dependency Injection
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Dependency%20Injection/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Dependency%20Injection%20XML/">
+<span class="md-ellipsis">
+    Configure With XML
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Dependency%20Injection%20Annotation/">
+<span class="md-ellipsis">
+    Configure With Annotation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Bean Scopes And Lifecycle
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Spring Bean Scopes And Lifecycle
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Bean%20Scopes%20And%20Lifecycle/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Bean%20Scopes%20And%20Lifecycle%20XML/">
+<span class="md-ellipsis">
+    Configure With XML
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Bean%20Scopes%20And%20Lifecycle%20Annotation/">
+<span class="md-ellipsis">
+    Configure With Annotation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+<span class="md-ellipsis">
+    No XML Spring Bean Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            No XML Spring Bean Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20Bean%20Configuration%20With%20Java%20Code/">
+<span class="md-ellipsis">
+    Spring Bean Java Code Configuration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring MVC
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+            Spring MVC
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20MVC%20Overview/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20MVC%20Behind%20The%20Scenes/">
+<span class="md-ellipsis">
+    Spring MVC Behind The Scenes
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20DispactcherServlet/">
+<span class="md-ellipsis">
+    Spring DispactcherServlet
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20MVC%20XML%20Configuration/">
+<span class="md-ellipsis">
+    Spring MVC XML Configuration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Core/Spring%20MVC%20Java%20Configuration/">
+<span class="md-ellipsis">
+    Spring MVC Java Configuration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Boot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    SpringBoot Components
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot Components
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Starter/">
+<span class="md-ellipsis">
+    Starter
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20AutoConfigurator/">
+<span class="md-ellipsis">
+    AutoConfigurator
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Actuator/">
+<span class="md-ellipsis">
+    Actuator
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20CLI/">
+<span class="md-ellipsis">
+    CLI
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    SpringBoot 2.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 2.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Swagger/">
+<span class="md-ellipsis">
+    Swagger Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20OpenApi/">
+<span class="md-ellipsis">
+    OpenApi Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20OpenApi%20Advances/">
+<span class="md-ellipsis">
+    OpenApi Integration Advance
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20%40ConfigurationProperties/">
+<span class="md-ellipsis">
+    ConfigurationProperties
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Database%20Configuration%20In%20SpringBoot/">
+<span class="md-ellipsis">
+    Database Configuration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Exception%20Handler%20And%20Message%20Source/">
+<span class="md-ellipsis">
+    Exception Handler &amp; Message Source
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Mustache/">
+<span class="md-ellipsis">
+    Mustache Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Web%20Services/">
+<span class="md-ellipsis">
+    WebServices Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20SonarQube/">
+<span class="md-ellipsis">
+    SonarQube Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Chronicle%20Queue/">
+<span class="md-ellipsis">
+    Chronicle Queue
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Apache%20CXF/">
+<span class="md-ellipsis">
+    WebServices Apache CXF Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Json%20Schema%20Validator/">
+<span class="md-ellipsis">
+    Json Schema Validator
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20With%20Executable%20Jar/">
+<span class="md-ellipsis">
+    Build Executable Jar
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%20Content-Type%20Response%20Header/">
+<span class="md-ellipsis">
+    Content-Type Response Header
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    SpringBoot 3.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 3.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%203.x%20JunitTest%205/">
+<span class="md-ellipsis">
+    Junit Test 5
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%203.x%20Property%20Based%20Testing/">
+<span class="md-ellipsis">
+    Property Based Testing
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%203.x%20Actuator%20%26%20Graceful%20Shutdown/">
+<span class="md-ellipsis">
+    Actuator And Graceful Shutdown
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%203.x%20Upload%20Download%20Files/">
+<span class="md-ellipsis">
+    Upload And Download Files
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/">
+<span class="md-ellipsis">
+    AOP Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Cloud
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Spring Cloud
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20Netflix%20Eureka%20Server-Client/">
+<span class="md-ellipsis">
+    Netflix Eureka Server-Client
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20OpenFeign%20Basic/">
+<span class="md-ellipsis">
+    OpenFeign Basic
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20OpenFeign%20Custom/">
+<span class="md-ellipsis">
+    OpenFeign Custom
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20OpenFeign%20With%20Eureka/">
+<span class="md-ellipsis">
+    OpenFeign And Eureka Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20OpenFeign%20With%20Web%20Services/">
+<span class="md-ellipsis">
+    OpenFeign For WebServices
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/OpenApi%20-%20OpenFeign%20Integration/">
+<span class="md-ellipsis">
+    OpenApi And OpenFeign Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20OpenFeign%20Interceptor/">
+<span class="md-ellipsis">
+    OpenFeign Interceptor
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+<span class="md-ellipsis">
+    Distributed Tracing
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Distributed Tracing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Distributed%20Tracing/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20Sleuth/">
+<span class="md-ellipsis">
+    Spring Cloud Sleuth
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Cloud/Spring%20Cloud%20Sleuth%20With%20Zipkin%20And%20Kibana/">
+<span class="md-ellipsis">
+    Sleuth Zipkin Kibana Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Data
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Spring Data
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    SpringBoot 2.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_1">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 2.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Spring%20Data%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_2" id="__nav_6_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Data JDBC
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Spring Data JDBC
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Spring%20Data%20JDBC/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/JDBC%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    JDBC In SpringBoot
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_3" id="__nav_6_1_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Data JPA
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_1_3">
+<span class="md-nav__icon md-icon"></span>
+            Spring Data JPA
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Spring%20Data%20JPA/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_3_2" id="__nav_6_1_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    JPA Core
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_3_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_1_3_2">
+<span class="md-nav__icon md-icon"></span>
+            JPA Core
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Persistence%20Unit/">
+<span class="md-ellipsis">
+    Persistence Unit
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/EntityManagerFactory/">
+<span class="md-ellipsis">
+    EntityManagerFactory
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_3_2_3" id="__nav_6_1_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Persistence Context
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_3_2_3_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_6_1_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Persistence Context
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Persistence%20Context/">
+<span class="md-ellipsis">
+    Persistence Context
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Container%20Managed%20Persistence%20Context/">
+<span class="md-ellipsis">
+    Container Managed
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Application%20Managed%20Persistence%20Context/">
+<span class="md-ellipsis">
+    Application Managed
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/EntityManager/">
+<span class="md-ellipsis">
+    EntityManager
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Entity/">
+<span class="md-ellipsis">
+    Entity
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_3_3" id="__nav_6_1_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    JPA In Spring Boot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_3_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_1_3_3">
+<span class="md-nav__icon md-icon"></span>
+            JPA In Spring Boot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/JPA%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    JPA In SpringBoot
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Object%20Relational%20Mapping/">
+<span class="md-ellipsis">
+    ORM
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Hibernate/">
+<span class="md-ellipsis">
+    Hibernate
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Open%20Session%20In%20View%20Of%20JPA/">
+<span class="md-ellipsis">
+    Open Session In View
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Transaction/">
+<span class="md-ellipsis">
+    Transaction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/JPA%20With%20Pagination/">
+<span class="md-ellipsis">
+    Jpa Pagination
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/JPA%20With%20Multi%20Datasources/">
+<span class="md-ellipsis">
+    Multi Datasources
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_4" id="__nav_6_1_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Auditing
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_1_4">
+<span class="md-nav__icon md-icon"></span>
+            Auditing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_4_1" id="__nav_6_1_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Hibernate Envers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_4_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_1_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Hibernate Envers
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Auditing%20With%20Hibernate%20Envers/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Hibnerate%20Envers%20With%20JPA/">
+<span class="md-ellipsis">
+    Integrate With JPA
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Get%20Hibernate%20Envers%20Audit%20Data/">
+<span class="md-ellipsis">
+    Getting Audit Data
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_5" id="__nav_6_1_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Database Migration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_1_5">
+<span class="md-nav__icon md-icon"></span>
+            Database Migration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_1_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_5_1" id="__nav_6_1_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    FlyWay
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_1_5_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_1_5_1">
+<span class="md-nav__icon md-icon"></span>
+            FlyWay
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Database%20Migrations%20with%20Flyway/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Flyway%20Migrations/">
+<span class="md-ellipsis">
+    Migrations
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Flyway%20Versioned%20Migrations/">
+<span class="md-ellipsis">
+    Versioned Migrations
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Flyway%20Repeatable%20Migrations/">
+<span class="md-ellipsis">
+    Repeatable Migrations
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Flyway%20SQL-based%20Migrations/">
+<span class="md-ellipsis">
+    SQL-Based Migrations
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Flyway%20Regular%20Versioned%20Migration%20Example/">
+<span class="md-ellipsis">
+    Versioned Migration Example
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-ellipsis">
+    SpringBoot 3.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 3.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20Native%20Query%20Postgres%20Optional%20Params/">
+<span class="md-ellipsis">
+    Postgres Optinal Query Params
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20Entity%20Lifecycle%20Events/">
+<span class="md-ellipsis">
+    Entity Lifecycle Events
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20With%20Indexing/">
+<span class="md-ellipsis">
+    JPA With Indexing
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20Native%20Query%20Postgres%20Full%20Text%20Search/">
+<span class="md-ellipsis">
+    Postgres Full Text Search
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20Hibernate%20Second%20Level%20Cache/">
+<span class="md-ellipsis">
+    JPA With Second Level Cache
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/">
+<span class="md-ellipsis">
+    JPA With Specification Query
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/">
+<span class="md-ellipsis">
+    JPA With Postgres View Table
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2_8" id="__nav_6_2_8_label" tabindex="0">
+<span class="md-ellipsis">
+    Spring Data MongoDB
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_8_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_2_8">
+<span class="md-nav__icon md-icon"></span>
+            Spring Data MongoDB
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Spring%20Data/Spring%20Data%20MongoDB/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-ellipsis">
+    Spring Security
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Spring Security
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="">
+<span class="md-ellipsis">
+    SpringBoot 2.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_7_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_1">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 2.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Security%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Security%20Definition/">
+<span class="md-ellipsis">
+    Security Definition
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Security%20Basic/">
+<span class="md-ellipsis">
+    Spring Security Basic
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Security%20Internal/">
+<span class="md-ellipsis">
+    Internal Flow
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Custom%20Basic%20Spring%20Security/">
+<span class="md-ellipsis">
+    Custom Basic Spring Security
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_6" id="__nav_7_1_6_label" tabindex="0">
+<span class="md-ellipsis">
+    User Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_6">
+<span class="md-nav__icon md-icon"></span>
+            User Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Defining%20And%20Managing%20Users/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Configure%20Users%20With%20inMemoryAuthentication/">
+<span class="md-ellipsis">
+    InMemoryAuthentication
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Configure%20Users%20With%20inMemoryUserDetailsManager/">
+<span class="md-ellipsis">
+    InMemoryUserDetailsManager
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Understanding%20User%20Management%20interfaces%20and%20Classes/">
+<span class="md-ellipsis">
+    UserManagement Interfaces &amp; Classes
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Configure%20Users%20With%20JdbcUserDetailsManager/">
+<span class="md-ellipsis">
+    JdbcUserDetailsManager
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Custom%20UserDetailsService%20Of%20Spring%20Security/">
+<span class="md-ellipsis">
+    Custom UserDetailsService
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_7" id="__nav_7_1_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Password Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_7">
+<span class="md-nav__icon md-icon"></span>
+            Password Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Password%20Management%20With%20PasswordEncoder/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Encode%20Decode%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    Encode Decode
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_7_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_7_3" id="__nav_7_1_7_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Encrypt Decrypt
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_7_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_7_1_7_3">
+<span class="md-nav__icon md-icon"></span>
+            Encrypt Decrypt
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Encrypt%20Decrypt%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Symmetric%20Encryption/">
+<span class="md-ellipsis">
+    Symmetric Encryption
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Asymmetric%20Encryption/">
+<span class="md-ellipsis">
+    Asymmetric Encryption
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_7_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_7_4" id="__nav_7_1_7_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Hash
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_7_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_7_1_7_4">
+<span class="md-nav__icon md-icon"></span>
+            Hash
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Hash%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Example%20With%20SHA-256%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    SHA-256
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Example%20With%20SHA-512%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    SHA-512
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Example%20With%20Pbkdf2%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    Pbkdf2
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Example%20With%20Bcrypt%20In%20Spring%20Boot/">
+<span class="md-ellipsis">
+    Bcrypt
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_7_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_7_5" id="__nav_7_1_7_5_label" tabindex="0">
+<span class="md-ellipsis">
+    PasswordEncoder
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_7_5_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_7_1_7_5">
+<span class="md-nav__icon md-icon"></span>
+            PasswordEncoder
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Definition%20Of%20PasswordEncoder/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NoOpPasswordEncoder/">
+<span class="md-ellipsis">
+    NoOpPasswordEncoder
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../StandardPasswordEncoder/">
+<span class="md-ellipsis">
+    StandardPasswordEncoder
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Pbkdf2PasswordEncoder/">
+<span class="md-ellipsis">
+    Pbkdf2PasswordEncoder
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../BCryptPasswordEncoder/">
+<span class="md-ellipsis">
+    BCryptPasswordEncoder
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SCryptPasswordEncoder/">
+<span class="md-ellipsis">
+    SCryptPasswordEncoder
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Example%20With%20BCryptPasswordEncoder/">
+<span class="md-ellipsis">
+    BCryptPasswordEncoder Example
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_8" id="__nav_7_1_8_label" tabindex="0">
+<span class="md-ellipsis">
+    Authentication Provider
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_8_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_8">
+<span class="md-nav__icon md-icon"></span>
+            Authentication Provider
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Authentication%20Provider/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Custom%20Authentication%20Provider/">
+<span class="md-ellipsis">
+    Custom Authentication Provider
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_9" id="__nav_7_1_9_label" tabindex="0">
+<span class="md-ellipsis">
+    Authentication Manager
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_9_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_9">
+<span class="md-nav__icon md-icon"></span>
+            Authentication Manager
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Authentication%20Manager/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Authentication%20And%20Principal%20Interfaces/">
+<span class="md-ellipsis">
+    Principal Interfaces
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../CORS%20-%20Cross%20Origin%20Resource%20Sharing/">
+<span class="md-ellipsis">
+    CORS
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../CSRF%20-%20Cross-Site%20Request%20Forgery/">
+<span class="md-ellipsis">
+    CSRF
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_12" id="__nav_7_1_12_label" tabindex="0">
+<span class="md-ellipsis">
+    Authorization
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_12_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_12">
+<span class="md-nav__icon md-icon"></span>
+            Authorization
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Security%20With%20Authorization/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Authentication%20And%20Authorization%20Internal%20Flow/">
+<span class="md-ellipsis">
+    Authn and Authz Flows
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../How%20Authorities%20Stored/">
+<span class="md-ellipsis">
+    Authorities Store
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Configure%20Authorities/">
+<span class="md-ellipsis">
+    Configure Authorities
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Authority%20And%20Role%20In%20Spring%20Security/">
+<span class="md-ellipsis">
+    Authority &amp; Role
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Configure%20Roles/">
+<span class="md-ellipsis">
+    Configure Roles
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Matchers%20Methods/">
+<span class="md-ellipsis">
+    Matchers Methods
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_13" id="__nav_7_1_13_label" tabindex="0">
+<span class="md-ellipsis">
+    Filters
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_13_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_13">
+<span class="md-nav__icon md-icon"></span>
+            Filters
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Filters%20In%20Spring%20Security/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Inbuilt%20Filters%20Of%20Spring%20Security/">
+<span class="md-ellipsis">
+    Inbuilt Filters
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Filters%20Implementation/">
+<span class="md-ellipsis">
+    Filters Implementation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GenericFilterBean%20And%20OncePerRequestFilter/">
+<span class="md-ellipsis">
+    Generic &amp; OncePerRequest Filters
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_14" id="__nav_7_1_14_label" tabindex="0">
+<span class="md-ellipsis">
+    JWT
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_14_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_14">
+<span class="md-nav__icon md-icon"></span>
+            JWT
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Token%20Authentication%20With%20JWT/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JWT%20Token%20Details/">
+<span class="md-ellipsis">
+    JWT Details
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JWT%20Token%20In%20Spring%20Security/">
+<span class="md-ellipsis">
+    JWT Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_15" id="__nav_7_1_15_label" tabindex="0">
+<span class="md-ellipsis">
+    Method Level Security
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_15_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_15">
+<span class="md-nav__icon md-icon"></span>
+            Method Level Security
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Method%20Level%20Security/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Invocation%20Authorization%20Method%20Level/">
+<span class="md-ellipsis">
+    Invocation Authorization
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Filtering%20Authorization%20Method%20Level/">
+<span class="md-ellipsis">
+    Filtering Authorization
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_7_1_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_16" id="__nav_7_1_16_label" tabindex="0">
+<span class="md-ellipsis">
+    OAUTH2
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_7_1_16_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_16">
+<span class="md-nav__icon md-icon"></span>
+            OAUTH2
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OAUTH2/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OAUTH2%20Components/">
+<span class="md-ellipsis">
+    Components
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Flows
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Flows
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authorization_code_grant_type_flow">
+<span class="md-ellipsis">
+      Authorization Code Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implicit_grant_type_flow">
+<span class="md-ellipsis">
+      Implicit Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#password_grant_type_flow">
+<span class="md-ellipsis">
+      Password Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#client_credentials_grant_type_flow">
+<span class="md-ellipsis">
+      Client Credentials Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#refresh_token_grant_type_flow">
+<span class="md-ellipsis">
+      Refresh Token Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+<span class="md-ellipsis">
+      See Also
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OAUTH2%20Resource%20Server%20Token%20Validation/">
+<span class="md-ellipsis">
+    Resource Server Validation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Code%20Grant%20Type%20With%20Github/">
+<span class="md-ellipsis">
+    Code Grant Type With Github
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_1_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1_17" id="__nav_7_1_17_label" tabindex="0">
+<span class="md-ellipsis">
+    OpenID Connect
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_1_17_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_1_17">
+<span class="md-nav__icon md-icon"></span>
+            OpenID Connect
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OpenID%20Connect/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Keycloak%20Setup/">
+<span class="md-ellipsis">
+    Keycloak Setup
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Client%20Credentials%20Resource%20Server/">
+<span class="md-ellipsis">
+    Client Credentials Resource Server
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Client%20Credentials%20Client%20Server/">
+<span class="md-ellipsis">
+    Client Credentials Client Server
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Password%20Grant%20Type%20Client%20Server/">
+<span class="md-ellipsis">
+    Password Grant Type Client Server
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
+<span class="md-ellipsis">
+    SpringBoot 3.x Integration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+            SpringBoot 3.x Integration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_1" id="__nav_7_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    OpenID Connect
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_2_1">
+<span class="md-nav__icon md-icon"></span>
+            OpenID Connect
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type/">
+<span class="md-ellipsis">
+    Authorization Code Grant Type
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20Stateless%20Session/">
+<span class="md-ellipsis">
+    Authorization Code Grant Type Stateless Session
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20User%20Roles/">
+<span class="md-ellipsis">
+    Authorization Code Grant Type User Roles
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20OIDC%20Authorization%20Code%20Grant%20Type%20CSRF/">
+<span class="md-ellipsis">
+    Authorization Code Grant Type CSRF
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Google ReCaptcha
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Google ReCaptcha
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20Google%20ReCaptcha%20Integration/">
+<span class="md-ellipsis">
+    Google ReCaptcha Integration
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SB%203x%20Google%20ReCaptcha%20Integration%20With%20Annotation/">
+<span class="md-ellipsis">
+    Google ReCaptcha Integration With Annotation
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    Others
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Web%20Browser/">
+<span class="md-ellipsis">
+    Web Browser
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Cookie/">
+<span class="md-ellipsis">
+    Cookie
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Session/">
+<span class="md-ellipsis">
+    Session
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Coding%20Standard/">
+<span class="md-ellipsis">
+    Coding Standard
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Web%20Services/">
+<span class="md-ellipsis">
+    Web Services
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/SoapUI/">
+<span class="md-ellipsis">
+    SoapUI
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Canvas%20Partical%20Network%20Animation/">
+<span class="md-ellipsis">
+    Canvas Partical Network Animation
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/Docusaurus/">
+<span class="md-ellipsis">
+    Docusaurus
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Others/K6/">
+<span class="md-ellipsis">
+    K6
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="0">
+<span class="md-ellipsis">
+    JavaScript
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_10">
+<span class="md-nav__icon md-icon"></span>
+            JavaScript
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../JavaScript/JavaScript%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../JavaScript/JavaScript%20Syntax%20and%20Variables/">
+<span class="md-ellipsis">
+    Syntax and Variables
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../JavaScript/JavaScript%20Functions/">
+<span class="md-ellipsis">
+    Functions
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../JavaScript/JavaScript%20Objects/">
+<span class="md-ellipsis">
+    Objects
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+<span class="md-ellipsis">
+    NodeJs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_11">
+<span class="md-nav__icon md-icon"></span>
+            NodeJs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/NodeJs%20RoadMap/">
+<span class="md-ellipsis">
+    RoadMap
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/NodeJs%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/Global%20Object/">
+<span class="md-ellipsis">
+    Global Object
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/Modules/">
+<span class="md-ellipsis">
+    Modules
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/Node%20Package%20Manager/">
+<span class="md-ellipsis">
+    Node Package Manager
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/ExpressJS/">
+<span class="md-ellipsis">
+    ExpressJS
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NodeJs/ExpressJS%20Advanced%20Topics/">
+<span class="md-ellipsis">
+    ExpressJS Advanced
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_12" id="__nav_8_12_label" tabindex="0">
+<span class="md-ellipsis">
+    React
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_12">
+<span class="md-nav__icon md-icon"></span>
+            React
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../React/React%20RoadMap/">
+<span class="md-ellipsis">
+    RoadMap
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../React/React%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_13" id="__nav_8_13_label" tabindex="0">
+<span class="md-ellipsis">
+    Build Tools
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_13">
+<span class="md-nav__icon md-icon"></span>
+            Build Tools
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Build%20Tools/Maven/">
+<span class="md-ellipsis">
+    Maven
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Build%20Tools/Gradle/">
+<span class="md-ellipsis">
+    Gradle
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Build%20Tools/JFog%20Repository%20Setup/">
+<span class="md-ellipsis">
+    Jfog Repository
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Build%20Tools/Maven%20Project%20With%20Jfog/">
+<span class="md-ellipsis">
+    Maven With Jfog
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_14" id="__nav_8_14_label" tabindex="0">
+<span class="md-ellipsis">
+    Docker
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_14">
+<span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20Commands%20And%20Descriptions/">
+<span class="md-ellipsis">
+    Docker Commands
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/DockerFile%20Command%20Descriptions/">
+<span class="md-ellipsis">
+    DockerFile Command
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Databases/">
+<span class="md-ellipsis">
+    Docker With Databases
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Jenkins/">
+<span class="md-ellipsis">
+    Docker With Jenkins
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20SonarQube/">
+<span class="md-ellipsis">
+    Docker With SonarQube
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20SpringBoot/">
+<span class="md-ellipsis">
+    Docker With SpringBoot
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Keycloak/">
+<span class="md-ellipsis">
+    Docker With Keycloak
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Zipkin/">
+<span class="md-ellipsis">
+    Docker With Zipkin
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Jaeger/">
+<span class="md-ellipsis">
+    Docker With Jaeger
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Kafka/">
+<span class="md-ellipsis">
+    Docker With Kafka
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20Samba%20Server/">
+<span class="md-ellipsis">
+    Docker With Samba Server
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker/Docker%20With%20File%20Browser/">
+<span class="md-ellipsis">
+    Docker With File Browser
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_15" id="__nav_8_15_label" tabindex="0">
+<span class="md-ellipsis">
+    Kubernetes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_15_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_15">
+<span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes/Kubernetes%20Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes/Minikube%20Introduction/">
+<span class="md-ellipsis">
+    Minikube
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes/Minikube%20Sample%20Project/">
+<span class="md-ellipsis">
+    Minikube Sample Project
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes/Helm/">
+<span class="md-ellipsis">
+    Helm
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Kubernetes/Zero%20Downtime%20Deployment/">
+<span class="md-ellipsis">
+    Zero Downtime Deployment
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_16" id="__nav_8_16_label" tabindex="0">
+<span class="md-ellipsis">
+    Linux
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_16_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_16">
+<span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Linux%20Commands/">
+<span class="md-ellipsis">
+    Useful Commands
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Linux%20Setup%20For%20Developer/">
+<span class="md-ellipsis">
+    Setup For Developer
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Linux%20Setup%20Tools/">
+<span class="md-ellipsis">
+    Setup Tools
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/NeoVim/">
+<span class="md-ellipsis">
+    NeoVim
+  </span>
+<span class="md-status md-status--Todo" title="To Do">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Ubuntu%20Tips/">
+<span class="md-ellipsis">
+    Ubuntu Tips
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Ubuntu%20Mate%20Tips/">
+<span class="md-ellipsis">
+    Ubuntu Mate Tips
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Fedora%20Tips/">
+<span class="md-ellipsis">
+    Fedora Tips
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Linux/Linux%20Mint%20Tips/">
+<span class="md-ellipsis">
+    Linux Mint Tips
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_17" id="__nav_8_17_label" tabindex="0">
+<span class="md-ellipsis">
+    Windows
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_17_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_17">
+<span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Windows/WSL2/">
+<span class="md-ellipsis">
+    WSL2
+  </span>
+<span class="md-status md-status--Resolved" title="Has Just Finished">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_18" id="__nav_8_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Jenkins
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_18">
+<span class="md-nav__icon md-icon"></span>
+            Jenkins
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../CI%20CD/CI%20CD%20Introduction/">
+<span class="md-ellipsis">
+    CI-CD Introduction
+  </span>
+<span class="md-status md-status--Inprogress" title="In Progress">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../CI%20CD/Jenkins%20For%20Building%20SpringBoot/">
+<span class="md-ellipsis">
+    Jenkins For SpringBoot
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../CI%20CD/Jenkins%20With%20SonarQube/">
+<span class="md-ellipsis">
+    SonarQube Integration
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_19" id="__nav_8_19_label" tabindex="0">
+<span class="md-ellipsis">
+    Database
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_19_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_19">
+<span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Database/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Relational%20Database%20With%20Basic%20SQL%20Queries/">
+<span class="md-ellipsis">
+    Basic SQL Queries
+  </span>
+<span class="md-status md-status--Done" title="Done">
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tags/">
+<span class="md-ellipsis">
+    Tag
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    About
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authorization_code_grant_type_flow">
+<span class="md-ellipsis">
+      Authorization Code Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implicit_grant_type_flow">
+<span class="md-ellipsis">
+      Implicit Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#password_grant_type_flow">
+<span class="md-ellipsis">
+      Password Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#client_credentials_grant_type_flow">
+<span class="md-ellipsis">
+      Client Credentials Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#refresh_token_grant_type_flow">
+<span class="md-ellipsis">
+      Refresh Token Grant Type Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see_also">
+<span class="md-ellipsis">
+      See Also
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../tags/#spring">Spring</a>
+<a class="md-tag" href="../../tags/#springsecurity">SpringSecurity</a>
+</nav>
+<h1 id="oauth2_flow">OAUTH2 Flow<a class="headerlink" href="#oauth2_flow" title="Permanent link">#</a></h1>
+<h2 id="authorization_code_grant_type_flow">Authorization Code Grant Type Flow<a class="headerlink" href="#authorization_code_grant_type_flow" title="Permanent link">#</a></h2>
+<ul>
+<li>In the <code>Authorization Code Grant Type Flow</code>, we will continue analyze the OAUTH2 example that introduced in <a href="../OAUTH2%20Components/">OAUTH2 Components</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../Images/spring-security-oauth2-components.jpg"><img alt=" #zoom" src="../Images/spring-security-oauth2-components.jpg"/></a></p>
+<ul>
+<li>In details, the <code>Authorization Code Grant Type Flow</code> will be happened as the sequence diagram as below.</li>
+</ul>
+<pre class="mermaid"><code>
+sequenceDiagram
+
+    User-&gt;&gt;Client: 1. I want to access my resources
+    Client-&gt;&gt;User: 2. Tell the Auth Server that you are fine to do this action.
+    User-&gt;&gt;Auth Server: 3. Hello Auth Server, please allowed the client to access my resources. &lt;br/&gt; Here is my credentials to prove my identity
+    Auth Server-&gt;&gt;Client: 4. Hey Client, user allowed you to access his &lt;br/&gt; resources. Here is AUTHORIZATION CODE.
+    Client-&gt;&gt;Auth Server: 5. Here is my client credentials, AUTHZ &lt;br/&gt; CODE. Please provide me a token.
+    Auth Server-&gt;&gt;Client: 6. Here is the token from Authorization Server
+    Client-&gt;&gt;Resource Server: 7. Hey Resource Server, I want to access the user resources. &lt;br/&gt; Here is the token from the Authz Server
+    Resource Server-&gt;&gt;Client: 8. Hey Client. Your token is validated successfully. &lt;br/&gt; Here are the resources you requested.
+</code></pre>
+<ul>
+<li>In the step 2 and 3, where client is making a request to the Auth Server endpoint. It has to send below important details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>The id which identifies the client application by the Auth Server. This will be granted when the client register first time with the Auth Server</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>The URI value which the Auth Server needs to redirect post successful authentication. If a default value is provided during the registration then this value is optional</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Similar to authorities. Specifies level of access that client is requesting like READ</td>
+</tr>
+<tr>
+<td>state</td>
+<td>CSRF token value to protect from CSRF acttacks</td>
+</tr>
+<tr>
+<td>response_type</td>
+<td>With the value 'code' which indicates that we want to follow authorization code grant</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In the steo 5 where client after received an authorization code from Auth Server, It will again make a request to Auth Server for a token with the below values.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>The authorization code received from the above steps</td>
+</tr>
+<tr>
+<td>client_id &amp; client_secret</td>
+<td>The client credentials which are registered with the Auth Server. Please note that these are not user credentials</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>With the value 'authorization_code' which identifies the kind of grant type is used</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>The URI value which the Auth Server needs to redirect post successful authentication. If a default value is provided during the registration then this value is optional</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>The <code>Authorization Code grant type</code> is used by confidential and public clients to exchange an authorization code for an access token. After the user returns to the client via the redirect URL, the application will get the authorization code from the URL and use it to request an access token.</p>
+</li>
+<li>
+<p>We may wonder that why in the Authorization Code grant type client is making request 2 times to Auth Server for authorization code and access token.</p>
+<ul>
+<li>In the first step, authorization server will make sure that user directly interacted with it along with the credentials. If the details are correct, Auth Server send the authorization code to client.</li>
+<li>Once it receives the authorization code, in this step client has to prove it's identity along with the authorization code, client credentials to get the access token.</li>
+</ul>
+</li>
+<li>
+<p>Well you may ask why can't Auth Server directly club both the steps together and provide the token in a single step. The answer we used to have that grant type as well which is called as <code>implicit grant type</code>. But this grant type is not recommended to use due to it's less secure.</p>
+</li>
+</ul>
+<h2 id="implicit_grant_type_flow">Implicit Grant Type Flow<a class="headerlink" href="#implicit_grant_type_flow" title="Permanent link">#</a></h2>
+<ul>
+<li>The <code>Implicit Grant Type</code> is less secure that compared to the <code>Authorization Code Grant Type</code>. Let's see the sequence diagram as below.</li>
+</ul>
+<pre class="mermaid"><code>
+sequenceDiagram
+
+    User-&gt;&gt;Client: 1. I want to access my resources
+    Client-&gt;&gt;User: 2. Tell the Auth Server that you are fine to do this action.
+    User-&gt;&gt;Auth Server: 3. Hello Auth Server, please allowed the client to access my resources. &lt;br/&gt; Here is my credentials to prove my identity
+    Auth Server-&gt;&gt;Client: 4. Hey Client, user allowed you to access his &lt;br/&gt; resources. Here is the TOKEN.
+    Client-&gt;&gt;Resource Server: 5. Hey Resource Server, I want to access the user resources. &lt;br/&gt; Here is the token from the Authz Server
+    Resource Server-&gt;&gt;Client: 6. Hey Client. Your token is validated successfully. &lt;br/&gt; Here are the resources you requested.
+</code></pre>
+<ul>
+<li>
+<p>As you can see in the sequenceDiagram, the <code>Implicit Grant Type</code> has only 6 steps and In the step 4, the Client instead of receiving the Authorization Code, It will receive the Authorization Token and can use it to access the Resource Server.</p>
+</li>
+<li>
+<p>In the step 3, where client is making a request to Auth Server endpoint, it has to send the below important details.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>The id which identifies the Client application by the Auth Sever. This will be granted when the client register first time with the Auth server.</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>The URI value which the Auth Server needs to redirect post successful authentication. If a default value is provided during the registration then this value is optional</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Similar to the authorities. Specifies level of access that client is requesting like READ</td>
+</tr>
+<tr>
+<td>state</td>
+<td>CSRF token value to protect from CSRF attacks</td>
+</tr>
+<tr>
+<td>response_type</td>
+<td>With the value 'token' which indicates that we want to follow implicit grant type</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the user approves the request, the authorization server will redirect the browser back to the redirect_uri specified by the application, adding a token an state to the fragment part of the URL. For example, the user will be redirect back to a URL such as.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>https://example.com/redirect#access_token=eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ&amp;token_type=Bearer&amp;expires=600&amp;state=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>So why do we you it if the <code>Implicit Grant Type Flow</code> is less secure? The answer is some applications just have only UI like they have only HTML and JavaScript codes and they don't have any back-end where they can save the client secret on some back-end servers. So due to that reason, these applications can still use the implicit guarantee. But at the same time, the Auth Server are what they are going to communicate has to allow them to use it, otherwise they can't use it.</li>
+</ul>
+<h2 id="password_grant_type_flow">Password Grant Type Flow<a class="headerlink" href="#password_grant_type_flow" title="Permanent link">#</a></h2>
+<ul>
+<li>Some people call <code>Password Grant Type Flow</code> as the <code>Resource Owner Credentials Grant Type</code>.</li>
+<li>In the <code>Password Grant Type Flow</code>, Let's assume that 4 components <code>User</code>, <code>Client</code>, <code>Auth Server</code> and <code>Resource Server</code> are in the same organization and in an internal network of a company. So when the user want to access his resource from the <code>Client</code> application, The <code>Client</code> application doesn't need to redirect the user to the login page of <code>Auth Server</code>, it will capture the user credentials and send them to the <code>Auth Server</code>. Because all components are in the same organization and we can completely believe <code>Client</code> and <code>Auth Server</code> that they won't misuse the user details that they result from the <code>User</code>. Let's see the sequence diagram as below.</li>
+</ul>
+<pre class="mermaid"><code>
+sequenceDiagram
+
+    User-&gt;&gt;Client: 1. I want to access my resources
+    Client-&gt;&gt;Auth Server: 2. Hello Auth Server, User want to access &lt;br/&gt; his/her resources. Here are the credentials of &lt;br/&gt; the User
+    Auth Server-&gt;&gt;Client: 3. Hey Client, The credentials providided are &lt;br/&gt; correct. Here is the TOKEN to access the user &lt;br/&gt; resources.
+    Client-&gt;&gt;Resource Server: 4. Hey Resource Server, I want to access the user resources. &lt;br/&gt; Here is the token from the Authz Server
+    Resource Server-&gt;&gt;Client: 5. Hey Client. Your token is validated successfully. &lt;br/&gt; Here are the resources you requested.
+</code></pre>
+<ul>
+<li>In the step 2, where <code>Client</code> is making a request to <code>Auth Server</code> endpoint have to send below important details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id &amp; client_secret</td>
+<td>the credentials of the client to authenticate itself</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Similar to the authorities. Specifies level of access that client is requesting like READ</td>
+</tr>
+<tr>
+<td>username &amp; password</td>
+<td>Credentials provided by the user in the login flow</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>With the value 'authorization_code' which identifies the kind of grant type is used</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We use this authentication flow only if the <code>Client</code>, <code>Authorization Server</code> and <code>Resource Server</code> are maintained by the same organization.</li>
+<li>This flow will be usually followed by the enterprise applications who want to separate the Auth flow and business flow. Once the Auth flow is separated different applications in the same organization can leverage it.</li>
+<li>We can't use the Authorization code grant type since it won't look nice for the user to redirect multiple pages inside your organization for authentication.</li>
+</ul>
+<h2 id="client_credentials_grant_type_flow">Client Credentials Grant Type Flow<a class="headerlink" href="#client_credentials_grant_type_flow" title="Permanent link">#</a></h2>
+<ul>
+<li>In the <code>Client Credentials Grant Type</code>, Let's assume that there are only 3 components <code>Client</code>, <code>Auth Server</code> and <code>Resource Server</code> and we don't have any UI application where there are no <code>User</code> involved. So we just have multiple back-end application which share data between them, like in the micro-service system where many back-end applications trying to interact with each other and shared some secured information between them.</li>
+<li>So in this case, instead of maintaining the authentication and authorization flow in each and every application, we can decide to keep all the authorization logic and authentication logic in a separate server called <code>Auth Server</code> and every application before it tries to communicate with other application inside an organization, they have to prove their identity and get the access token from the <code>Auth Server</code> which will be eventually shared to the other application to get the resources. Let's see the sequence diagram as below.</li>
+</ul>
+<pre class="mermaid"><code>
+sequenceDiagram
+
+    Client-&gt;&gt;Auth Server: 1. I want to access protected resources. Here &lt;br/&gt; are my client credentials. No user involved in this.
+    Auth Server-&gt;&gt;Client: 2. Hey Client, The credentials providided are &lt;br/&gt; correct. Here is the TOKEN to access the user &lt;br/&gt; resources.
+    Client-&gt;&gt;Resource Server: 3. Hey Resource Server, I want to access protected resources. &lt;br/&gt; Here is the token from the Authz Server
+    Resource Server-&gt;&gt;Client: 4. Hey Client. Your token is validated successfully. &lt;br/&gt; Here are the resources you requested.
+</code></pre>
+<ul>
+<li>In the step 1, where client is making a request to <code>Auth Server</code> endpoint have to send the below important details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id &amp; client_secret</td>
+<td>the credentials of the client to authenticate itself</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Similar to the authorities. Specifies level of access that client is requesting like READ</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>With the value 'authorization_code' which identifies the kind of grant type is used</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>This is the most simplest grant type flow in <code>OAUTH2</code>.</li>
+<li>We use this authentication flow only if there is no user and UI involved. Like 2 different applications want to share data between them using backend APIs.</li>
+</ul>
+<h2 id="refresh_token_grant_type_flow">Refresh Token Grant Type Flow<a class="headerlink" href="#refresh_token_grant_type_flow" title="Permanent link">#</a></h2>
+<ul>
+<li>In the <code>Refresh Token Grant Type</code>, Let's assume that we are using one of 4 Grant Type Flow <code>Authorization Code Grant Type</code>, <code>Implicit Grant Type Flow</code>, <code>Resource Owner Credentials Grant Type</code> and <code>Client Credentials Grant Type</code> and we got the access token from the <code>Auth Server</code> and sent that to the <code>Resource Server</code> and got the required resources. However, for example after 60 minutes, suddenly the token is expired so now we have to do steps for getting authorization token again and after 60 minutes we again have to do it. Due to that reason, we should apply the <code>Refresh Token Grant Type</code>, in details whenever we interact with the <code>Auth Server</code> and receive the access token, we also receive the refresh token. Then whenever we get the error from the <code>Auth Server</code> saying that our access token is expired so instead of doing steps for getting authorization token again we will send the refresh token to the <code>Auth Server</code> to get the new access token. The <code>Auth Server</code> will validate the refresh token that it issued and if the refresh token is valid and if it belongs to the same user that it initially issued the the <code>Auth Server</code> will issue again a new access token with the new expiration time along with the new refresh token.  Let's see the sequence diagram as below.</li>
+</ul>
+<pre class="mermaid"><code>
+sequenceDiagram
+
+    Client-&gt;&gt;Resource Server: 1. I want to access protected resources of the user. Here &lt;br/&gt; is the access token received in the initial user login.
+    Resource Server-&gt;&gt;Client: 2. The access token is expired! I'm throwing 403 &lt;br/&gt; forbiddent error. Sorry!
+    Client-&gt;&gt;Auth Server: 3. Hey Auth Server, I need a new access token &lt;br/&gt; for the user. Here is the refresh token &lt;br/&gt; of the user.
+    Auth Server-&gt;&gt;Client: 4. Refresh token is valid. Here is a new access &lt;br/&gt; token and new refresh token.
+    Client-&gt;&gt;Resource Server: 5. Hey Resource Server, I want to access protected resources. &lt;br/&gt; Here is the token from the Authz Server
+    Resource Server-&gt;&gt;Client: 6. Hey Client. Your token is validated successfully. &lt;br/&gt; Here are the resources you requested.
+</code></pre>
+<ul>
+<li>In step 3, where client is making a request to <code>Auth Server</code> endpoint have to send the below important details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id &amp; client_secret</td>
+<td>the credentials of the client to authenticate itself</td>
+</tr>
+<tr>
+<td>refresh_token</td>
+<td>the value of the refresh token received initially</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Similar to the authorities. Specifies level of access that client is requesting like READ</td>
+</tr>
+<tr>
+<td>grant_type</td>
+<td>With the value 'authorization_code' which identifies the kind of grant type is used</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>This flow will be used in the scenarios where the access token  of the user is expired. Instead of asking the user to login again and again, we can use the refresh token which originally providied by the <code>Auth Server</code> to re-authenticate the user.</li>
+<li>Though we can make our access tokens to never expire but it is not recommended considering scenarios where the tokens can be stole if we always use the same token.</li>
+<li>Even in the resource owner credentials grant types we should not store the user credentials for re-authentication purpose instead we should reply on the refresh tokens.</li>
+</ul>
+<h2 id="see_also">See Also<a class="headerlink" href="#see_also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../OAUTH2%20Components/">OAUTH2 Components</a></li>
+<li><a href="../OAUTH2/">OAUTH2</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://www.udemy.com/course/spring-security-zero-to-master/">Spring Security Zero To Master</a></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      2022 - 2024 Duc Nguyen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://2dgarden.com/feed_rss_created.xml" rel="noopener" target="_blank" title="2dgarden.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm0 352a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm32-256c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg>
+</a>
+<a class="md-social__link" href="https://2dgarden.com/feed_rss_updated.xml" rel="noopener" target="_blank" title="2dgarden.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zm0 352a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm32-256c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.paypal.com/paypalme/minhduc189" rel="noopener" target="_blank" title="donate via paypal">
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4.7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9.7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/in/duc-nguyen-03109b141/" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/minhducnguyen189" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Your privacy</h4>
+<p>Hi! 👋. We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.
+</p>
+<input class="md-toggle" id="__settings" type="checkbox"/>
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="analytics" type="checkbox"/>
+<span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">Accept</button>
+<label class="md-button" for="__settings">Manage settings</label>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
