@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    
+    <title>2D-Garden</title>
+    <description>Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.</description>
+    <link>https://2dgarden.com/</link>
+    <atom:link href="https://2dgarden.com/feed_rss_updated.xml" rel="self" type="application/rss+xml" />
+
+    
+    <managingEditor>minhducnguyen189@gmail.com</managingEditor>
+    
+    <language>en</language>
+
+    
+    <pubDate>Sat, 13 Dec 2025 15:20:40 -0000</pubDate>
+    <lastBuildDate>Sat, 13 Dec 2025 15:20:40 -0000</lastBuildDate>
+    <ttl>1440</ttl>
+
+    
+    <generator>MkDocs RSS plugin - v1.12.2</generator>
+
+    
+    
+
+    
+    
+    <item>
+      <title>Home</title>
+      
+      
+      
+      
+      <description></description>
+      <link>https://2dgarden.com/</link>
+      <pubDate>Sat, 13 Dec 2025 15:20:08 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/</guid>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;About&lt;/h1&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Hi there! 👋&lt;/li&gt;
+&lt;li&gt;My name is Duc, I&#39;m from Vietnam. I&#39;m a solfware engineer and working at &lt;a href=&#34;https://www.mesoneer.io/de/&#34;&gt;Mesoneer.io&lt;/a&gt;...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/about/</link>
+      <pubDate>Sat, 13 Dec 2025 15:20:08 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/about/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Java Regular Expressions</title>
+      
+      
+      
+      
+      <description>&lt;hr&gt;
+&lt;p&gt;tags: [&#34;Java&#34;]
+status: &#34;Inprogress&#34;
+created: 2023-05-21 13:49
+modified: 2023-06-05 21:18&lt;/p&gt;
+&lt;hr&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Regular%20Expressions/</link>
+      <pubDate>Sat, 13 Dec 2025 15:20:08 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Regular%20Expressions/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Tag</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Tags&lt;/h1&gt;
+&lt;p&gt;Following is a list of relevant tags:&lt;/p&gt;
+&lt;h2&gt;&lt;span class=&#34;md-tag&#34;&gt;BuildTool&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;Build Tools/Gradle.md&#34;&gt;Gradle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Jfog Repository](Build Tools/JF...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/tags/</link>
+      <pubDate>Sat, 13 Dec 2025 15:20:08 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/tags/</guid>
+      
+    </item>
+    
+    <item>
+      <title>WSL2</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;WSL2&lt;/h1&gt;
+&lt;h2&gt;Mount Ext4 Disks Into WSL2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the PowerShell as Administrator&lt;/li&gt;
+&lt;li&gt;Run the command below to list all the disks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;```sh linenums=&#34;1&#34;&lt;/p&gt;
+&lt;p&gt;GET-CimInstan...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Windows/WSL2/</link>
+      <pubDate>Sat, 31 May 2025 14:03:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Windows/WSL2/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Docker With Open WebUI</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Docker With Open WebUI&lt;/h1&gt;
+&lt;h2&gt;What Is The Open WebUI?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operat...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/</link>
+      <pubDate>Wed, 29 Jan 2025 10:04:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Install Kubernetes</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Install Kubernetes&lt;/h1&gt;
+&lt;h2&gt;Before you begin&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;One or more machines running a deb/rpm-compatible Linux OS; for example: Ubuntu or CentOS.&lt;/li&gt;
+&lt;li&gt;2 GiB or more of RAM...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Kubernetes/Install%20Kubernetes/</link>
+      <pubDate>Tue, 14 Jan 2025 23:40:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Kubernetes/Install%20Kubernetes/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Docker With File Browser</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Docker With File Browser&lt;/h1&gt;
+&lt;h2&gt;What Is The File Browser?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;filebrowser&lt;/code&gt; provides a file managing interface within a specified directory and it can be used to...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Docker/Docker%20With%20File%20Browser/</link>
+      <pubDate>Sun, 15 Sep 2024 12:27:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Docker/Docker%20With%20File%20Browser/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Linux Mint Tips</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Linux Mint Tips&lt;/h1&gt;
+&lt;h2&gt;Install Softwares And Tools&lt;/h2&gt;
+&lt;h3&gt;Postman&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Download Postman&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;```sh linenums=&#34;1&#34;&lt;/p&gt;
+&lt;p&gt;wget https://dl.pstmn.io/download/latest/linux64 -O post...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Linux/Linux%20Mint%20Tips/</link>
+      <pubDate>Tue, 03 Sep 2024 11:48:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Linux/Linux%20Mint%20Tips/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JDBC In SpringBoot</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JDBC In SpringBoot&lt;/h1&gt;
+&lt;h2&gt;JDBC In SpringBoot Projects&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In &lt;a href=&#34;../Spring Boot/Spring Boot Introduction.md&#34;&gt; SpringBoot&lt;/a&gt; projects, we usually use dependency libr...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/JDBC%20In%20Spring%20Boot/</link>
+      <pubDate>Sun, 01 Sep 2024 14:51:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/JDBC%20In%20Spring%20Boot/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring Data JDBC Introduction&lt;/h1&gt;
+&lt;h2&gt;What Is The JDBC?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;JDBC&lt;/code&gt; stands for &lt;code&gt;Java Database Connectivity&lt;/code&gt;. &lt;strong&gt;JDBC&lt;/strong&gt; is a &lt;strong&gt;Java API&lt;/strong&gt; to connect and execute the ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/Spring%20Data%20JDBC/</link>
+      <pubDate>Sun, 01 Sep 2024 14:36:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/Spring%20Data%20JDBC/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Fedora Tips</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Fedora Tips&lt;/h1&gt;
+&lt;h2&gt;Install Softwares And Tools&lt;/h2&gt;
+&lt;h3&gt;Install NeoFetch&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Run the command below&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;```bash linenums=&#34;1&#34;&lt;/p&gt;
+&lt;p&gt;sudo yum install neofetch&lt;/p&gt;
+&lt;p&gt;```&lt;/p&gt;
+&lt;h3&gt;Install...&lt;/h3&gt;</description>
+      <link>https://2dgarden.com/Linux/Fedora%20Tips/</link>
+      <pubDate>Sun, 25 Aug 2024 10:53:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Linux/Fedora%20Tips/</guid>
+      
+    </item>
+    
+    <item>
+      <title>DRY Principles</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java DRY Principles&lt;/h1&gt;
+&lt;h2&gt;What Is The DRY Principle?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DRY&lt;/code&gt; stands for &lt;code&gt;Don’t Repeat Yourself&lt;/code&gt;. It’s a software development principle with the goal of removi...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20DRY%20Principles/</link>
+      <pubDate>Sun, 18 Aug 2024 22:11:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20DRY%20Principles/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Docker With Databases</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Docker With Databases&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As you know installing databases in our computers is taking many time and they are also complicated. So In this topic I will instro...&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      <link>https://2dgarden.com/Docker/Docker%20With%20Databases/</link>
+      <pubDate>Sat, 17 Aug 2024 21:26:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Docker/Docker%20With%20Databases/</guid>
+      
+    </item>
+    
+    <item>
+      <title>KISS Principle</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java KISS Principle&lt;/h1&gt;
+&lt;h2&gt;What Is The KISS Principle?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;KISS&lt;/code&gt; (Keep It Simple, Stupid) is a principle that aims to avoid complexity in code. Complexity can m...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20KISS%20Principle/</link>
+      <pubDate>Mon, 29 Jul 2024 21:28:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20KISS%20Principle/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Composition Over Inheritance Principle</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java Composition Over Inheritance Principle&lt;/h1&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/</link>
+      <pubDate>Fri, 26 Jul 2024 21:37:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java Principles&lt;/h1&gt;
+&lt;h2&gt;What Are Java Design Principles?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In Java, the design principles are the set of advice used as rules in design making. In Java, the des...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Principles/</link>
+      <pubDate>Fri, 26 Jul 2024 21:37:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Principles/</guid>
+      
+    </item>
+    
+    <item>
+      <title>SOLID Principles</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java SOLID Principles&lt;/h1&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20SOLID%20Principles/</link>
+      <pubDate>Fri, 26 Jul 2024 21:37:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20SOLID%20Principles/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Java Annotations</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Java Annotations&lt;/h1&gt;
+&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Annotations, a form of metadata, provide data about a program that is not part of the program itself. Annotations have no ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Java/Java%20Annotations/</link>
+      <pubDate>Fri, 19 Jul 2024 21:49:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Java/Java%20Annotations/</guid>
+      
+    </item>
+    
+    <item>
+      <title>AOP Introduction</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring AOP Introduction&lt;/h1&gt;
+&lt;h2&gt;What Is The Aspect Oriented Programming (AOP)?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Aspect-oriented Programming (AOP) complements Object-oriented Programming (OOP)...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/</link>
+      <pubDate>Mon, 24 Jun 2024 22:09:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/</guid>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,216 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "2D-Garden",
+    "home_page_url": "https://2dgarden.com/",
+    "feed_url": "https://2dgarden.com/feed_json_updated.json",
+    "description": "Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.",
+    "icon": null,
+    "authors": [
+        {
+            "name": "minhducnguyen189@gmail.com"
+        }
+    ],
+    "language": "en",
+    "items": [
+        {
+            "id": "https://2dgarden.com/",
+            "url": "https://2dgarden.com/",
+            "title": "Home",
+            "content_html": "",
+            "image": null,
+            "date_modified": "2025-12-13T15:20:08+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/about/",
+            "url": "https://2dgarden.com/about/",
+            "title": "About",
+            "content_html": "<h1>About</h1>\n<h2>Introduction</h2>\n<ul>\n<li>Hi there! \ud83d\udc4b</li>\n<li>My name is Duc, I'm from Vietnam. I'm a solfware engineer and working at <a href=\"https://www.mesoneer.io/de/\">Mesoneer.io</a>...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2025-12-13T15:20:08+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Regular%20Expressions/",
+            "url": "https://2dgarden.com/Java/Java%20Regular%20Expressions/",
+            "title": "Java Regular Expressions",
+            "content_html": "<hr>\n<p>tags: [\"Java\"]\nstatus: \"Inprogress\"\ncreated: 2023-05-21 13:49\nmodified: 2023-06-05 21:18</p>\n<hr>",
+            "image": null,
+            "date_modified": "2025-12-13T15:20:08+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/tags/",
+            "url": "https://2dgarden.com/tags/",
+            "title": "Tag",
+            "content_html": "<h1>Tags</h1>\n<p>Following is a list of relevant tags:</p>\n<h2><span class=\"md-tag\">BuildTool</span></h2>\n<ul>\n<li><a href=\"Build Tools/Gradle.md\">Gradle</a></li>\n<li>[Jfog Repository](Build Tools/JF...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2025-12-13T15:20:08+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Windows/WSL2/",
+            "url": "https://2dgarden.com/Windows/WSL2/",
+            "title": "WSL2",
+            "content_html": "<h1>WSL2</h1>\n<h2>Mount Ext4 Disks Into WSL2</h2>\n<ul>\n<li>Open the PowerShell as Administrator</li>\n<li>Run the command below to list all the disks.</li>\n</ul>\n<p>```sh linenums=\"1\"</p>\n<p>GET-CimInstan...</p>",
+            "image": null,
+            "date_modified": "2025-05-31T14:03:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/",
+            "title": "Docker With Open WebUI",
+            "content_html": "<h1>Docker With Open WebUI</h1>\n<h2>What Is The Open WebUI?</h2>\n<ul>\n<li>Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operat...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2025-01-29T10:04:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Kubernetes/Install%20Kubernetes/",
+            "url": "https://2dgarden.com/Kubernetes/Install%20Kubernetes/",
+            "title": "Install Kubernetes",
+            "content_html": "<h1>Install Kubernetes</h1>\n<h2>Before you begin</h2>\n<ul>\n<li>One or more machines running a deb/rpm-compatible Linux OS; for example: Ubuntu or CentOS.</li>\n<li>2 GiB or more of RAM...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2025-01-14T23:40:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20File%20Browser/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20File%20Browser/",
+            "title": "Docker With File Browser",
+            "content_html": "<h1>Docker With File Browser</h1>\n<h2>What Is The File Browser?</h2>\n<ul>\n<li><code>filebrowser</code> provides a file managing interface within a specified directory and it can be used to...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-09-15T12:27:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Linux/Linux%20Mint%20Tips/",
+            "url": "https://2dgarden.com/Linux/Linux%20Mint%20Tips/",
+            "title": "Linux Mint Tips",
+            "content_html": "<h1>Linux Mint Tips</h1>\n<h2>Install Softwares And Tools</h2>\n<h3>Postman</h3>\n<ul>\n<li>Download Postman</li>\n</ul>\n<p>```sh linenums=\"1\"</p>\n<p>wget https://dl.pstmn.io/download/latest/linux64 -O post...</p>",
+            "image": null,
+            "date_modified": "2024-09-03T11:48:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/JDBC%20In%20Spring%20Boot/",
+            "url": "https://2dgarden.com/Spring%20Data/JDBC%20In%20Spring%20Boot/",
+            "title": "JDBC In SpringBoot",
+            "content_html": "<h1>JDBC In SpringBoot</h1>\n<h2>JDBC In SpringBoot Projects</h2>\n<ul>\n<li>In <a href=\"../Spring Boot/Spring Boot Introduction.md\"> SpringBoot</a> projects, we usually use dependency libr...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-09-01T14:51:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/Spring%20Data%20JDBC/",
+            "url": "https://2dgarden.com/Spring%20Data/Spring%20Data%20JDBC/",
+            "title": "Introduction",
+            "content_html": "<h1>Spring Data JDBC Introduction</h1>\n<h2>What Is The JDBC?</h2>\n<ul>\n<li><code>JDBC</code> stands for <code>Java Database Connectivity</code>. <strong>JDBC</strong> is a <strong>Java API</strong> to connect and execute the ...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-09-01T14:36:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Linux/Fedora%20Tips/",
+            "url": "https://2dgarden.com/Linux/Fedora%20Tips/",
+            "title": "Fedora Tips",
+            "content_html": "<h1>Fedora Tips</h1>\n<h2>Install Softwares And Tools</h2>\n<h3>Install NeoFetch</h3>\n<ul>\n<li>Run the command below</li>\n</ul>\n<p>```bash linenums=\"1\"</p>\n<p>sudo yum install neofetch</p>\n<p>```</p>\n<h3>Install...</h3>",
+            "image": null,
+            "date_modified": "2024-08-25T10:53:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20DRY%20Principles/",
+            "url": "https://2dgarden.com/Java/Java%20DRY%20Principles/",
+            "title": "DRY Principles",
+            "content_html": "<h1>Java DRY Principles</h1>\n<h2>What Is The DRY Principle?</h2>\n<ul>\n<li><code>DRY</code> stands for <code>Don\u2019t Repeat Yourself</code>. It\u2019s a software development principle with the goal of removi...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-08-18T22:11:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20Databases/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20Databases/",
+            "title": "Docker With Databases",
+            "content_html": "<h1>Docker With Databases</h1>\n<blockquote>\n<p>As you know installing databases in our computers is taking many time and they are also complicated. So In this topic I will instro...</p>\n</blockquote>",
+            "image": null,
+            "date_modified": "2024-08-17T21:26:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20KISS%20Principle/",
+            "url": "https://2dgarden.com/Java/Java%20KISS%20Principle/",
+            "title": "KISS Principle",
+            "content_html": "<h1>Java KISS Principle</h1>\n<h2>What Is The KISS Principle?</h2>\n<ul>\n<li><code>KISS</code> (Keep It Simple, Stupid) is a principle that aims to avoid complexity in code. Complexity can m...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-07-29T21:28:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/",
+            "url": "https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/",
+            "title": "Composition Over Inheritance Principle",
+            "content_html": "<h1>Java Composition Over Inheritance Principle</h1>",
+            "image": null,
+            "date_modified": "2024-07-26T21:37:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Principles/",
+            "url": "https://2dgarden.com/Java/Java%20Principles/",
+            "title": "Introduction",
+            "content_html": "<h1>Java Principles</h1>\n<h2>What Are Java Design Principles?</h2>\n<ul>\n<li>In Java, the design principles are the set of advice used as rules in design making. In Java, the des...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-07-26T21:37:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20SOLID%20Principles/",
+            "url": "https://2dgarden.com/Java/Java%20SOLID%20Principles/",
+            "title": "SOLID Principles",
+            "content_html": "<h1>Java SOLID Principles</h1>",
+            "image": null,
+            "date_modified": "2024-07-26T21:37:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Annotations/",
+            "url": "https://2dgarden.com/Java/Java%20Annotations/",
+            "title": "Java Annotations",
+            "content_html": "<h1>Java Annotations</h1>\n<h2>Definition</h2>\n<ul>\n<li>Annotations, a form of metadata, provide data about a program that is not part of the program itself. Annotations have no ...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-07-19T21:49:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/",
+            "url": "https://2dgarden.com/Spring%20Boot/Spring%20Boot%203.x%20AOP%20Introduction/",
+            "title": "AOP Introduction",
+            "content_html": "<h1>Spring AOP Introduction</h1>\n<h2>What Is The Aspect Oriented Programming (AOP)?</h2>\n<ul>\n<li>Aspect-oriented Programming (AOP) complements Object-oriented Programming (OOP)...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2024-06-24T22:09:00+00:00",
+            "authors": [],
+            "tags": null
+        }
+    ]
+}
