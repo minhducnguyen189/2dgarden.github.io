@@ -1,0 +1,216 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "2D-Garden",
+    "home_page_url": "https://2dgarden.com/",
+    "feed_url": "https://2dgarden.com/feed_json_created.json",
+    "description": "Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.",
+    "icon": null,
+    "authors": [
+        {
+            "name": "minhducnguyen189@gmail.com"
+        }
+    ],
+    "language": "en",
+    "items": [
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Arrays/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Arrays/",
+            "title": "JavaScript Arrays",
+            "content_html": "<h1>JavaScript Arrays</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>An array is an ordered, list-like object used to store multiple values in a\n  single variable. JavaScript arrays c...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/",
+            "title": "JavaScript Control Flow",
+            "content_html": "<h1>JavaScript Control Flow</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>Control flow is the order in which statements are executed. JavaScript provides\n  conditional statements (`i...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/",
+            "title": "JavaScript Operators and Expressions",
+            "content_html": "<h1>JavaScript Operators and Expressions</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>Operators let you perform actions on values and variables, while an expression\n  is any valid c...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/",
+            "url": "https://2dgarden.com/",
+            "title": "Home",
+            "content_html": "",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/about/",
+            "url": "https://2dgarden.com/about/",
+            "title": "About",
+            "content_html": "<h1>About</h1>\n<h2>Introduction</h2>\n<ul>\n<li>Hi there! \ud83d\udc4b</li>\n<li>My name is Duc, I'm from Vietnam. I'm a solfware engineer and working at <a href=\"https://www.mesoneer.io/de/\">Mesoneer.io</a>...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/incus-k8s-setup/",
+            "url": "https://2dgarden.com/Others/incus-k8s-setup/",
+            "title": "Incus + Kubernetes Homelab \u2014 Setup Documentation",
+            "content_html": "<h1>Incus + Kubernetes Homelab \u2014 Setup Documentation</h1>\n<blockquote>\n<p>A self-hosted Kubernetes (HA) cluster and a Docker host, all running as\n<strong>Incus system containers</strong> o...</p>\n</blockquote>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-control-master-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-control-master-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (kcontrol)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (<code>kcontrol</code>)</h1>\n<blockquote>\n<p>\"Admin host\" here means a management box, <strong>not</strong> a Kubernetes control-plane...</p>\n</blockquote>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-dashboard-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-dashboard-incus-setup/",
+            "title": "Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server",
+            "content_html": "<h1>Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server</h1>\n<p>This document covers adding a <strong>web UI</strong> to the cluster \u2014 <a href=\"https://headlamp.dev\">Headlamp</a>\n...</p>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-master-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-master-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)</h1>\n<p>This documentation tracks the ...</p>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-oidc-login-with-dex/",
+            "url": "https://2dgarden.com/Others/k8s-oidc-login-with-dex/",
+            "title": "Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)",
+            "content_html": "<h1>Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)</h1>\n<p>This document covers adding a real <strong>login flow</strong> to the cluster \u2014 so a remote\nmachine ...</p>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-worker-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-worker-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)</h1>\n<p>This document outlines the exact, step-by-step procedures for prov...</p>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/tags/",
+            "url": "https://2dgarden.com/tags/",
+            "title": "Tag",
+            "content_html": "<h1>Tags</h1>\n<p>Following is a list of relevant tags:</p>\n<h2><span class=\"md-tag\">AOP</span></h2>\n<ul>\n<li>[Custom Annotation For Method Execution Time (AOP)](Spring Boot/Spring B...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/Poco%20X8%20Pro/",
+            "url": "https://2dgarden.com/Others/Poco%20X8%20Pro/",
+            "title": "Poco X8 Pro",
+            "content_html": "<h1>Poco X8 Pro</h1>\n<h2>Color Issue</h2>\n<ul>\n<li>By default with the hyper OS 3 on the poco x8 pro, you will see the color of the screen is too pale and this only support for ...</li>\n</ul>",
+            "image": null,
+            "date_published": "2026-04-29T22:55:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Windows/WSL2/",
+            "url": "https://2dgarden.com/Windows/WSL2/",
+            "title": "WSL2",
+            "content_html": "<h1>WSL2</h1>\n<h2>Mount Ext4 Disks Into WSL2</h2>\n<ul>\n<li>Open the PowerShell as Administrator</li>\n<li>Run the command below to list all the disks.</li>\n</ul>\n<p>```sh linenums=\"1\"</p>\n<p>GET-CimInstan...</p>",
+            "image": null,
+            "date_published": "2025-05-31T13:56:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20Open%20WebUI/",
+            "title": "Docker With Open WebUI",
+            "content_html": "<h1>Docker With Open WebUI</h1>\n<h2>What Is The Open WebUI?</h2>\n<ul>\n<li>Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operat...</li>\n</ul>",
+            "image": null,
+            "date_published": "2025-01-29T10:03:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Kubernetes/Install%20Kubernetes/",
+            "url": "https://2dgarden.com/Kubernetes/Install%20Kubernetes/",
+            "title": "Install Kubernetes",
+            "content_html": "<h1>Install Kubernetes</h1>\n<h2>Before you begin</h2>\n<ul>\n<li>One or more machines running a deb/rpm-compatible Linux OS; for example: Ubuntu or CentOS.</li>\n<li>2 GiB or more of RAM...</li>\n</ul>",
+            "image": null,
+            "date_published": "2025-01-14T23:39:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Docker/Docker%20With%20File%20Browser/",
+            "url": "https://2dgarden.com/Docker/Docker%20With%20File%20Browser/",
+            "title": "Docker With File Browser",
+            "content_html": "<h1>Docker With File Browser</h1>\n<h2>What Is The File Browser?</h2>\n<ul>\n<li><code>filebrowser</code> provides a file managing interface within a specified directory and it can be used to...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-09-15T12:29:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Linux/Linux%20Mint%20Tips/",
+            "url": "https://2dgarden.com/Linux/Linux%20Mint%20Tips/",
+            "title": "Linux Mint Tips",
+            "content_html": "<h1>Linux Mint Tips</h1>\n<h2>Install Softwares And Tools</h2>\n<h3>Postman</h3>\n<ul>\n<li>Download Postman</li>\n</ul>\n<p>```sh linenums=\"1\"</p>\n<p>wget https://dl.pstmn.io/download/latest/linux64 -O post...</p>",
+            "image": null,
+            "date_published": "2024-09-03T11:48:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/",
+            "url": "https://2dgarden.com/Java/Java%20Composition%20Over%20Inheritance%20Principle/",
+            "title": "Composition Over Inheritance Principle",
+            "content_html": "<h1>Java: Composition Over Inheritance Principle</h1>\n<h2>Introduction to Composition Over Inheritance</h2>\n<p>In object-oriented programming, **Composition Over Inheritan...</p>",
+            "image": null,
+            "date_published": "2024-07-26T21:35:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Java/Java%20DRY%20Principles/",
+            "url": "https://2dgarden.com/Java/Java%20DRY%20Principles/",
+            "title": "DRY Principles",
+            "content_html": "<h1>Java DRY Principles</h1>\n<h2>What Is The DRY Principle?</h2>\n<ul>\n<li><code>DRY</code> stands for <code>Don\u2019t Repeat Yourself</code>. It\u2019s a software development principle with the goal of removi...</li>\n</ul>",
+            "image": null,
+            "date_published": "2024-07-26T21:35:00+00:00",
+            "authors": [],
+            "tags": null
+        }
+    ]
+}

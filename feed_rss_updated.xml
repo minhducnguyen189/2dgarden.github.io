@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    
+    <title>2D-Garden</title>
+    <description>Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.</description>
+    <link>https://2dgarden.com/</link>
+    <atom:link href="https://2dgarden.com/feed_rss_updated.xml" rel="self" type="application/rss+xml" />
+
+    
+    <managingEditor>minhducnguyen189@gmail.com</managingEditor>
+    
+    <language>en</language>
+
+    
+    <pubDate>Sun, 28 Jun 2026 03:53:10 -0000</pubDate>
+    <lastBuildDate>Sun, 28 Jun 2026 03:53:10 -0000</lastBuildDate>
+    <ttl>1440</ttl>
+
+    
+    <generator>MkDocs RSS plugin - v1.12.2</generator>
+
+    
+    
+
+    
+    
+    <item>
+      <title>Objects</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Objects&lt;/h1&gt;
+&lt;h2&gt;JavaScript Objects&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In JavaScript, an object is an unordered collection of key-value pairs. Each key-value pair is called a property...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Objects/</link>
+      <pubDate>Sun, 28 Jun 2026 12:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Objects/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Functions</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Functions&lt;/h1&gt;
+&lt;h2&gt;JavaScript Functions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In JavaScript, to declare a function, you use the &lt;code&gt;function&lt;/code&gt; keyword, followed by the function name, a list ...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Functions/</link>
+      <pubDate>Sun, 28 Jun 2026 11:45:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Functions/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Syntax and Variables</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Syntax and Variables&lt;/h1&gt;
+&lt;h2&gt;JavaScript Syntax&lt;/h2&gt;
+&lt;p&gt;Syntax is the set of rules that defines how a JavaScript program is written.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Statements&lt;/strong&gt;: a prog...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Syntax%20and%20Variables/</link>
+      <pubDate>Sun, 28 Jun 2026 11:30:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Syntax%20and%20Variables/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JavaScript Operators and Expressions</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Operators and Expressions&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Operators let you perform actions on values and variables, while an expression
+  is any valid c...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/</link>
+      <pubDate>Sun, 28 Jun 2026 11:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JavaScript Arrays</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Arrays&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;An array is an ordered, list-like object used to store multiple values in a
+  single variable. JavaScript arrays c...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Arrays/</link>
+      <pubDate>Sun, 28 Jun 2026 10:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Arrays/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JavaScript Control Flow</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Control Flow&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Control flow is the order in which statements are executed. JavaScript provides
+  conditional statements (`i...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/</link>
+      <pubDate>Sun, 28 Jun 2026 10:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JavaScript Introduction&lt;/h1&gt;
+&lt;h2&gt;What Is the JavaScript?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;JavaScript&lt;/code&gt; is a dynamic computer programming language. It is lightweight and most commonly used as a...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/JavaScript/JavaScript%20Introduction/</link>
+      <pubDate>Sun, 28 Jun 2026 10:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/JavaScript/JavaScript%20Introduction/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Home</title>
+      
+      
+      
+      
+      <description></description>
+      <link>https://2dgarden.com/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/</guid>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;About&lt;/h1&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Hi there! 👋&lt;/li&gt;
+&lt;li&gt;My name is Duc, I&#39;m from Vietnam. I&#39;m a solfware engineer and working at &lt;a href=&#34;https://www.mesoneer.io/de/&#34;&gt;Mesoneer.io&lt;/a&gt;...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/about/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/about/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Incus + Kubernetes Homelab — Setup Documentation</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Incus + Kubernetes Homelab — Setup Documentation&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A self-hosted Kubernetes (HA) cluster and a Docker host, all running as
+&lt;strong&gt;Incus system containers&lt;/strong&gt; o...&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      <link>https://2dgarden.com/Others/incus-k8s-setup/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/incus-k8s-setup/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (kcontrol)</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (&lt;code&gt;kcontrol&lt;/code&gt;)&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&#34;Admin host&#34; here means a management box, &lt;strong&gt;not&lt;/strong&gt; a Kubernetes control-plane...&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      <link>https://2dgarden.com/Others/k8s-control-master-incus-setup/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/k8s-control-master-incus-setup/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server&lt;/h1&gt;
+&lt;p&gt;This document covers adding a &lt;strong&gt;web UI&lt;/strong&gt; to the cluster — &lt;a href=&#34;https://headlamp.dev&#34;&gt;Headlamp&lt;/a&gt;
+...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Others/k8s-dashboard-incus-setup/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/k8s-dashboard-incus-setup/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)&lt;/h1&gt;
+&lt;p&gt;This documentation tracks the ...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Others/k8s-master-incus-setup/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/k8s-master-incus-setup/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)&lt;/h1&gt;
+&lt;p&gt;This document covers adding a real &lt;strong&gt;login flow&lt;/strong&gt; to the cluster — so a remote
+machine ...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Others/k8s-oidc-login-with-dex/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/k8s-oidc-login-with-dex/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)&lt;/h1&gt;
+&lt;p&gt;This document outlines the exact, step-by-step procedures for prov...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Others/k8s-worker-incus-setup/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Others/k8s-worker-incus-setup/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Tag</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Tags&lt;/h1&gt;
+&lt;p&gt;Following is a list of relevant tags:&lt;/p&gt;
+&lt;h2&gt;&lt;span class=&#34;md-tag&#34;&gt;AOP&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[Custom Annotation For Method Execution Time (AOP)](Spring Boot/Spring B...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/tags/</link>
+      <pubDate>Sun, 28 Jun 2026 03:52:36 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/tags/</guid>
+      
+    </item>
+    
+    <item>
+      <title>NeoVim</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;NeoVim Introduction&lt;/h1&gt;
+&lt;h2&gt;Install&lt;/h2&gt;
+&lt;p&gt;```bash linenums=&#34;1&#34;&lt;/p&gt;
+&lt;p&gt;sudo apt install neovim&lt;/p&gt;
+&lt;p&gt;```&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To open a file with neovim, run &lt;code&gt;nvim&lt;/code&gt; followed by the file name.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;```...&lt;/p&gt;</description>
+      <link>https://2dgarden.com/Linux/NeoVim/</link>
+      <pubDate>Sat, 27 Jun 2026 10:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Linux/NeoVim/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JPA With Specification Query</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JPA With Specification Query&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;Specification&lt;/strong&gt; is Spring Data JPA&#39;s object-oriented wrapper around the &lt;strong&gt;JPA Criteria API&lt;/strong&gt;. It l...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/</link>
+      <pubDate>Sun, 14 Jun 2026 11:30:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/</guid>
+      
+    </item>
+    
+    <item>
+      <title>Spring Data MongoDB</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;Spring Data MongoDB&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MongoDB&lt;/strong&gt; is a document-oriented NoSQL database: it stores &lt;strong&gt;BSON documents&lt;/strong&gt; (binary JSON) inside **collecti...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/SB%203x%20Spring%20Data%20MongoDB/</link>
+      <pubDate>Sun, 14 Jun 2026 11:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/SB%203x%20Spring%20Data%20MongoDB/</guid>
+      
+    </item>
+    
+    <item>
+      <title>JPA With Postgres View Table</title>
+      
+      
+      
+      
+      <description>&lt;h1&gt;JPA With Postgres View Table&lt;/h1&gt;
+&lt;h2&gt;What Is The Topic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;database view&lt;/strong&gt; is a &lt;em&gt;named, stored query&lt;/em&gt; that behaves like a read-only (or sometimes writable) t...&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <link>https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/</link>
+      <pubDate>Sun, 14 Jun 2026 10:00:00 +0000</pubDate>
+      <source url="https://2dgarden.com/feed_rss_updated.xml">2D-Garden</source>
+      
+      <guid isPermaLink="true">https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/</guid>
+      
+    </item>
+    
+  </channel>
+</rss>

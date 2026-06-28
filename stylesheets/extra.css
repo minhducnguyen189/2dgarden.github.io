@@ -1,0 +1,250 @@
+
+/* Smooth scrolling animation */
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* load font */
+@font-face {
+  font-family: 'ubuntu';
+  src: url("ubuntu-light-webfont.woff2") format("woff2"),
+    url("Ubuntu-L-subset.woff2") format("woff2"),
+    url("Ubuntu-LI-subset.woff2") format("woff2"),
+    url("Ubuntu-R-subset.woff2") format("woff2"),
+    url("Ubuntu-Th-subset.woff2") format("woff2"),
+    url("ubuntu-light-webfont.woff") format("woff"),
+    url("ubuntu-light-webfont.ttf") format("ttf");
+}
+
+
+/* font */
+:root>* {
+
+  --md-default-fg-color--light: #27ae60;
+  --md-text-font: 'ubuntu';
+  --md-code-font: 'ubuntu';
+  --md-typeset-color: #2c3e50;
+
+}
+
+/* color green for links and urls in black mode */
+[data-md-color-scheme=slate][data-md-color-primary=deep-orange],
+[data-md-color-scheme=slate][data-md-color-primary=black],
+[data-md-color-scheme=slate][data-md-color-primary=blue-grey],
+[data-md-color-scheme=slate][data-md-color-primary=grey],
+[data-md-color-scheme=slate][data-md-color-primary=white] {
+  @media not print {
+    --md-typeset-color: #adbac7;
+  }
+  --md-typeset-a-color: var(--md-default-fg-color--light);
+}
+
+/* color for background of the black mode */
+[data-md-color-scheme="slate"] {
+  --md-hue: 198; 
+}
+
+
+:root, [data-md-color-scheme=default] {
+  --md-default-fg-color: #003300;
+  --md-default-bg-color: #FDF8F0;
+  --md-code-bg-color: #dfe6e9;
+}
+
+/* content area width */
+.md-grid {
+  max-width: initial;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* header font size */
+.md-tabs__link {
+  font-size: 0.9rem;
+  /* font-weight: 600; */
+}
+
+/* side bar title size for desktop*/
+@media screen and (min-width: 76.25em) {
+  .md-nav--lifted>.md-nav__list>.md-nav__item--active>.md-nav__link {
+    font-size: 0.9rem;
+  }
+
+  /* font-size for content */
+  .md-typeset {
+    font-size: 0.9rem;
+  }
+
+  /* .md-typeset code {
+    font-size: 0.9rem;
+  } */
+
+  /* margin top for side bar section for desktop*/
+  .md-nav__item--section {
+    margin-top: 2.5em;
+  }
+
+  /* side bar font size */
+  .md-nav__link {
+    font-size: 0.8rem;
+  }
+
+  /* font-size of linenums */
+  /* .highlighttable .linenos {
+    font-size: 0.9rem;
+  } */
+
+  /* left and right side bars */
+  .md-sidebar {
+    width: 15.1rem;
+  }
+
+  /* margin of content inside side bars */
+  .md-sidebar__scrollwrap {
+    margin: 0 1rem;
+  }
+
+  /* padding of content inside side bars */
+  .md-sidebar__inner {
+    padding-right: calc(100% - 12.5rem) !important;
+  }
+
+  /* top bar logo and search*/
+  .md-header__inner {
+    margin: 0 1rem;
+  }
+
+  /* fix issue auto focus to bottom when click change theme */
+  .md-header__option>input {
+    bottom: unset;
+  }
+
+  /* top bar topics */
+  .md-tabs__list {
+    margin-left: 1rem !important;
+  }
+
+}
+
+/* color of highlight paragraph */
+/* .md-typeset code {
+  color: #0984e3;
+} */
+
+/* side bar title size */
+.md-nav__item--section>.md-nav__link {
+  font-size: 0.8rem;
+}
+
+/* table of content title font size */
+.md-nav--secondary .md-nav__title[for=__toc] {
+  font-size: 0.8rem;
+}
+
+/* seclected side bar */
+.md-nav__item .md-nav__link--active {
+  font-weight: bold;
+}
+
+/* blur when click search */
+.md-search__overlay {
+  backdrop-filter: blur(5px);
+}
+
+/* blur when click nav bar */
+.md-overlay {
+  backdrop-filter: blur(5px);
+}
+
+/* border-radius for table */
+.md-typeset table:not([class]) {
+  border-radius: 1em;
+  border: 0.05rem solid var(--md-primary-fg-color);
+}
+
+table thead tr th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+}
+
+img {
+  height: auto;
+  width: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px;
+  background-color: #fff;
+}
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.zoom {
+  cursor: zoom-in;
+}
+
+.image-zoom-large {
+  transform: scale(1.25);
+  cursor: zoom-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 100;
+  position: relative;
+}
+
+.md-status--Done::after {
+  height: unset;
+}
+
+.md-status--Resolved::after {
+  background-color: var(--md-default-fg-color--light);
+  content: "";
+  display: inline-block;
+  height: 1.125em;
+  -webkit-mask-image: var(--md-status);
+  mask-image: url('./icons/done-ring-round-svgrepo-com.svg');
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: text-bottom;
+  width: 1.125em
+}
+
+.md-status--Inprogress::after {
+  background-color: var(--md-default-fg-color--light);
+  content: "";
+  display: inline-block;
+  height: 1.125em;
+  -webkit-mask-image: var(--md-status);
+  mask-image: url('./icons/info-circle-svgrepo-com.svg');
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: text-bottom;
+  width: 1.125em
+}
+
+
+.md-status--Todo::after {
+  background-color: var(--md-default-fg-color--light);
+  content: "";
+  display: inline-block;
+  height: 1.125em;
+  -webkit-mask-image: var(--md-status);
+  mask-image: url('./icons/todo-add-svgrepo-com.svg');
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: text-bottom;
+  width: 1.125em
+}

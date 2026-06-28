@@ -1,0 +1,216 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "2D-Garden",
+    "home_page_url": "https://2dgarden.com/",
+    "feed_url": "https://2dgarden.com/feed_json_updated.json",
+    "description": "Hi there! My name is Duc This is my personal site where I drop notes and articles about things  that I am interested in studying and working. I hope that this website can help people saving time in learning,  also give some motivations for those who had chosen the developer path.",
+    "icon": null,
+    "authors": [
+        {
+            "name": "minhducnguyen189@gmail.com"
+        }
+    ],
+    "language": "en",
+    "items": [
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Objects/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Objects/",
+            "title": "Objects",
+            "content_html": "<h1>JavaScript Objects</h1>\n<h2>JavaScript Objects</h2>\n<ul>\n<li>In JavaScript, an object is an unordered collection of key-value pairs. Each key-value pair is called a property...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T12:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Functions/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Functions/",
+            "title": "Functions",
+            "content_html": "<h1>JavaScript Functions</h1>\n<h2>JavaScript Functions</h2>\n<ul>\n<li>In JavaScript, to declare a function, you use the\u00a0<code>function</code>\u00a0keyword, followed by the function name, a list ...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T11:45:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Syntax%20and%20Variables/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Syntax%20and%20Variables/",
+            "title": "Syntax and Variables",
+            "content_html": "<h1>JavaScript Syntax and Variables</h1>\n<h2>JavaScript Syntax</h2>\n<p>Syntax is the set of rules that defines how a JavaScript program is written.</p>\n<ul>\n<li><strong>Statements</strong>: a prog...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T11:30:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Operators%20and%20Expressions/",
+            "title": "JavaScript Operators and Expressions",
+            "content_html": "<h1>JavaScript Operators and Expressions</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>Operators let you perform actions on values and variables, while an expression\n  is any valid c...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T11:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Arrays/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Arrays/",
+            "title": "JavaScript Arrays",
+            "content_html": "<h1>JavaScript Arrays</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>An array is an ordered, list-like object used to store multiple values in a\n  single variable. JavaScript arrays c...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Control%20Flow/",
+            "title": "JavaScript Control Flow",
+            "content_html": "<h1>JavaScript Control Flow</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>Control flow is the order in which statements are executed. JavaScript provides\n  conditional statements (`i...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/JavaScript/JavaScript%20Introduction/",
+            "url": "https://2dgarden.com/JavaScript/JavaScript%20Introduction/",
+            "title": "Introduction",
+            "content_html": "<h1>JavaScript Introduction</h1>\n<h2>What Is the JavaScript?</h2>\n<ul>\n<li><code>JavaScript</code> is a dynamic computer programming language. It is lightweight and most commonly used as a...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/",
+            "url": "https://2dgarden.com/",
+            "title": "Home",
+            "content_html": "",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/about/",
+            "url": "https://2dgarden.com/about/",
+            "title": "About",
+            "content_html": "<h1>About</h1>\n<h2>Introduction</h2>\n<ul>\n<li>Hi there! \ud83d\udc4b</li>\n<li>My name is Duc, I'm from Vietnam. I'm a solfware engineer and working at <a href=\"https://www.mesoneer.io/de/\">Mesoneer.io</a>...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/incus-k8s-setup/",
+            "url": "https://2dgarden.com/Others/incus-k8s-setup/",
+            "title": "Incus + Kubernetes Homelab \u2014 Setup Documentation",
+            "content_html": "<h1>Incus + Kubernetes Homelab \u2014 Setup Documentation</h1>\n<blockquote>\n<p>A self-hosted Kubernetes (HA) cluster and a Docker host, all running as\n<strong>Incus system containers</strong> o...</p>\n</blockquote>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-control-master-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-control-master-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (kcontrol)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Kubernetes Admin / Jump Host (<code>kcontrol</code>)</h1>\n<blockquote>\n<p>\"Admin host\" here means a management box, <strong>not</strong> a Kubernetes control-plane...</p>\n</blockquote>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-dashboard-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-dashboard-incus-setup/",
+            "title": "Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server",
+            "content_html": "<h1>Comprehensive Guide: Web Dashboard (Headlamp) + metrics-server</h1>\n<p>This document covers adding a <strong>web UI</strong> to the cluster \u2014 <a href=\"https://headlamp.dev\">Headlamp</a>\n...</p>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-master-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-master-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Highly Available Kubernetes Cluster (2 Masters + HAProxy) on Debian 13 (Incus Containers)</h1>\n<p>This documentation tracks the ...</p>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-oidc-login-with-dex/",
+            "url": "https://2dgarden.com/Others/k8s-oidc-login-with-dex/",
+            "title": "Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)",
+            "content_html": "<h1>Comprehensive Guide: OIDC Login for kubectl/helm (Dex + kubelogin)</h1>\n<p>This document covers adding a real <strong>login flow</strong> to the cluster \u2014 so a remote\nmachine ...</p>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Others/k8s-worker-incus-setup/",
+            "url": "https://2dgarden.com/Others/k8s-worker-incus-setup/",
+            "title": "Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)",
+            "content_html": "<h1>Comprehensive Guide: Setting Up a Kubernetes Worker Node on Debian 13 (Incus Container)</h1>\n<p>This document outlines the exact, step-by-step procedures for prov...</p>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/tags/",
+            "url": "https://2dgarden.com/tags/",
+            "title": "Tag",
+            "content_html": "<h1>Tags</h1>\n<p>Following is a list of relevant tags:</p>\n<h2><span class=\"md-tag\">AOP</span></h2>\n<ul>\n<li>[Custom Annotation For Method Execution Time (AOP)](Spring Boot/Spring B...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-28T03:52:36+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Linux/NeoVim/",
+            "url": "https://2dgarden.com/Linux/NeoVim/",
+            "title": "NeoVim",
+            "content_html": "<h1>NeoVim Introduction</h1>\n<h2>Install</h2>\n<p>```bash linenums=\"1\"</p>\n<p>sudo apt install neovim</p>\n<p>```</p>\n<ul>\n<li>To open a file with neovim, run <code>nvim</code> followed by the file name.</li>\n</ul>\n<p>```...</p>",
+            "image": null,
+            "date_modified": "2026-06-27T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/",
+            "url": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Specification%20Query/",
+            "title": "JPA With Specification Query",
+            "content_html": "<h1>JPA With Specification Query</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>A <strong>Specification</strong> is Spring Data JPA's object-oriented wrapper around the <strong>JPA Criteria API</strong>. It l...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-14T11:30:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/SB%203x%20Spring%20Data%20MongoDB/",
+            "url": "https://2dgarden.com/Spring%20Data/SB%203x%20Spring%20Data%20MongoDB/",
+            "title": "Spring Data MongoDB",
+            "content_html": "<h1>Spring Data MongoDB</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li><strong>MongoDB</strong> is a document-oriented NoSQL database: it stores <strong>BSON documents</strong> (binary JSON) inside **collecti...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-14T11:00:00+00:00",
+            "authors": [],
+            "tags": null
+        },
+        {
+            "id": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/",
+            "url": "https://2dgarden.com/Spring%20Data/SB%203x%20JPA%20With%20Postgres%20View%20Table/",
+            "title": "JPA With Postgres View Table",
+            "content_html": "<h1>JPA With Postgres View Table</h1>\n<h2>What Is The Topic</h2>\n<ul>\n<li>A <strong>database view</strong> is a <em>named, stored query</em> that behaves like a read-only (or sometimes writable) t...</li>\n</ul>",
+            "image": null,
+            "date_modified": "2026-06-14T10:00:00+00:00",
+            "authors": [],
+            "tags": null
+        }
+    ]
+}
